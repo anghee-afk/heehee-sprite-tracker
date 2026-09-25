@@ -100,9 +100,9 @@ button{font-family:inherit}
 </div>
 
 <div id="loginPanel" class="login-panel" style="display:none">
-  <h2>Login</h2>
+  <h2>Login</h2><div style="margin:-8px 0 15px;color:var(--text-muted);font-size:12px">Use your HeeHee username and password.</div>
   <div class="login-fields">
-    <input id="emailInput" type="email" placeholder="Email">
+    <input id="emailInput" type="text" placeholder="Username">
     <input id="passwordInput" type="password" placeholder="Password">
     <button id="loginSubmit" class="login-submit">Login</button>
   </div>
@@ -110,13 +110,11 @@ button{font-family:inherit}
 </div>
 
 <div id="registerPanel" class="login-panel" style="display:none">
-  <h2>Create Account</h2>
+  <h2>Create Account</h2><div style="margin:-8px 0 15px;color:var(--text-muted);font-size:12px">Just a username and password — no email or Discord details needed.</div>
   <div class="login-fields">
-    <input id="registerDisplayName" type="text" placeholder="Display Name" maxlength="50">
-    <input id="registerDiscordName" type="text" placeholder="Discord Name / ID" maxlength="100">
-    <input id="registerEmail" type="email" placeholder="Email">
-    <input id="registerPassword" type="password" placeholder="Password">
-    <input id="registerPasswordConfirm" type="password" placeholder="Confirm Password">
+    <input id="registerUsername" type="text" placeholder="Username" maxlength="30" autocomplete="username">
+    <input id="registerPassword" type="password" placeholder="Password" maxlength="72" autocomplete="new-password">
+    <input id="registerPasswordConfirm" type="password" placeholder="Confirm Password" maxlength="72" autocomplete="new-password">
     <button id="registerSubmit" class="login-submit">Create Account</button>
   </div>
   <div id="registerMessage" class="login-message"></div>
@@ -278,19 +276,20 @@ async function loadMyCollection(){
 }
 
 async function login(){
-  const email=document.getElementById("emailInput").value.trim();
+  const username=document.getElementById("emailInput").value.trim();
   const password=document.getElementById("passwordInput").value;
   const message=document.getElementById("loginMessage");
-  if(!email||!password){message.textContent="Please enter your email and password.";return;}
+  if(!username||!password){message.textContent="Please enter your username and password.";return;}
   message.textContent="Logging in...";
   try{
+    const email=makeAuthEmail(username);
     const response=await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=password",{
       method:"POST",
       headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},
       body:JSON.stringify({email,password})
     });
     const data=await response.json();
-    if(!response.ok)throw new Error(data.error_description||data.msg||"Login failed.");
+    if(!response.ok)throw new Error(data.error_description||data.msg||"Login failed. Check your username and password.");
     accessToken=data.access_token;
     refreshToken=data.refresh_token;
     localStorage.setItem("accessToken",accessToken);
@@ -307,27 +306,41 @@ async function login(){
     message.textContent="";
     renderSprites();
   }catch(error){
+    console.error(error);
     message.textContent=error.message;
   }
 }
 
+function makeAuthEmail(username){
+  return username.toLowerCase().trim()+"@heehee.local";
+}
+
 async function register(){
-  const displayName=document.getElementById("registerDisplayName").value.trim();
-  const discordName=document.getElementById("registerDiscordName").value.trim();
-  const email=document.getElementById("registerEmail").value.trim();
+  const username=document.getElementById("registerUsername").value.trim();
   const password=document.getElementById("registerPassword").value;
   const passwordConfirm=document.getElementById("registerPasswordConfirm").value;
   const message=document.getElementById("registerMessage");
   message.textContent="";
-  if(!displayName||!discordName||!email||!password||!passwordConfirm){message.textContent="Please fill in all fields.";return;}
+
+  if(!username||!password||!passwordConfirm){
+    message.textContent="Please enter a username and password.";
+    return;
+  }
+  if(!/^[A-Za-z0-9._-]+$/.test(username)){
+    message.textContent="Username can only use letters, numbers, dots, underscores and hyphens.";
+    return;
+  }
+  if(username.length<3){message.textContent="Username must be at least 3 characters.";return;}
   if(password!==passwordConfirm){message.textContent="Passwords do not match.";return;}
   if(password.length<6){message.textContent="Password must be at least 6 characters.";return;}
+
   message.textContent="Creating account...";
   try{
+    const email=makeAuthEmail(username);
     const response=await fetch(SUPABASE_URL+"/auth/v1/signup",{
       method:"POST",
       headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},
-      body:JSON.stringify({email,password,data:{display_name:displayName,discord_name:discordName}})
+      body:JSON.stringify({email,password,data:{display_name:username,username:username}})
     });
     const data=await response.json();
     if(!response.ok)throw new Error(data.msg||data.message||data.error_description||"Could not create account.");
@@ -335,9 +348,7 @@ async function register(){
     if(!user)throw new Error("Account was created, but no user was returned.");
 
     if(!data.session){
-      message.textContent="Account created! Please confirm your email, then log in.";
-      document.getElementById("registerPassword").value="";
-      document.getElementById("registerPasswordConfirm").value="";
+      message.textContent="Account created, but Supabase is asking for email confirmation. Turn off email confirmation in Supabase Authentication settings, then try again.";
       return;
     }
 
@@ -347,18 +358,14 @@ async function register(){
     localStorage.setItem("refreshToken",refreshToken);
     await loadCurrentUser();
 
-    /*
-      IMPORTANT FIX:
-      Your players table requires a discord-id value. The old version did not send it,
-      which caused: null value in column "discord-id".
-      This sends the Discord value entered on the registration form to that required field.
-    */
+    // Your players table requires the exact `discord-id` column to be non-null.
+    // We no longer ask friends for Discord details, so the username is used there.
     const playerPayload={
       player_id:"PLAYER_"+user.id,
       auth_user_id:user.id,
-      display_name:displayName,
-      discord_name:discordName,
-      "discord-id":discordName,
+      display_name:username,
+      discord_name:username,
+      "discord-id":username,
       active:true,
       admin:false
     };
