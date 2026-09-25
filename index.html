@@ -1,177 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>HeeHee Sprite Tracker</title>
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: white;
-      margin: 0;
-      padding: 40px;
+
+    * {
+      box-sizing: border-box;
     }
 
-    h1 {
-      margin-bottom: 5px;
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f0f12;
+      color: #ffffff;
+    }
+
+    /* HEADER */
+
+    header {
+      padding: 30px 6%;
+      border-bottom: 1px solid #29292f;
+      background: #141418;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 2px;
     }
 
     .subtitle {
-      color: #aaa;
+      color: #8f8f98;
+      margin-top: 6px;
+      font-size: 14px;
+    }
+
+
+    /* MAIN */
+
+    main {
+      width: 88%;
+      max-width: 1400px;
+      margin: 40px auto;
+    }
+
+    .page-title {
+      font-size: 32px;
+      margin-bottom: 6px;
+    }
+
+    .page-description {
+      color: #8f8f98;
       margin-bottom: 30px;
     }
 
+
+    /* CONTROLS */
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .search {
+      flex: 1;
+      min-width: 220px;
+      padding: 13px 16px;
+      border-radius: 8px;
+      border: 1px solid #303038;
+      background: #19191f;
+      color: white;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .search:focus {
+      border-color: #666675;
+    }
+
+    .filter {
+      padding: 13px 16px;
+      border-radius: 8px;
+      border: 1px solid #303038;
+      background: #19191f;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+
+    /* STATS */
+
+    .stats {
+      color: #8f8f98;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+
+    /* GRID */
+
     #sprites {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(220px, 1fr)
+      );
       gap: 20px;
     }
 
+
+    /* CARD */
+
     .sprite-card {
-      background: #1d1d1d;
-      border-radius: 12px;
-      padding: 15px;
+      background: #18181d;
+      border: 1px solid #292930;
+      border-radius: 14px;
       overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: pointer;
     }
 
-    .sprite-card img {
+    .sprite-card:hover {
+      transform: translateY(-4px);
+      border-color: #555563;
+    }
+
+
+    .sprite-image {
       width: 100%;
-      height: 200px;
+      height: 220px;
       object-fit: contain;
-      background: #292929;
-      border-radius: 8px;
+      background: #222229;
+      display: block;
+    }
+
+
+    .sprite-info {
+      padding: 16px;
     }
 
     .sprite-name {
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 12px;
+      font-size: 19px;
+      font-weight: 700;
+      margin-bottom: 7px;
     }
 
     .rarity {
-      color: #aaa;
-      margin-top: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
     }
 
     .season {
-      color: #777;
-      font-size: 14px;
-      margin-top: 5px;
+      color: #777782;
+      font-size: 13px;
     }
 
-    #status {
-      margin-bottom: 20px;
-      color: #aaa;
+
+    /* STATES */
+
+    .message {
+      padding: 40px;
+      text-align: center;
+      color: #8f8f98;
     }
-  </style>
-</head>
-
-<body>
-
-  <h1>HeeHee Sprite Tracker</h1>
-
-  <div class="subtitle">
-    Fortnite Sprite Collection
-  </div>
-
-  <div id="status">
-    Loading sprites...
-  </div>
-
-  <div id="sprites"></div>
 
 
-  <script>
+    /* MOBILE */
 
-    const SUPABASE_URL = "https://mvspchowsinkymgytyeb.supabase.co/rest/v1/";
+    @media (max-width: 600px) {
 
-    const SUPABASE_KEY = "sb_publishable_mbdvlfY7O8Mb61KtZYoimw_b9Aer0Sb";
+      header {
+        padding: 24px;
+      }
 
+      main {
+        width: 92%;
+        margin: 30px auto;
+      }
 
-    async function loadSprites() {
+      .page-title {
+        font-size: 26px;
+      }
 
-      const status = document.getElementById("status");
-      const container = document.getElementById("sprites");
-
-      try {
-
-        const response = await fetch(
-          SUPABASE_URL + "/sprites?select=*",
-          {
-            headers: {
-              "apikey": SUPABASE_KEY,
-              "Authorization": "Bearer " + SUPABASE_KEY
-            }
-          }
+      #sprites {
+        grid-template-columns: repeat(
+          2,
+          minmax(0, 1fr)
         );
+        gap: 12px;
+      }
 
+      .sprite-image {
+        height: 160px;
+      }
 
-        if (!response.ok) {
-          throw new Error(
-            "Supabase returned " + response.status
-          );
-        }
+      .sprite-info {
+        padding: 12px;
+      }
 
-
-        const sprites = await response.json();
-
-
-        status.textContent =
-          sprites.length + " sprites loaded.";
-
-
-        sprites.forEach(sprite => {
-
-          const card = document.createElement("div");
-
-          card.className = "sprite-card";
-
-
-          card.innerHTML = `
-
-            <img
-              src="${sprite.image_url}"
-              alt="${sprite.sprite_name}"
-            >
-
-            <div class="sprite-name">
-              ${sprite.sprite_name}
-            </div>
-
-            <div class="rarity">
-              ${sprite.rarity}
-            </div>
-
-            <div class="season">
-              ${sprite.season}
-            </div>
-
-          `;
-
-
-          container.appendChild(card);
-
-        });
-
-
-      } catch (error) {
-
-        console.error(error);
-
-        status.textContent =
-          "Collection error: " + error.message;
-
+      .sprite-name {
+        font-size: 16px;
       }
 
     }
 
+  </style>
 
-    loadSprites();
+</head>
 
-  </script>
+
+<body>
+
+
+<header>
+
+  <div class="logo">
+    HEEHEE
+  </div>
+
+  <div class="subtitle">
+    Fortnite Sprite Tracker
+  </div>
+
+</header>
+
+
+
+<main>
+
+
+  <h1 class="page-title">
+    Sprites
+  </h1>
+
+  <div class="page-description">
+    Collect every Sprite in Fortnite.
+  </div>
+
+
+  <div class="controls">
+
+    <input
+      id="search"
+      class="search"
+      type="text"
+      placeholder="Search sprites..."
+    >
+
+    <select
+      id="rarity"
+      class="filter"
+    >
+
+      <option value="All">
+        All Rarities
+      </option>
+
+      <option value="Rare">
+        Rare
+      </option>
+
+      <option value="Epic">
+        Epic
+      </option>
+
+      <option value="Legendary">
+        Legendary
+      </option>
+
+      <option value="Mythic">
+        Mythic
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div
+    id="stats"
+    class="stats"
+  >
+    Loading sprites...
+  </div>
+
+
+  <div id="sprites"></div>
+
+
+</main>
+
+
+
+<script>
+
+
+const SUPABASE_URL =
+  "https://mvspchowsinkymgytyeb.supabase.co/rest/v1/";
+
+
+const SUPABASE_KEY =
+  "sb_publishable_mbdvlfY7O8Mb61KtZYoimw_b9Aer0Sb";
+
+
+
+let allSprites = [];
+
+
+
+async function loadSprites() {
+
+
+  const container =
+    document.getElementById("sprites");
+
+  const stats =
+    document.getElementById("stats");
+
+
+  try {
+
+
+    const response =
+      await fetch(
+        SUPABASE_URL + "/sprites?select=*",
+        {
+          headers: {
+            "apikey": SUPABASE_KEY,
+            "Authorization":
+              "Bearer " + SUPABASE_KEY
+          }
+        }
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Supabase returned " +
+        response.status
+      );
+
+    }
+
+
+    allSprites =
+      await response.json();
+
+
+    renderSprites();
+
+
+  } catch (error) {
+
+
+    console.error(error);
+
+
+    stats.textContent =
+      "Collection error: " +
+      error.message;
+
+
+  }
+
+}
+
+
+
+function renderSprites() {
+
+
+  const container =
+    document.getElementById("sprites");
+
+
+  const search =
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase();
+
+
+  const rarity =
+    document
+      .getElementById("rarity")
+      .value;
+
+
+  const filtered =
+    allSprites.filter(sprite => {
+
+
+      const matchesSearch =
+        sprite.sprite_name
+          .toLowerCase()
+          .includes(search);
+
+
+      const matchesRarity =
+        rarity === "All" ||
+        sprite.rarity === rarity;
+
+
+      return (
+        matchesSearch &&
+        matchesRarity
+      );
+
+    });
+
+
+
+  container.innerHTML = "";
+
+
+
+  if (filtered.length === 0) {
+
+    container.innerHTML = `
+      <div class="message">
+        No sprites found.
+      </div>
+    `;
+
+    updateStats(0);
+
+    return;
+
+  }
+
+
+
+  filtered.forEach(sprite => {
+
+
+    const card =
+      document.createElement("div");
+
+
+    card.className =
+      "sprite-card";
+
+
+    card.innerHTML = `
+
+      <img
+        class="sprite-image"
+        src="${sprite.image_url}"
+        alt="${sprite.sprite_name}"
+      >
+
+      <div class="sprite-info">
+
+        <div class="sprite-name">
+          ${sprite.sprite_name}
+        </div>
+
+        <div class="rarity">
+          ${sprite.rarity}
+        </div>
+
+        <div class="season">
+          ${sprite.season}
+        </div>
+
+      </div>
+
+    `;
+
+
+    container.appendChild(card);
+
+
+  });
+
+
+
+  updateStats(filtered.length);
+
+}
+
+
+
+function updateStats(count) {
+
+  document.getElementById("stats").textContent =
+    count +
+    " of " +
+    allSprites.length +
+    " sprites";
+
+}
+
+
+
+document
+  .getElementById("search")
+  .addEventListener(
+    "input",
+    renderSprites
+  );
+
+
+
+document
+  .getElementById("rarity")
+  .addEventListener(
+    "change",
+    renderSprites
+  );
+
+
+
+loadSprites();
+
+
+</script>
+
 
 </body>
+
 </html>
