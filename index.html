@@ -179,8 +179,11 @@
     }
 
     .collection-header {
-      margin-bottom: 18px;
-    }
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
     .collection-title {
       font-size: 20px;
@@ -741,26 +744,158 @@
          COLLECTION DASHBOARD
     ========================= -->
 
-    <div
-      id="collectionDashboard"
-      class="collection-dashboard"
-    >
+   <div
+  id="collectionDashboard"
+  class="collection-dashboard"
+>
 
-      <div class="collection-header">
+  <div class="collection-header">
 
-        <div class="collection-title">
-          My Collection
-        </div>
+    <div>
 
-        <div class="collection-player">
+      <div class="collection-title">
+        My Collection
+      </div>
 
-          <span id="collectionPlayer">
-            Not logged in
-          </span>
+      <div class="collection-player">
 
-        </div>
+        <span id="collectionPlayer">
+          Not logged in
+        </span>
 
       </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="collection-stats">
+
+    <div class="collection-stat">
+
+      <div
+        id="collectionTotal"
+        class="collection-stat-number"
+      >
+        0
+      </div>
+
+      <div class="collection-stat-label">
+        Total
+      </div>
+
+    </div>
+
+
+    <div class="collection-stat">
+
+      <div
+        id="collectionOwned"
+        class="collection-stat-number"
+      >
+        0
+      </div>
+
+      <div class="collection-stat-label">
+        Owned
+      </div>
+
+    </div>
+
+
+    <div class="collection-stat">
+
+      <div
+        id="collectionMissing"
+        class="collection-stat-number"
+      >
+        0
+      </div>
+
+      <div class="collection-stat-label">
+        Missing
+      </div>
+
+    </div>
+
+
+    <div class="collection-stat">
+
+      <div
+        id="collectionMastered"
+        class="collection-stat-number"
+      >
+        0
+      </div>
+
+      <div class="collection-stat-label">
+        Mastered
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- COLLECTION PROGRESS -->
+
+  <div class="collection-progress">
+
+    <div class="collection-progress-top">
+
+      <span>
+        Collection
+      </span>
+
+      <span id="collectionCompletion">
+        0%
+      </span>
+
+    </div>
+
+
+    <div class="progress-bar">
+
+      <div
+        id="collectionProgressFill"
+        class="progress-fill"
+      ></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- MASTERY PROGRESS -->
+
+  <div class="collection-progress">
+
+    <div class="collection-progress-top">
+
+      <span>
+        Mastery
+      </span>
+
+      <span id="masteryCompletion">
+        0%
+      </span>
+
+    </div>
+
+
+    <div class="progress-bar">
+
+      <div
+        id="masteryProgressFill"
+        class="progress-fill"
+      ></div>
+
+    </div>
+
+  </div>
+
+</div>
 
 
       <div class="collection-stats">
@@ -1793,142 +1928,249 @@
 
     function updateCollectionStats() {
 
-      const total =
-        allVariants.filter(
-          variant =>
-            variant.active !== false
-        ).length;
+  /*
+    Total active variants.
+  */
+
+  const total =
+    allVariants.filter(
+      variant =>
+        variant.active !== false
+    ).length;
 
 
-      const owned =
-        myCollection.filter(
-          item =>
-            item.owned === true
-        ).length;
+  /*
+    Owned variants.
+  */
+
+  const owned =
+    myCollection.filter(
+      item =>
+        item.owned === true
+    ).length;
 
 
-      const mastered =
-        myCollection.filter(
-          item =>
-            item.mastered === true
-        ).length;
+  /*
+    Mastered variants.
+  */
+
+  const mastered =
+    myCollection.filter(
+      item =>
+        item.mastered === true
+    ).length;
 
 
-      const missing =
-        Math.max(
-          total - owned,
-          0
-        );
+  /*
+    Missing variants.
+  */
+
+  const missing =
+    Math.max(
+      total - owned,
+      0
+    );
 
 
-      const completion =
-        total > 0
-          ? Math.round(
-              (owned / total) * 100
-            )
-          : 0;
+  /*
+    Collection completion.
+  */
+
+  const completion =
+    total > 0
+      ? Math.round(
+          (owned / total) * 100
+        )
+      : 0;
 
 
-      const totalElement =
-        document.getElementById(
-          "collectionTotal"
-        );
+  /*
+    Mastery completion.
+
+    Mastery is calculated from
+    the variants you own.
+
+    Example:
+    10 owned
+    4 mastered
+    = 40% mastery
+  */
+
+  const mastery =
+    owned > 0
+      ? Math.round(
+          (mastered / owned) * 100
+        )
+      : 0;
 
 
-      const ownedElement =
-        document.getElementById(
-          "collectionOwned"
-        );
+  /*
+    Update total.
+  */
+
+  const totalElement =
+    document.getElementById(
+      "collectionTotal"
+    );
 
 
-      const missingElement =
-        document.getElementById(
-          "collectionMissing"
-        );
+  if (totalElement) {
+
+    totalElement.textContent =
+      total;
+
+  }
 
 
-      const masteredElement =
-        document.getElementById(
-          "collectionMastered"
-        );
+  /*
+    Update owned.
+  */
+
+  const ownedElement =
+    document.getElementById(
+      "collectionOwned"
+    );
 
 
-      const completionElement =
-        document.getElementById(
-          "collectionCompletion"
-        );
+  if (ownedElement) {
+
+    ownedElement.textContent =
+      owned;
+
+  }
 
 
-      const progressElement =
-        document.getElementById(
-          "collectionProgressFill"
-        );
+  /*
+    Update missing.
+  */
+
+  const missingElement =
+    document.getElementById(
+      "collectionMissing"
+    );
 
 
-      if (totalElement) {
+  if (missingElement) {
 
-        totalElement.textContent =
-          total;
+    missingElement.textContent =
+      missing;
 
-      }
-
-
-      if (ownedElement) {
-
-        ownedElement.textContent =
-          owned;
-
-      }
+  }
 
 
-      if (missingElement) {
+  /*
+    Update mastered.
+  */
 
-        missingElement.textContent =
-          missing;
-
-      }
-
-
-      if (masteredElement) {
-
-        masteredElement.textContent =
-          mastered;
-
-      }
+  const masteredElement =
+    document.getElementById(
+      "collectionMastered"
+    );
 
 
-      if (completionElement) {
+  if (masteredElement) {
 
-        completionElement.textContent =
-          completion + "%";
+    masteredElement.textContent =
+      mastered;
 
-      }
-
-
-      if (progressElement) {
-
-        progressElement.style.width =
-          completion + "%";
-
-      }
+  }
 
 
-      const playerElement =
-        document.getElementById(
-          "collectionPlayer"
-        );
+  /*
+    Update collection percentage.
+  */
+
+  const completionElement =
+    document.getElementById(
+      "collectionCompletion"
+    );
 
 
-      if (playerElement) {
+  if (completionElement) {
 
-        playerElement.textContent =
-          currentPlayer
-            ? currentPlayer.display_name
-            : "Not logged in";
+    completionElement.textContent =
+      completion + "%";
 
-      }
+  }
 
-    }
+
+  /*
+    Update collection bar.
+  */
+
+  const progressElement =
+    document.getElementById(
+      "collectionProgressFill"
+    );
+
+
+  if (progressElement) {
+
+    progressElement.style.width =
+      completion + "%";
+
+  }
+
+
+  /*
+    Update mastery percentage.
+  */
+
+  const masteryElement =
+    document.getElementById(
+      "masteryCompletion"
+    );
+
+
+  if (masteryElement) {
+
+    masteryElement.textContent =
+      mastery + "%";
+
+  }
+
+
+  /*
+    Update mastery bar.
+  */
+
+  const masteryProgressElement =
+    document.getElementById(
+      "masteryProgressFill"
+    );
+
+
+  if (masteryProgressElement) {
+
+    masteryProgressElement.style.width =
+      mastery + "%";
+
+  }
+
+
+  /*
+    Update player name.
+  */
+
+  const playerElement =
+    document.getElementById(
+      "collectionPlayer"
+    );
+
+
+  if (playerElement) {
+
+    playerElement.textContent =
+      currentPlayer
+        ? (
+            currentPlayer.display_name ||
+            "Logged in"
+          )
+        : "Not logged in";
+
+  }
+
+}
 
 
     /* =========================
@@ -2433,7 +2675,9 @@
 
         updateCollectionStats();
 
-        return;
+renderSprites();
+
+return;
 
       }
 
@@ -2523,7 +2767,9 @@
 
       updateCollectionStats();
 
-    }
+renderSprites();
+
+}
 
 
     /* =========================
@@ -2621,9 +2867,11 @@
       }
 
 
-      updateCollectionStats();
+    updateCollectionStats();
 
-    }
+renderSprites();
+
+}
 
 
     /* =========================
@@ -2749,9 +2997,11 @@
       }
 
 
-      updateCollectionStats();
+     updateCollectionStats();
 
-    }
+renderSprites();
+
+}
 
 
     /* =========================
