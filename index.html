@@ -6,31 +6,94 @@
 
   <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1.0"
-
->
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>HeeHee Sprite Tracker</title>
 
+
   <style>
+
+    /* =========================
+       THEME
+    ========================= */
+
+    :root {
+
+      --bg: #0b0b0f;
+      --surface: #121218;
+      --surface-2: #181820;
+      --surface-3: #20202a;
+
+      --border: #292936;
+      --border-hover: #45455a;
+
+      --text: #f5f5f7;
+      --text-soft: #b4b4c2;
+      --text-muted: #777785;
+
+      --purple: #a78bfa;
+      --purple-bright: #c4b5fd;
+
+      --blue: #60a5fa;
+      --blue-bright: #93c5fd;
+
+      --gradient:
+        linear-gradient(
+          135deg,
+          #a78bfa,
+          #60a5fa
+        );
+
+    }
+
+
+    /* =========================
+       GLOBAL
+    ========================= */
 
     * {
       box-sizing: border-box;
     }
 
+
     body {
+
       margin: 0;
+
       padding: 30px 20px;
-      background: #0f0f0f;
-      color: #f5f5f5;
-      font-family: Arial, Helvetica, sans-serif;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(167, 139, 250, 0.07),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at top right,
+          rgba(96, 165, 250, 0.05),
+          transparent 30%
+        ),
+        var(--bg);
+
+      color: var(--text);
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     }
 
+
     .container {
+
       max-width: 1200px;
+
       margin: 0 auto;
+
     }
 
 
@@ -39,26 +102,124 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     header {
-      margin-bottom: 25px;
+
+      margin-bottom: 22px;
+
+      padding-bottom: 20px;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.06);
+
     }
+
+
+    .brand-row {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      margin-bottom: 10px;
+
+    }
+
+
+    /* HH LOGO */
+
+    .heehee-logo {
+
+      width: 42px;
+
+      height: 42px;
+
+      flex-shrink: 0;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 12px;
+
+      background:
+        var(--gradient);
+
+      color: #09090d;
+
+      font-size: 15px;
+
+      font-weight: 900;
+
+      letter-spacing: -1px;
+
+      box-shadow:
+        0 0 24px
+        rgba(167, 139, 250, 0.18);
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+
+    .heehee-logo::after {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 1px;
+
+      border-radius: 11px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+      pointer-events: none;
+
+    }
+
 
     .brand {
-      font-size: 14px;
-      font-weight: 700;
+
+      font-size: 13px;
+
+      font-weight: 800;
+
       letter-spacing: 3px;
-      color: #888;
-      margin-bottom: 6px;
+
+      color: var(--purple-bright);
+
+      margin: 0;
+
     }
+
 
     h1 {
+
       margin: 0;
+
       font-size: 32px;
+
+      letter-spacing: -0.8px;
+
     }
 
+
     .subtitle {
-      margin-top: 8px;
-      color: #888;
+
+      margin-top: 7px;
+
+      color: var(--text-muted);
+
       font-size: 14px;
+
     }
 
 
@@ -67,33 +228,72 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     .account-bar {
+
       display: flex;
+
       justify-content: flex-end;
+
       align-items: center;
+
       gap: 10px;
+
       margin-bottom: 20px;
+
     }
+
 
     .account-name {
-      color: #aaa;
+
+      color: var(--text-soft);
+
       font-size: 13px;
+
     }
+
 
     button {
+
       font-family: inherit;
+
     }
+
 
     .account-button {
-      border: 1px solid #444;
-      background: #1b1b1b;
-      color: #fff;
+
+      border:
+        1px solid
+        var(--border);
+
+      background:
+        var(--surface-2);
+
+      color: var(--text);
+
       padding: 8px 14px;
+
       border-radius: 8px;
+
       cursor: pointer;
+
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease;
+
     }
 
+
     .account-button:hover {
-      background: #292929;
+
+      background:
+        var(--surface-3);
+
+      border-color:
+        var(--border-hover);
+
+      transform:
+        translateY(-1px);
+
     }
 
 
@@ -102,48 +302,138 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     .login-panel {
+
       margin-bottom: 25px;
+
       padding: 18px;
-      border: 1px solid #333;
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 14px;
-      background: #151515;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(167,139,250,0.07),
+          rgba(96,165,250,0.03)
+        ),
+        var(--surface);
+
+      box-shadow:
+        0 12px 35px
+        rgba(0,0,0,0.18);
+
     }
+
 
     .login-panel h2 {
+
       margin-top: 0;
+
       margin-bottom: 15px;
+
       font-size: 18px;
+
     }
+
 
     .login-fields {
+
       display: flex;
+
       gap: 10px;
+
       flex-wrap: wrap;
+
     }
+
 
     .login-fields input {
+
       flex: 1;
+
       min-width: 200px;
+
       padding: 10px;
+
       border-radius: 8px;
-      border: 1px solid #444;
-      background: #202020;
-      color: #fff;
+
+      border:
+        1px solid
+        var(--border);
+
+      background:
+        var(--surface-2);
+
+      color: var(--text);
+
+      outline: none;
+
+      transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+
     }
+
+
+    .login-fields input:focus {
+
+      border-color:
+        var(--purple);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(167,139,250,0.10);
+
+    }
+
 
     .login-submit {
+
       padding: 10px 18px;
+
       border-radius: 8px;
-      border: 1px solid #555;
-      background: #292929;
-      color: #fff;
+
+      border: none;
+
+      background:
+        var(--gradient);
+
+      color: #09090d;
+
+      font-weight: 700;
+
       cursor: pointer;
+
+      transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+
     }
 
+
+    .login-submit:hover {
+
+      transform:
+        translateY(-1px);
+
+      box-shadow:
+        0 5px 18px
+        rgba(167,139,250,0.20);
+
+    }
+
+
     .login-message {
+
       margin-top: 10px;
+
       font-size: 13px;
-      color: #999;
+
+      color: var(--text-muted);
+
     }
 
 
@@ -152,24 +442,62 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     .controls {
+
       display: flex;
+
       gap: 10px;
+
       flex-wrap: wrap;
+
       margin-bottom: 12px;
+
     }
+
 
     .controls input,
     .controls select {
+
       padding: 10px;
+
       border-radius: 8px;
-      border: 1px solid #333;
-      background: #181818;
-      color: #fff;
+
+      border:
+        1px solid
+        var(--border);
+
+      background:
+        var(--surface-2);
+
+      color: var(--text);
+
+      outline: none;
+
+      transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+
     }
 
+
     .controls input {
+
       flex: 1;
+
       min-width: 220px;
+
+    }
+
+
+    .controls input:focus,
+    .controls select:focus {
+
+      border-color:
+        var(--purple);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(167,139,250,0.08);
+
     }
 
 
@@ -178,35 +506,71 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     .collection-filters {
+
       display: flex;
+
       gap: 8px;
+
       flex-wrap: wrap;
+
       margin-bottom: 20px;
+
     }
 
+
     .collection-filter {
+
       padding: 8px 14px;
+
       border-radius: 8px;
-      border: 1px solid #333;
-      background: #181818;
-      color: #aaa;
+
+      border:
+        1px solid
+        var(--border);
+
+      background:
+        var(--surface-2);
+
+      color:
+        var(--text-muted);
+
       cursor: pointer;
 
       transition:
         background 0.15s ease,
         color 0.15s ease,
-        border-color 0.15s ease;
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+
     }
+
 
     .collection-filter:hover {
-      background: #242424;
-      color: #fff;
+
+      background:
+        var(--surface-3);
+
+      color:
+        var(--text);
+
     }
 
+
     .collection-filter.active {
-      background: #303030;
-      border-color: #555;
-      color: #fff;
+
+      background:
+        rgba(167,139,250,0.12);
+
+      border-color:
+        rgba(167,139,250,0.45);
+
+      color:
+        var(--purple-bright);
+
+      box-shadow:
+        0 0 15px
+        rgba(167,139,250,0.06);
+
     }
 
 
@@ -215,81 +579,169 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     .collection-dashboard {
+
       margin: 25px 0;
+
       padding: 18px;
-      border: 1px solid #333;
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 14px;
-      background: #151515;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(167,139,250,0.045),
+          rgba(96,165,250,0.025)
+        ),
+        var(--surface);
+
     }
+
 
     .collection-header {
+
       margin-bottom: 16px;
+
       display: flex;
+
       justify-content: space-between;
+
       align-items: center;
+
     }
+
 
     .collection-title {
+
       font-size: 20px;
+
       font-weight: 700;
+
     }
+
 
     .collection-player {
+
       margin-top: 4px;
+
       font-size: 13px;
-      color: #888;
+
+      color:
+        var(--text-muted);
+
     }
+
 
     .collection-stats {
+
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+
+      grid-template-columns:
+        repeat(4, 1fr);
+
       gap: 8px;
+
     }
+
 
     .collection-stat {
+
       padding: 12px;
+
       border-radius: 9px;
-      background: #202020;
+
+      background:
+        var(--surface-2);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.035);
+
       text-align: center;
+
     }
+
 
     .collection-stat-number {
+
       font-size: 20px;
+
       font-weight: 700;
+
     }
+
 
     .collection-stat-label {
+
       margin-top: 3px;
+
       font-size: 11px;
-      color: #888;
+
+      color:
+        var(--text-muted);
+
     }
+
+
+    /* =========================
+       PROGRESS
+    ========================= */
 
     .collection-progress {
+
       margin-top: 16px;
+
     }
+
 
     .collection-progress-top {
+
       display: flex;
+
       justify-content: space-between;
+
       margin-bottom: 6px;
+
       font-size: 12px;
-      color: #aaa;
+
+      color: var(--text-soft);
+
     }
+
 
     .progress-bar {
+
       width: 100%;
+
       height: 7px;
+
       border-radius: 10px;
+
       overflow: hidden;
-      background: #292929;
+
+      background:
+        var(--surface-3);
+
     }
 
+
     .progress-fill {
+
       width: 0%;
+
       height: 100%;
+
       border-radius: 10px;
-      background: #777;
-      transition: width 0.3s ease;
+
+      background:
+        var(--gradient);
+
+      transition:
+        width 0.3s ease;
+
     }
 
 
@@ -298,6 +750,7 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     .sprite-grid {
+
       display: grid;
 
       grid-template-columns:
@@ -307,442 +760,757 @@ content="width=device-width, initial-scale=1.0"
         );
 
       gap: 12px;
+
     }
 
+
     .sprite-card {
-      background: #181818;
-      border: 1px solid #292929;
+
+      background:
+        var(--surface);
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 10px;
+
       overflow: hidden;
+
       cursor: pointer;
 
       transition:
         transform 0.15s ease,
-        border-color 0.15s ease;
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+
     }
+
 
     .sprite-card:hover {
-      transform: translateY(-2px);
-      border-color: #444;
+
+      transform:
+        translateY(-3px);
+
+      border-color:
+        var(--border-hover);
+
+      box-shadow:
+        0 8px 24px
+        rgba(0,0,0,0.25);
+
     }
+
 
     .sprite-card.collection-partial {
-      border-color: #3a3a3a;
+
+      border-color:
+        rgba(167,139,250,0.35);
+
     }
+
 
     .sprite-card.collection-complete {
-      border-color: #555;
+
+      border-color:
+        rgba(96,165,250,0.45);
+
+      box-shadow:
+        inset 0 0 0 1px
+        rgba(96,165,250,0.05);
+
     }
+
 
     .sprite-image {
+
       width: 100%;
+
       height: 140px;
+
       object-fit: cover;
+
       display: block;
-      background: #111;
+
+      background:
+        #0d0d11;
+
     }
+
 
     .sprite-info {
-      padding: 9px 10px 10px;
+
+      padding:
+        9px 10px 10px;
+
     }
+
 
     .sprite-name {
+
       font-size: 13px;
+
       font-weight: 600;
+
       margin-bottom: 4px;
+
       white-space: nowrap;
+
       overflow: hidden;
+
       text-overflow: ellipsis;
+
     }
+
+
+    /* =========================
+       RARITIES
+    ========================= */
 
     .rarity {
+
       font-size: 10px;
-      color: #aaa;
+
       margin-bottom: 3px;
+
+      color: var(--text-muted);
+
     }
+
+
+    .sprite-card:has(.rarity) .rarity {
+
+      opacity: 0.9;
+
+    }
+
 
     .season {
+
       font-size: 10px;
-      color: #666;
+
+      color:
+        #62626e;
+
     }
+
 
     .sprite-collection-status {
+
       margin-top: 6px;
+
       font-size: 10px;
-      color: #666;
+
+      color:
+        #62626e;
+
     }
+
 
     .sprite-collection-status.partial {
-      color: #aaa;
+
+      color:
+        var(--purple);
+
     }
+
 
     .sprite-collection-status.complete {
-      color: #fff;
+
+      color:
+        var(--blue-bright);
+
       font-weight: 600;
+
     }
+
 
     .message {
-      grid-column: 1 / -1;
+
+      grid-column:
+        1 / -1;
+
       padding: 30px;
+
       text-align: center;
-      color: #777;
+
+      color:
+        var(--text-muted);
+
     }
 
 
-   /* =========================
-   MODAL
-========================= */
-
-.modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 1000;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-content {
-  width: min(560px, 90vw);
-  max-height: 80vh;
-  overflow-y: auto;
-
-  padding: 16px;
-
-  position: relative;
-
-  background: #181818;
-  border: 1px solid #333;
-  border-radius: 12px;
-}
-
-
-/* Close button */
-
-.modal-close {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  width: 30px;
-  height: 30px;
-
-  border: 1px solid #444;
-  border-radius: 50%;
-
-  background: #222;
-  color: #fff;
-
-  font-size: 17px;
-  line-height: 28px;
-
-  text-align: center;
-
-  cursor: pointer;
-
-  z-index: 5;
-}
-
-.modal-close:hover {
-  background: #303030;
-}
-
-
-/* =========================
-   MODAL SPRITE INFO
-========================= */
-
-.modal-main {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-
-  gap: 14px;
-
-  align-items: start;
-
-  margin-bottom: 14px;
-
-  padding-right: 25px;
-}
-
-.modal-image {
-  width: 120px;
-  height: 120px;
-
-  object-fit: cover;
-
-  border-radius: 8px;
-
-  background: #111;
-}
-
-.modal-title {
-  margin: 0 0 6px 0;
-
-  font-size: 19px;
-  font-weight: 700;
-}
-
-.modal-rarity,
-.modal-season {
-  margin-bottom: 3px;
-
-  font-size: 11px;
-  color: #888;
-}
-
-.modal-description {
-  margin-top: 8px;
-
-  font-size: 12px;
-  line-height: 1.4;
-
-  color: #aaa;
-}
-
-.modal-ability {
-  margin-top: 7px;
-
-  font-size: 12px;
-  line-height: 1.4;
-
-  color: #ccc;
-}
-
-
-/* =========================
-   VARIANTS
-========================= */
-
-.variants-title {
-  margin-bottom: 8px;
-
-  font-size: 14px;
-  font-weight: 700;
-}
-
-#modalVariants {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fill,
-      minmax(120px, 1fr)
-    );
-
-  gap: 8px;
-}
-
-.variant-card {
-  background: #111;
-
-  border: 1px solid #292929;
-  border-radius: 8px;
-
-  overflow: hidden;
-}
-
-.variant-image {
-  width: 100%;
-
-  aspect-ratio: 1 / 1;
-
-  object-fit: cover;
-
-  display: block;
-
-  background: #181818;
-}
-
-.variant-info {
-  padding: 7px;
-}
-
-.variant-name {
-  margin-bottom: 2px;
-
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.variant-type {
-  margin-bottom: 6px;
-
-  font-size: 9px;
-  color: #666;
-}
-
-.variant-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.owned-button,
-.mastered-button {
-  width: 100%;
-
-  padding: 6px;
-
-  border: 1px solid #333;
-  border-radius: 5px;
-
-  background: #1c1c1c;
-  color: #aaa;
-
-  font-size: 10px;
-
-  cursor: pointer;
-}
-
-.owned-button:hover,
-.mastered-button:hover {
-  background: #292929;
-  color: #fff;
-}
-
-.owned-button.owned {
-  background: #303030;
-  color: #fff;
-  border-color: #555;
-}
-
-.mastered-button.mastered {
-  background: #303030;
-  color: #fff;
-  border-color: #555;
-}
-
-.level-control {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.level-control label {
-  font-size: 9px;
-  color: #777;
-}
-
-.level-input {
-  width: 100%;
-  min-width: 0;
-
-  padding: 5px;
-
-  border: 1px solid #333;
-  border-radius: 5px;
-
-  background: #181818;
-  color: #fff;
-
-  font-size: 10px;
-}
-
-.no-variants {
-  grid-column: 1 / -1;
-
-  padding: 15px;
-
-  text-align: center;
-
-  color: #666;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 700px) {
-
-  .modal {
-    padding: 15px;
-  }
-
-  .modal-content {
-    width: 100%;
-    max-height: 85vh;
-    padding: 13px;
-  }
-
-  .modal-main {
-    grid-template-columns: 90px 1fr;
-    gap: 10px;
-  }
-
-  .modal-image {
-    width: 90px;
-    height: 90px;
-  }
-
-  .modal-title {
-    font-size: 16px;
-  }
-
-  #modalVariants {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
-
-}
     /* =========================
-       RESPONSIVE
+       MODAL
+    ========================= */
+
+    .modal {
+
+      position: fixed;
+
+      inset: 0;
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding: 30px;
+
+      background:
+        rgba(0,0,0,0.78);
+
+      backdrop-filter:
+        blur(4px);
+
+      z-index: 1000;
+
+    }
+
+
+    .modal.show {
+
+      display: flex;
+
+    }
+
+
+    .modal-content {
+
+      width:
+        min(560px, 90vw);
+
+      max-height:
+        80vh;
+
+      overflow-y: auto;
+
+      padding: 16px;
+
+      position: relative;
+
+      background:
+        var(--surface);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 12px;
+
+      box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.55);
+
+    }
+
+
+    .modal-close {
+
+      position: absolute;
+
+      top: 8px;
+
+      right: 8px;
+
+      width: 30px;
+
+      height: 30px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 50%;
+
+      background:
+        var(--surface-3);
+
+      color: var(--text);
+
+      font-size: 17px;
+
+      line-height: 28px;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      z-index: 5;
+
+      transition:
+        background 0.15s ease;
+
+    }
+
+
+    .modal-close:hover {
+
+      background:
+        #30303b;
+
+    }
+
+
+    /* =========================
+       MODAL SPRITE INFO
+    ========================= */
+
+    .modal-main {
+
+      display: grid;
+
+      grid-template-columns:
+        120px 1fr;
+
+      gap: 14px;
+
+      align-items: start;
+
+      margin-bottom: 14px;
+
+      padding-right: 25px;
+
+    }
+
+
+    .modal-image {
+
+      width: 120px;
+
+      height: 120px;
+
+      object-fit: cover;
+
+      border-radius: 8px;
+
+      background:
+        #0d0d11;
+
+    }
+
+
+    .modal-title {
+
+      margin:
+        0 0 6px 0;
+
+      font-size: 19px;
+
+      font-weight: 700;
+
+    }
+
+
+    .modal-rarity,
+    .modal-season {
+
+      margin-bottom: 3px;
+
+      font-size: 11px;
+
+      color:
+        var(--text-muted);
+
+    }
+
+
+    .modal-description {
+
+      margin-top: 8px;
+
+      font-size: 12px;
+
+      line-height: 1.4;
+
+      color:
+        var(--text-soft);
+
+    }
+
+
+    .modal-ability {
+
+      margin-top: 7px;
+
+      font-size: 12px;
+
+      line-height: 1.4;
+
+      color:
+        #d0d0da;
+
+    }
+
+
+    /* =========================
+       VARIANTS
+    ========================= */
+
+    .variants-title {
+
+      margin-bottom: 8px;
+
+      font-size: 14px;
+
+      font-weight: 700;
+
+      color:
+        var(--purple-bright);
+
+    }
+
+
+    #modalVariants {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fill,
+          minmax(120px, 1fr)
+        );
+
+      gap: 8px;
+
+    }
+
+
+    .variant-card {
+
+      background:
+        #0e0e13;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 8px;
+
+      overflow: hidden;
+
+      transition:
+        border-color 0.15s ease;
+
+    }
+
+
+    .variant-card:hover {
+
+      border-color:
+        var(--border-hover);
+
+    }
+
+
+    .variant-image {
+
+      width: 100%;
+
+      aspect-ratio: 1 / 1;
+
+      object-fit: cover;
+
+      display: block;
+
+      background:
+        var(--surface-2);
+
+    }
+
+
+    .variant-info {
+
+      padding: 7px;
+
+    }
+
+
+    .variant-name {
+
+      margin-bottom: 2px;
+
+      font-size: 11px;
+
+      font-weight: 700;
+
+    }
+
+
+    .variant-type {
+
+      margin-bottom: 6px;
+
+      font-size: 9px;
+
+      color:
+        var(--text-muted);
+
+    }
+
+
+    .variant-controls {
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 5px;
+
+    }
+
+
+    .owned-button,
+    .mastered-button {
+
+      width: 100%;
+
+      padding: 6px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 5px;
+
+      background:
+        var(--surface-2);
+
+      color:
+        var(--text-soft);
+
+      font-size: 10px;
+
+      cursor: pointer;
+
+      transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+
+    }
+
+
+    .owned-button:hover,
+    .mastered-button:hover {
+
+      background:
+        var(--surface-3);
+
+      color:
+        var(--text);
+
+    }
+
+
+    .owned-button.owned {
+
+      background:
+        rgba(167,139,250,0.13);
+
+      color:
+        var(--purple-bright);
+
+      border-color:
+        rgba(167,139,250,0.35);
+
+    }
+
+
+    .mastered-button.mastered {
+
+      background:
+        rgba(96,165,250,0.12);
+
+      color:
+        var(--blue-bright);
+
+      border-color:
+        rgba(96,165,250,0.35);
+
+    }
+
+
+    .level-control {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 5px;
+
+    }
+
+
+    .level-control label {
+
+      font-size: 9px;
+
+      color:
+        var(--text-muted);
+
+    }
+
+
+    .level-input {
+
+      width: 100%;
+
+      min-width: 0;
+
+      padding: 5px;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 5px;
+
+      background:
+        var(--surface-2);
+
+      color:
+        var(--text);
+
+      font-size: 10px;
+
+      outline: none;
+
+    }
+
+
+    .level-input:focus {
+
+      border-color:
+        var(--purple);
+
+    }
+
+
+    .no-variants {
+
+      grid-column:
+        1 / -1;
+
+      padding: 15px;
+
+      text-align: center;
+
+      color:
+        var(--text-muted);
+
+    }
+
+
+    /* =========================
+       MOBILE
     ========================= */
 
     @media (max-width: 700px) {
 
       body {
-        padding: 20px 12px;
+
+        padding:
+          20px 12px;
+
       }
+
+
+      .brand-row {
+
+        gap: 10px;
+
+      }
+
+
+      .heehee-logo {
+
+        width: 38px;
+
+        height: 38px;
+
+        border-radius: 10px;
+
+      }
+
+
+      h1 {
+
+        font-size: 26px;
+
+      }
+
 
       .modal {
+
         padding: 12px;
+
       }
+
 
       .modal-content {
+
         width: 100%;
+
         max-height: 92vh;
+
         padding: 14px;
+
       }
+
 
       .modal-main {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+          1fr;
+
       }
+
 
       .modal-image {
+
         width: 140px;
+
         height: 140px;
+
         margin: 0 auto;
+
       }
 
+
       #modalVariants {
+
         grid-template-columns:
           repeat(2, minmax(0, 1fr));
+
       }
 
     }
 
+
     @media (max-width: 600px) {
 
       .collection-stats {
+
         grid-template-columns:
           repeat(2, 1fr);
+
       }
+
 
       .sprite-grid {
+
         grid-template-columns:
           repeat(2, minmax(0, 1fr));
+
       }
 
+
       .sprite-image {
+
         height: 130px;
+
       }
 
     }
@@ -751,367 +1519,444 @@ content="width=device-width, initial-scale=1.0"
 
 </head>
 
+
 <body>
+
 
   <div class="container">
 
-```
-<!-- =========================
-     HEADER
-========================= -->
 
-<header>
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-  <div class="brand">
-    HEEHEE
-  </div>
-
-  <h1>
-    Fortnite Sprite Tracker
-  </h1>
-
-  <div class="subtitle">
-    Shamone
-  </div>
-
-</header>
+    <header>
 
 
-<!-- =========================
-     ACCOUNT
-========================= -->
+      <div class="brand-row">
 
-<div class="account-bar">
+        <div class="heehee-logo">
+          HH
+        </div>
 
-  <span
-    id="accountName"
-    class="account-name"
-  >
-    Not logged in
-  </span>
-
-  <button
-    id="loginButton"
-    class="account-button"
-  >
-    Login
-  </button>
-
-  <button
-    id="logoutButton"
-    class="account-button"
-    style="display: none;"
-  >
-    Logout
-  </button>
-
-</div>
-
-
-<!-- =========================
-     LOGIN PANEL
-========================= -->
-
-<div
-  id="loginPanel"
-  class="login-panel"
-  style="display: none;"
->
-
-  <h2>
-    Login
-  </h2>
-
-  <div class="login-fields">
-
-    <input
-      id="emailInput"
-      type="email"
-      placeholder="Email"
-    >
-
-    <input
-      id="passwordInput"
-      type="password"
-      placeholder="Password"
-    >
-
-    <button
-      id="loginSubmit"
-      class="login-submit"
-    >
-      Login
-    </button>
-
-  </div>
-
-  <div
-    id="loginMessage"
-    class="login-message"
-  ></div>
-
-</div>
-
-
-<!-- =========================
-     CONTROLS
-========================= -->
-
-<div class="controls">
-
-  <input
-    id="search"
-    type="text"
-    placeholder="Search sprites..."
-  >
-
-  <select id="rarity">
-
-    <option value="All">
-      All Rarities
-    </option>
-
-    <option value="Rare">
-      Rare
-    </option>
-
-    <option value="Epic">
-      Epic
-    </option>
-
-    <option value="Legendary">
-      Legendary
-    </option>
-
-    <option value="Mythic">
-      Mythic
-    </option>
-
-  </select>
-
-</div>
-
-
-<!-- =========================
-     COLLECTION FILTERS
-========================= -->
-
-<div class="collection-filters">
-
-  <button
-    class="collection-filter active"
-    data-filter="all"
-  >
-    All
-  </button>
-
-  <button
-    class="collection-filter"
-    data-filter="owned"
-  >
-    Owned
-  </button>
-
-  <button
-    class="collection-filter"
-    data-filter="missing"
-  >
-    Missing
-  </button>
-
-  <button
-    class="collection-filter"
-    data-filter="mastered"
-  >
-    Mastered
-  </button>
-
-</div>
-
-
-<!-- =========================
-     COLLECTION DASHBOARD
-========================= -->
-
-<div
-  id="collectionDashboard"
-  class="collection-dashboard"
->
-
-  <div class="collection-header">
-
-    <div>
-
-      <div class="collection-title">
-        My Collection
-      </div>
-
-      <div class="collection-player">
-
-        <span id="collectionPlayer">
-          Not logged in
-        </span>
+        <div class="brand">
+          HEEHEE
+        </div>
 
       </div>
 
-    </div>
 
-  </div>
-
-
-  <div class="collection-stats">
+      <h1>
+        Fortnite Sprite Tracker
+      </h1>
 
 
-    <div class="collection-stat">
+      <div class="subtitle">
+        Shamone
+      </div>
 
-      <div
-        id="collectionTotal"
-        class="collection-stat-number"
+
+    </header>
+
+
+    <!-- =========================
+         ACCOUNT
+    ========================= -->
+
+    <div class="account-bar">
+
+
+      <span
+        id="accountName"
+        class="account-name"
       >
-        0
-      </div>
+        Not logged in
+      </span>
 
-      <div class="collection-stat-label">
-        Total
-      </div>
+
+      <button
+        id="loginButton"
+        class="account-button"
+      >
+        Login
+      </button>
+
+
+      <button
+        id="logoutButton"
+        class="account-button"
+        style="display: none;"
+      >
+        Logout
+      </button>
+
 
     </div>
 
 
-    <div class="collection-stat">
+    <!-- =========================
+         LOGIN PANEL
+    ========================= -->
 
-      <div
-        id="collectionOwned"
-        class="collection-stat-number"
-      >
-        0
+    <div
+      id="loginPanel"
+      class="login-panel"
+      style="display: none;"
+    >
+
+
+      <h2>
+        Login
+      </h2>
+
+
+      <div class="login-fields">
+
+
+        <input
+          id="emailInput"
+          type="email"
+          placeholder="Email"
+        >
+
+
+        <input
+          id="passwordInput"
+          type="password"
+          placeholder="Password"
+        >
+
+
+        <button
+          id="loginSubmit"
+          class="login-submit"
+        >
+          Login
+        </button>
+
+
       </div>
 
-      <div class="collection-stat-label">
+
+      <div
+        id="loginMessage"
+        class="login-message"
+      ></div>
+
+
+    </div>
+
+
+    <!-- =========================
+         CONTROLS
+    ========================= -->
+
+    <div class="controls">
+
+
+      <input
+        id="search"
+        type="text"
+        placeholder="Search sprites..."
+      >
+
+
+      <select id="rarity">
+
+
+        <option value="All">
+          All Rarities
+        </option>
+
+
+        <option value="Rare">
+          Rare
+        </option>
+
+
+        <option value="Epic">
+          Epic
+        </option>
+
+
+        <option value="Legendary">
+          Legendary
+        </option>
+
+
+        <option value="Mythic">
+          Mythic
+        </option>
+
+
+      </select>
+
+
+    </div>
+
+
+    <!-- =========================
+         COLLECTION FILTERS
+    ========================= -->
+
+    <div class="collection-filters">
+
+
+      <button
+        class="collection-filter active"
+        data-filter="all"
+      >
+        All
+      </button>
+
+
+      <button
+        class="collection-filter"
+        data-filter="owned"
+      >
         Owned
-      </div>
-
-    </div>
+      </button>
 
 
-    <div class="collection-stat">
-
-      <div
-        id="collectionMissing"
-        class="collection-stat-number"
+      <button
+        class="collection-filter"
+        data-filter="missing"
       >
-        0
-      </div>
-
-      <div class="collection-stat-label">
         Missing
-      </div>
-
-    </div>
+      </button>
 
 
-    <div class="collection-stat">
-
-      <div
-        id="collectionMastered"
-        class="collection-stat-number"
+      <button
+        class="collection-filter"
+        data-filter="mastered"
       >
-        0
-      </div>
-
-      <div class="collection-stat-label">
         Mastered
+      </button>
+
+
+    </div>
+
+
+    <!-- =========================
+         COLLECTION DASHBOARD
+    ========================= -->
+
+    <div
+      id="collectionDashboard"
+      class="collection-dashboard"
+    >
+
+
+      <div class="collection-header">
+
+
+        <div>
+
+
+          <div class="collection-title">
+            My Collection
+          </div>
+
+
+          <div class="collection-player">
+
+
+            <span id="collectionPlayer">
+              Not logged in
+            </span>
+
+
+          </div>
+
+
+        </div>
+
+
       </div>
 
+
+      <div class="collection-stats">
+
+
+        <div class="collection-stat">
+
+
+          <div
+            id="collectionTotal"
+            class="collection-stat-number"
+          >
+            0
+          </div>
+
+
+          <div class="collection-stat-label">
+            Total
+          </div>
+
+
+        </div>
+
+
+        <div class="collection-stat">
+
+
+          <div
+            id="collectionOwned"
+            class="collection-stat-number"
+          >
+            0
+          </div>
+
+
+          <div class="collection-stat-label">
+            Owned
+          </div>
+
+
+        </div>
+
+
+        <div class="collection-stat">
+
+
+          <div
+            id="collectionMissing"
+            class="collection-stat-number"
+          >
+            0
+          </div>
+
+
+          <div class="collection-stat-label">
+            Missing
+          </div>
+
+
+        </div>
+
+
+        <div class="collection-stat">
+
+
+          <div
+            id="collectionMastered"
+            class="collection-stat-number"
+          >
+            0
+          </div>
+
+
+          <div class="collection-stat-label">
+            Mastered
+          </div>
+
+
+        </div>
+
+
+      </div>
+
+
+      <!-- COLLECTION PROGRESS -->
+
+      <div class="collection-progress">
+
+
+        <div class="collection-progress-top">
+
+
+          <span>
+            Collection
+          </span>
+
+
+          <span id="collectionCompletion">
+            0%
+          </span>
+
+
+        </div>
+
+
+        <div class="progress-bar">
+
+
+          <div
+            id="collectionProgressFill"
+            class="progress-fill"
+          ></div>
+
+
+        </div>
+
+
+      </div>
+
+
+      <!-- MASTERY PROGRESS -->
+
+      <div class="collection-progress">
+
+
+        <div class="collection-progress-top">
+
+
+          <span>
+            Mastery
+          </span>
+
+
+          <span id="masteryCompletion">
+            0%
+          </span>
+
+
+        </div>
+
+
+        <div class="progress-bar">
+
+
+          <div
+            id="masteryProgressFill"
+            class="progress-fill"
+          ></div>
+
+
+        </div>
+
+
+      </div>
+
+
     </div>
+
+
+    <!-- =========================
+         SPRITE STATS
+    ========================= -->
+
+    <div
+      id="stats"
+      class="subtitle"
+    >
+      Loading sprites...
+    </div>
+
+
+    <!-- =========================
+         SPRITE GRID
+    ========================= -->
+
+    <div
+      id="sprites"
+      class="sprite-grid"
+      style="margin-top: 15px;"
+    ></div>
 
 
   </div>
 
-
-  <!-- COLLECTION PROGRESS -->
-
-  <div class="collection-progress">
-
-    <div class="collection-progress-top">
-
-      <span>
-        Collection
-      </span>
-
-      <span id="collectionCompletion">
-        0%
-      </span>
-
-    </div>
-
-    <div class="progress-bar">
-
-      <div
-        id="collectionProgressFill"
-        class="progress-fill"
-      ></div>
-
-    </div>
-
-  </div>
-
-
-  <!-- MASTERY PROGRESS -->
-
-  <div class="collection-progress">
-
-    <div class="collection-progress-top">
-
-      <span>
-        Mastery
-      </span>
-
-      <span id="masteryCompletion">
-        0%
-      </span>
-
-    </div>
-
-    <div class="progress-bar">
-
-      <div
-        id="masteryProgressFill"
-        class="progress-fill"
-      ></div>
-
-    </div>
-
-  </div>
-
-
-</div>
-
-
-<!-- =========================
-     SPRITE STATS
-========================= -->
-
-<div
-  id="stats"
-  class="subtitle"
->
-  Loading sprites...
-</div>
-
-
-<!-- =========================
-     SPRITE GRID
-========================= -->
-
-<div
-  id="sprites"
-  class="sprite-grid"
-  style="margin-top: 15px;"
-></div>
-```
-
-  </div>
 
   <!-- =========================
        MODAL
@@ -1122,79 +1967,82 @@ content="width=device-width, initial-scale=1.0"
     class="modal"
   >
 
-```
-<div class="modal-content">
+
+    <div class="modal-content">
 
 
-  <button
-    id="modalClose"
-    class="modal-close"
-    type="button"
-  >
-    ×
-  </button>
+      <button
+        id="modalClose"
+        class="modal-close"
+        type="button"
+      >
+        ×
+      </button>
 
 
-  <div class="modal-main">
+      <div class="modal-main">
 
 
-    <img
-      id="modalImage"
-      class="modal-image"
-      src=""
-      alt=""
-    >
+        <img
+          id="modalImage"
+          class="modal-image"
+          src=""
+          alt=""
+        >
 
 
-    <div>
-
-      <h2
-        id="modalTitle"
-        class="modal-title"
-      ></h2>
+        <div>
 
 
-      <div
-        id="modalRarity"
-        class="modal-rarity"
-      ></div>
+          <h2
+            id="modalTitle"
+            class="modal-title"
+          ></h2>
 
 
-      <div
-        id="modalSeason"
-        class="modal-season"
-      ></div>
+          <div
+            id="modalRarity"
+            class="modal-rarity"
+          ></div>
 
 
-      <div
-        id="modalDescription"
-        class="modal-description"
-      ></div>
+          <div
+            id="modalSeason"
+            class="modal-season"
+          ></div>
 
 
-      <div
-        id="modalAbility"
-        class="modal-ability"
-      ></div>
+          <div
+            id="modalDescription"
+            class="modal-description"
+          ></div>
+
+
+          <div
+            id="modalAbility"
+            class="modal-ability"
+          ></div>
+
+
+        </div>
+
+
+      </div>
+
+
+      <div class="variants-title">
+        Variants
+      </div>
+
+
+      <div id="modalVariants"></div>
+
 
     </div>
 
 
   </div>
 
-
-  <div class="variants-title">
-    Variants
-  </div>
-
-
-  <div id="modalVariants"></div>
-
-
-</div>
-```
-
-  </div>
 
   <script>
 
@@ -1205,6 +2053,7 @@ content="width=device-width, initial-scale=1.0"
 
     const SUPABASE_URL =
       "https://mvspchowsinkymgytyeb.supabase.co";
+
 
     const SUPABASE_KEY =
       "sb_publishable_mbdvlfY7O8Mb61KtZYoimw_b9Aer0Sb";
@@ -1238,10 +2087,13 @@ content="width=device-width, initial-scale=1.0"
       options = {}
     ) {
 
+
       const headers = {
+
 
         "apikey":
           SUPABASE_KEY,
+
 
         "Authorization":
           "Bearer " +
@@ -1250,10 +2102,13 @@ content="width=device-width, initial-scale=1.0"
             SUPABASE_KEY
           ),
 
+
         "Content-Type":
           "application/json",
 
+
         ...(options.headers || {})
+
 
       };
 
@@ -1266,6 +2121,7 @@ content="width=device-width, initial-scale=1.0"
         }
       );
 
+
     }
 
 
@@ -1274,6 +2130,7 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     async function loadSprites() {
+
 
       const response =
         await supabaseRequest(
@@ -1285,13 +2142,16 @@ content="width=device-width, initial-scale=1.0"
 
       if (!response.ok) {
 
+
         const error =
           await response.text();
+
 
         throw new Error(
           "Could not load sprites: " +
           error
         );
+
 
       }
 
@@ -1310,6 +2170,7 @@ content="width=device-width, initial-scale=1.0"
 
       updateCollectionStats();
 
+
     }
 
 
@@ -1318,6 +2179,7 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     async function loadVariants() {
+
 
       const response =
         await supabaseRequest(
@@ -1329,13 +2191,16 @@ content="width=device-width, initial-scale=1.0"
 
       if (!response.ok) {
 
+
         const error =
           await response.text();
+
 
         throw new Error(
           "Could not load variants: " +
           error
         );
+
 
       }
 
@@ -1354,6 +2219,7 @@ content="width=device-width, initial-scale=1.0"
 
       updateCollectionStats();
 
+
     }
 
 
@@ -1362,6 +2228,7 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     async function login() {
+
 
       const email =
         document
@@ -1384,10 +2251,13 @@ content="width=device-width, initial-scale=1.0"
 
       if (!email || !password) {
 
+
         message.textContent =
           "Please enter your email and password.";
 
+
         return;
+
 
       }
 
@@ -1402,25 +2272,35 @@ content="width=device-width, initial-scale=1.0"
           "/auth/v1/token?grant_type=password",
           {
 
+
             method: "POST",
 
+
             headers: {
+
 
               "apikey":
                 SUPABASE_KEY,
 
+
               "Content-Type":
                 "application/json"
 
+
             },
+
 
             body:
               JSON.stringify({
 
+
                 email,
+
                 password
 
+
               })
+
 
           }
         );
@@ -1431,6 +2311,7 @@ content="width=device-width, initial-scale=1.0"
 
 
       if (!response.ok) {
+
 
         console.error(
           "Login error:",
@@ -1445,6 +2326,7 @@ content="width=device-width, initial-scale=1.0"
 
 
         return;
+
 
       }
 
@@ -1491,6 +2373,7 @@ content="width=device-width, initial-scale=1.0"
 
       message.textContent = "";
 
+
     }
 
 
@@ -1500,6 +2383,7 @@ content="width=device-width, initial-scale=1.0"
 
     async function loadCurrentUser() {
 
+
       const response =
         await supabaseRequest(
           "/auth/v1/user"
@@ -1508,9 +2392,11 @@ content="width=device-width, initial-scale=1.0"
 
       if (!response.ok) {
 
+
         throw new Error(
           "Could not load current user."
         );
+
 
       }
 
@@ -1524,6 +2410,7 @@ content="width=device-width, initial-scale=1.0"
         currentUser
       );
 
+
     }
 
 
@@ -1533,11 +2420,15 @@ content="width=device-width, initial-scale=1.0"
 
     async function loadPlayer() {
 
+
       if (!currentUser) {
+
 
         currentPlayer = null;
 
+
         return;
+
 
       }
 
@@ -1555,13 +2446,16 @@ content="width=device-width, initial-scale=1.0"
 
       if (!response.ok) {
 
+
         const error =
           await response.text();
+
 
         throw new Error(
           "Could not load player: " +
           error
         );
+
 
       }
 
@@ -1581,6 +2475,7 @@ content="width=device-width, initial-scale=1.0"
         currentPlayer
       );
 
+
     }
 
 
@@ -1590,13 +2485,18 @@ content="width=device-width, initial-scale=1.0"
 
     async function loadMyCollection() {
 
+
       if (!currentPlayer) {
+
 
         myCollection = [];
 
+
         updateCollectionStats();
 
+
         return;
+
 
       }
 
@@ -1614,13 +2514,16 @@ content="width=device-width, initial-scale=1.0"
 
       if (!response.ok) {
 
+
         const error =
           await response.text();
+
 
         throw new Error(
           "Could not load collection: " +
           error
         );
+
 
       }
 
@@ -1637,6 +2540,7 @@ content="width=device-width, initial-scale=1.0"
 
       updateCollectionStats();
 
+
     }
 
 
@@ -1645,6 +2549,7 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     function logout() {
+
 
       accessToken = null;
 
@@ -1661,6 +2566,7 @@ content="width=device-width, initial-scale=1.0"
         "accessToken"
       );
 
+
       localStorage.removeItem(
         "refreshToken"
       );
@@ -1672,6 +2578,7 @@ content="width=device-width, initial-scale=1.0"
 
       renderSprites();
 
+
     }
 
 
@@ -1680,6 +2587,7 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     function updateAccountUI() {
+
 
       const accountName =
         document.getElementById(
@@ -1701,6 +2609,7 @@ content="width=device-width, initial-scale=1.0"
 
       if (currentPlayer) {
 
+
         accountName.textContent =
           currentPlayer.display_name ||
           "Logged in";
@@ -1713,7 +2622,9 @@ content="width=device-width, initial-scale=1.0"
         logoutButton.style.display =
           "inline-block";
 
+
       } else {
+
 
         accountName.textContent =
           "Not logged in";
@@ -1726,7 +2637,9 @@ content="width=device-width, initial-scale=1.0"
         logoutButton.style.display =
           "none";
 
+
       }
+
 
     }
 
@@ -1736,6 +2649,7 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     async function restoreSession() {
+
 
       const storedAccessToken =
         localStorage.getItem(
@@ -1751,9 +2665,12 @@ content="width=device-width, initial-scale=1.0"
 
       if (!storedAccessToken) {
 
+
         updateAccountUI();
 
+
         return;
+
 
       }
 
@@ -1768,6 +2685,7 @@ content="width=device-width, initial-scale=1.0"
 
       try {
 
+
         await loadCurrentUser();
 
         await loadPlayer();
@@ -1779,7 +2697,9 @@ content="width=device-width, initial-scale=1.0"
 
         renderSprites();
 
+
       } catch (error) {
+
 
         console.error(
           "Session restore failed:",
@@ -1789,7 +2709,9 @@ content="width=device-width, initial-scale=1.0"
 
         logout();
 
+
       }
+
 
     }
 
@@ -1799,6 +2721,7 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     function renderSprites() {
+
 
       const container =
         document.getElementById(
@@ -1852,7 +2775,9 @@ content="width=device-width, initial-scale=1.0"
               !matchesRarity
             ) {
 
+
               return false;
+
 
             }
 
@@ -1870,6 +2795,7 @@ content="width=device-width, initial-scale=1.0"
               spriteVariants.filter(
                 variant => {
 
+
                   const collection =
                     myCollection.find(
                       item =>
@@ -1883,6 +2809,7 @@ content="width=device-width, initial-scale=1.0"
                     true
                   );
 
+
                 }
               );
 
@@ -1890,6 +2817,7 @@ content="width=device-width, initial-scale=1.0"
             const masteredVariants =
               spriteVariants.filter(
                 variant => {
+
 
                   const collection =
                     myCollection.find(
@@ -1904,6 +2832,7 @@ content="width=device-width, initial-scale=1.0"
                     true
                   );
 
+
                 }
               );
 
@@ -1913,10 +2842,12 @@ content="width=device-width, initial-scale=1.0"
               "owned"
             ) {
 
+
               return (
                 ownedVariants.length >
                 0
               );
+
 
             }
 
@@ -1926,10 +2857,12 @@ content="width=device-width, initial-scale=1.0"
               "missing"
             ) {
 
+
               return (
                 ownedVariants.length <
                 spriteVariants.length
               );
+
 
             }
 
@@ -1939,15 +2872,18 @@ content="width=device-width, initial-scale=1.0"
               "mastered"
             ) {
 
+
               return (
                 masteredVariants.length >
                 0
               );
 
+
             }
 
 
             return true;
+
 
           }
         );
@@ -1958,16 +2894,23 @@ content="width=device-width, initial-scale=1.0"
 
       if (!filtered.length) {
 
+
         container.innerHTML = `
+
           <div class="message">
+
             No sprites found.
+
           </div>
+
         `;
 
 
         updateStats(0);
 
+
         return;
+
 
       }
 
@@ -1999,6 +2942,7 @@ content="width=device-width, initial-scale=1.0"
             spriteVariants.filter(
               variant => {
 
+
                 const collection =
                   myCollection.find(
                     item =>
@@ -2011,6 +2955,7 @@ content="width=device-width, initial-scale=1.0"
                   collection?.owned ===
                   true
                 );
+
 
               }
             ).length;
@@ -2035,6 +2980,7 @@ content="width=device-width, initial-scale=1.0"
               totalVariants
           ) {
 
+
             collectionStatus =
               "✓ Complete";
 
@@ -2047,9 +2993,11 @@ content="width=device-width, initial-scale=1.0"
               "collection-complete"
             );
 
+
           } else if (
             ownedCount > 0
           ) {
+
 
             collectionStatus =
               `${ownedCount} / ${totalVariants} variants owned`;
@@ -2062,6 +3010,7 @@ content="width=device-width, initial-scale=1.0"
             card.classList.add(
               "collection-partial"
             );
+
 
           }
 
@@ -2116,6 +3065,7 @@ content="width=device-width, initial-scale=1.0"
             card
           );
 
+
         }
       );
 
@@ -2123,6 +3073,7 @@ content="width=device-width, initial-scale=1.0"
       updateStats(
         filtered.length
       );
+
 
     }
 
@@ -2135,6 +3086,7 @@ content="width=device-width, initial-scale=1.0"
       count
     ) {
 
+
       document.getElementById(
         "stats"
       ).textContent =
@@ -2142,6 +3094,7 @@ content="width=device-width, initial-scale=1.0"
         " of " +
         allSprites.length +
         " sprites";
+
 
     }
 
@@ -2151,6 +3104,7 @@ content="width=device-width, initial-scale=1.0"
     ========================= */
 
     function updateCollectionStats() {
+
 
       const total =
         allVariants.filter(
@@ -2326,6 +3280,7 @@ content="width=device-width, initial-scale=1.0"
 
       }
 
+
     }
 
 
@@ -2336,6 +3291,7 @@ content="width=device-width, initial-scale=1.0"
     function openModal(
       sprite
     ) {
+
 
       document.getElementById(
         "modalImage"
@@ -2399,6 +3355,7 @@ content="width=device-width, initial-scale=1.0"
         "show"
       );
 
+
     }
 
 
@@ -2408,11 +3365,13 @@ content="width=device-width, initial-scale=1.0"
 
     function closeModal() {
 
+
       document.getElementById(
         "spriteModal"
       ).classList.remove(
         "show"
       );
+
 
     }
 
@@ -2424,6 +3383,7 @@ content="width=device-width, initial-scale=1.0"
     function renderVariants(
       spriteId
     ) {
+
 
       const container =
         document.getElementById(
@@ -2445,13 +3405,20 @@ content="width=device-width, initial-scale=1.0"
 
       if (!variants.length) {
 
+
         container.innerHTML = `
+
           <div class="no-variants">
+
             No variants available.
+
           </div>
+
         `;
 
+
         return;
+
 
       }
 
@@ -2506,9 +3473,11 @@ content="width=device-width, initial-scale=1.0"
               ${
                 variant.variant_type
                   ? `
+
                     <div class="variant-type">
                       ${variant.variant_type}
                     </div>
+
                   `
                   : ""
               }
@@ -2526,11 +3495,13 @@ content="width=device-width, initial-scale=1.0"
                   data-variant-id="${variant.variant_id}"
                   type="button"
                 >
+
                   ${
                     owned
                       ? "★ Owned"
                       : "☆ Owned"
                   }
+
                 </button>
 
 
@@ -2543,6 +3514,7 @@ content="width=device-width, initial-scale=1.0"
                         <label>
                           Level
                         </label>
+
 
                         <input
                           type="number"
@@ -2569,11 +3541,13 @@ content="width=device-width, initial-scale=1.0"
                         data-variant-id="${variant.variant_id}"
                         type="button"
                       >
+
                         ${
                           mastered
                             ? "🏆 Mastered"
                             : "☆ Mastered"
                         }
+
                       </button>
 
                     `
@@ -2589,10 +3563,6 @@ content="width=device-width, initial-scale=1.0"
           `;
 
 
-          /* =========================
-             OWNED BUTTON
-          ========================= */
-
           const ownedButton =
             card.querySelector(
               ".owned-button"
@@ -2603,10 +3573,12 @@ content="width=device-width, initial-scale=1.0"
             "click",
             async event => {
 
+
               event.stopPropagation();
 
 
               try {
+
 
                 await toggleOwned(
                   variant.variant_id
@@ -2620,7 +3592,9 @@ content="width=device-width, initial-scale=1.0"
 
                 renderSprites();
 
+
               } catch (error) {
+
 
                 console.error(
                   error
@@ -2631,15 +3605,13 @@ content="width=device-width, initial-scale=1.0"
                   "Could not update collection."
                 );
 
+
               }
+
 
             }
           );
 
-
-          /* =========================
-             LEVEL INPUT
-          ========================= */
 
           const levelInput =
             card.querySelector(
@@ -2649,14 +3621,17 @@ content="width=device-width, initial-scale=1.0"
 
           if (levelInput) {
 
+
             levelInput.addEventListener(
               "change",
               async event => {
+
 
                 event.stopPropagation();
 
 
                 try {
+
 
                   await updateVariantLevel(
                     variant.variant_id,
@@ -2671,7 +3646,9 @@ content="width=device-width, initial-scale=1.0"
 
                   renderSprites();
 
+
                 } catch (error) {
+
 
                   console.error(
                     error
@@ -2682,17 +3659,16 @@ content="width=device-width, initial-scale=1.0"
                     "Could not update level."
                   );
 
+
                 }
+
 
               }
             );
 
+
           }
 
-
-          /* =========================
-             MASTERED BUTTON
-          ========================= */
 
           const masteredButton =
             card.querySelector(
@@ -2702,14 +3678,17 @@ content="width=device-width, initial-scale=1.0"
 
           if (masteredButton) {
 
+
             masteredButton.addEventListener(
               "click",
               async event => {
+
 
                 event.stopPropagation();
 
 
                 try {
+
 
                   await toggleMastered(
                     variant.variant_id
@@ -2723,7 +3702,9 @@ content="width=device-width, initial-scale=1.0"
 
                   renderSprites();
 
+
                 } catch (error) {
+
 
                   console.error(
                     error
@@ -2734,10 +3715,13 @@ content="width=device-width, initial-scale=1.0"
                     "Could not update mastery."
                   );
 
+
                 }
+
 
               }
             );
+
 
           }
 
@@ -2746,8 +3730,10 @@ content="width=device-width, initial-scale=1.0"
             card
           );
 
+
         }
       );
+
 
     }
 
@@ -2760,16 +3746,20 @@ content="width=device-width, initial-scale=1.0"
       variantId
     ) {
 
+
       if (
         !currentPlayer ||
         !accessToken
       ) {
 
+
         alert(
           "Please log in first."
         );
 
+
         return;
+
 
       }
 
@@ -2788,6 +3778,7 @@ content="width=device-width, initial-scale=1.0"
 
       if (existing) {
 
+
         const newOwned =
           existing.owned !== true;
 
@@ -2805,25 +3796,34 @@ content="width=device-width, initial-scale=1.0"
             ),
             {
 
+
               method: "PATCH",
 
+
               headers: {
+
 
                 "Prefer":
                   "return=representation"
 
+
               },
+
 
               body:
                 JSON.stringify({
 
+
                   owned:
                     newOwned,
+
 
                   last_updated:
                     now
 
+
                 })
+
 
             }
           );
@@ -2831,13 +3831,16 @@ content="width=device-width, initial-scale=1.0"
 
         if (!response.ok) {
 
+
           const error =
             await response.text();
+
 
           throw new Error(
             "Could not update collection: " +
             error
           );
+
 
         }
 
@@ -2847,6 +3850,7 @@ content="width=device-width, initial-scale=1.0"
 
 
         if (updated.length) {
+
 
           const index =
             myCollection.findIndex(
@@ -2858,10 +3862,13 @@ content="width=device-width, initial-scale=1.0"
 
           if (index !== -1) {
 
+
             myCollection[index] =
               updated[0];
 
+
           }
+
 
         }
 
@@ -2870,7 +3877,9 @@ content="width=device-width, initial-scale=1.0"
 
         renderSprites();
 
+
         return;
+
 
       }
 
@@ -2887,46 +3896,62 @@ content="width=device-width, initial-scale=1.0"
           "/rest/v1/collections",
           {
 
+
             method: "POST",
 
+
             headers: {
+
 
               "Prefer":
                 "return=representation"
 
+
             },
+
 
             body:
               JSON.stringify({
 
+
                 collection_id:
                   collectionId,
+
 
                 player_id:
                   currentPlayer.player_id,
 
+
                 variant_id:
                   variantId,
+
 
                 owned:
                   true,
 
+
                 level:
                   null,
+
 
                 mastered:
                   false,
 
+
                 last_updated:
                   now,
+
 
                 first_collected:
                   now,
 
+
                 first_mastered:
                   null
 
+
               })
+
 
           }
         );
@@ -2934,13 +3959,16 @@ content="width=device-width, initial-scale=1.0"
 
       if (!response.ok) {
 
+
         const error =
           await response.text();
+
 
         throw new Error(
           "Could not add to collection: " +
           error
         );
+
 
       }
 
@@ -2951,9 +3979,11 @@ content="width=device-width, initial-scale=1.0"
 
       if (created.length) {
 
+
         myCollection.push(
           created[0]
         );
+
 
       }
 
@@ -2961,6 +3991,7 @@ content="width=device-width, initial-scale=1.0"
       updateCollectionStats();
 
       renderSprites();
+
 
     }
 
@@ -2974,12 +4005,15 @@ content="width=device-width, initial-scale=1.0"
       level
     ) {
 
+
       if (
         !currentPlayer ||
         !accessToken
       ) {
 
+
         return;
+
 
       }
 
@@ -2997,27 +4031,36 @@ content="width=device-width, initial-scale=1.0"
           ),
           {
 
+
             method: "PATCH",
 
+
             headers: {
+
 
               "Prefer":
                 "return=representation"
 
+
             },
+
 
             body:
               JSON.stringify({
+
 
                 level:
                   level === ""
                     ? null
                     : Number(level),
 
+
                 last_updated:
                   new Date().toISOString()
 
+
               })
+
 
           }
         );
@@ -3025,13 +4068,16 @@ content="width=device-width, initial-scale=1.0"
 
       if (!response.ok) {
 
+
         const error =
           await response.text();
+
 
         throw new Error(
           "Could not update level: " +
           error
         );
+
 
       }
 
@@ -3041,6 +4087,7 @@ content="width=device-width, initial-scale=1.0"
 
 
       if (updated.length) {
+
 
         const index =
           myCollection.findIndex(
@@ -3052,10 +4099,13 @@ content="width=device-width, initial-scale=1.0"
 
         if (index !== -1) {
 
+
           myCollection[index] =
             updated[0];
 
+
         }
+
 
       }
 
@@ -3063,6 +4113,7 @@ content="width=device-width, initial-scale=1.0"
       updateCollectionStats();
 
       renderSprites();
+
 
     }
 
@@ -3075,12 +4126,15 @@ content="width=device-width, initial-scale=1.0"
       variantId
     ) {
 
+
       if (
         !currentPlayer ||
         !accessToken
       ) {
 
+
         return;
+
 
       }
 
@@ -3095,7 +4149,9 @@ content="width=device-width, initial-scale=1.0"
 
       if (!existing) {
 
+
         return;
+
 
       }
 
@@ -3121,20 +4177,27 @@ content="width=device-width, initial-scale=1.0"
           ),
           {
 
+
             method: "PATCH",
 
+
             headers: {
+
 
               "Prefer":
                 "return=representation"
 
+
             },
+
 
             body:
               JSON.stringify({
 
+
                 mastered:
                   newMastered,
+
 
                 first_mastered:
                   newMastered
@@ -3144,10 +4207,13 @@ content="width=device-width, initial-scale=1.0"
                       )
                     : existing.first_mastered,
 
+
                 last_updated:
                   now
 
+
               })
+
 
           }
         );
@@ -3155,13 +4221,16 @@ content="width=device-width, initial-scale=1.0"
 
       if (!response.ok) {
 
+
         const error =
           await response.text();
+
 
         throw new Error(
           "Could not update mastered: " +
           error
         );
+
 
       }
 
@@ -3171,6 +4240,7 @@ content="width=device-width, initial-scale=1.0"
 
 
       if (updated.length) {
+
 
         const index =
           myCollection.findIndex(
@@ -3182,10 +4252,13 @@ content="width=device-width, initial-scale=1.0"
 
         if (index !== -1) {
 
+
           myCollection[index] =
             updated[0];
 
+
         }
+
 
       }
 
@@ -3193,6 +4266,7 @@ content="width=device-width, initial-scale=1.0"
       updateCollectionStats();
 
       renderSprites();
+
 
     }
 
@@ -3224,9 +4298,11 @@ content="width=device-width, initial-scale=1.0"
       .forEach(
         button => {
 
+
           button.addEventListener(
             "click",
             () => {
+
 
               document
                 .querySelectorAll(
@@ -3235,9 +4311,11 @@ content="width=device-width, initial-scale=1.0"
                 .forEach(
                   filterButton => {
 
+
                     filterButton.classList.remove(
                       "active"
                     );
+
 
                   }
                 );
@@ -3250,8 +4328,10 @@ content="width=device-width, initial-scale=1.0"
 
               renderSprites();
 
+
             }
           );
+
 
         }
       );
@@ -3262,6 +4342,7 @@ content="width=device-width, initial-scale=1.0"
       .addEventListener(
         "click",
         () => {
+
 
           const panel =
             document.getElementById(
@@ -3274,6 +4355,7 @@ content="width=device-width, initial-scale=1.0"
             "none"
               ? "block"
               : "none";
+
 
         }
       );
@@ -3309,14 +4391,18 @@ content="width=device-width, initial-scale=1.0"
         "click",
         event => {
 
+
           if (
             event.target.id ===
             "spriteModal"
           ) {
 
+
             closeModal();
 
+
           }
+
 
         }
       );
@@ -3326,14 +4412,18 @@ content="width=device-width, initial-scale=1.0"
       "keydown",
       event => {
 
+
         if (
           event.key ===
           "Escape"
         ) {
 
+
           closeModal();
 
+
         }
+
 
       }
     );
@@ -3345,15 +4435,21 @@ content="width=device-width, initial-scale=1.0"
 
     async function startTracker() {
 
+
       try {
+
 
         await Promise.all([
 
+
           loadSprites(),
+
 
           loadVariants(),
 
+
           restoreSession()
+
 
         ]);
 
@@ -3367,6 +4463,7 @@ content="width=device-width, initial-scale=1.0"
 
       } catch (error) {
 
+
         console.error(
           "Tracker error:",
           error
@@ -3379,14 +4476,18 @@ content="width=device-width, initial-scale=1.0"
           "Tracker error: " +
           error.message;
 
+
       }
+
 
     }
 
 
     startTracker();
 
+
   </script>
+
 
 </body>
 
