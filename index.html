@@ -2096,6 +2096,8 @@ async function toggleOwned(variantId) {
 
     }
 
+    updateCollectionStats();
+
     return;
 
   }
@@ -2174,6 +2176,8 @@ async function toggleOwned(variantId) {
 
   }
 
+  updateCollectionStats();
+
 }
 
 
@@ -2250,7 +2254,7 @@ async function updateVariantLevel(
         updated[0];
 
     }
-
+updateCollectionStats();
   }
 
 }
@@ -2351,7 +2355,7 @@ async function toggleMastered(
         updated[0];
 
     }
-
+updateCollectionStats();
   }
 
 }
