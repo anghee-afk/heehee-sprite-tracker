@@ -530,7 +530,36 @@
       }
 
     }
+.collection-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
 
+.collection-filter {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #181818;
+  color: #aaa;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.collection-filter:hover {
+  background: #242424;
+  color: #fff;
+}
+
+.collection-filter.active {
+  background: #303030;
+  border-color: #555;
+  color: #fff;
+}
   </style>
 
 </head>
@@ -642,37 +671,70 @@
 
     <div class="controls">
 
-      <input
-        id="search"
-        type="text"
-        placeholder="Search sprites..."
-      >
+  <input
+    id="search"
+    type="text"
+    placeholder="Search sprites..."
+  >
 
-      <select id="rarity">
+  <select id="rarity">
 
-        <option value="All">
-          All Rarities
-        </option>
+    <option value="All">
+      All Rarities
+    </option>
 
-        <option value="Rare">
-          Rare
-        </option>
+    <option value="Rare">
+      Rare
+    </option>
 
-        <option value="Epic">
-          Epic
-        </option>
+    <option value="Epic">
+      Epic
+    </option>
 
-        <option value="Legendary">
-          Legendary
-        </option>
+    <option value="Legendary">
+      Legendary
+    </option>
 
-        <option value="Mythic">
-          Mythic
-        </option>
+    <option value="Mythic">
+      Mythic
+    </option>
 
-      </select>
+  </select>
 
-    </div>
+</div>
+
+
+<div class="collection-filters">
+
+  <button
+    class="collection-filter active"
+    data-filter="all"
+  >
+    All
+  </button>
+
+  <button
+    class="collection-filter"
+    data-filter="owned"
+  >
+    Owned
+  </button>
+
+  <button
+    class="collection-filter"
+    data-filter="missing"
+  >
+    Missing
+  </button>
+
+  <button
+    class="collection-filter"
+    data-filter="mastered"
+  >
+    Mastered
+  </button>
+
+</div>
 
 
     <!-- =========================
@@ -1462,132 +1524,248 @@
 
     function renderSprites() {
 
-      const container =
-        document.getElementById(
-          "sprites"
-        );
+  const container =
+    document.getElementById(
+      "sprites"
+    );
 
 
-      const search =
-        document
-          .getElementById("search")
-          .value
-          .toLowerCase();
+  const search =
+    document
+      .getElementById("search")
+      .value
+      .toLowerCase();
 
 
-      const rarity =
-        document.getElementById(
-          "rarity"
-        ).value;
+  const rarity =
+    document.getElementById(
+      "rarity"
+    ).value;
 
 
-      const filtered =
-        allSprites.filter(
-          sprite => {
-
-            const name =
-              sprite.sprite_name ||
-              "";
+  const activeFilter =
+    document.querySelector(
+      ".collection-filter.active"
+    )?.dataset.filter ||
+    "all";
 
 
-            const matchesSearch =
-              name
-                .toLowerCase()
-                .includes(search);
+  const filtered =
+    allSprites.filter(
+      sprite => {
+
+        const name =
+          sprite.sprite_name ||
+          "";
 
 
-            const matchesRarity =
-              rarity === "All" ||
-              sprite.rarity === rarity;
+        const matchesSearch =
+          name
+            .toLowerCase()
+            .includes(search);
 
 
-            return (
-              matchesSearch &&
-              matchesRarity
-            );
-
-          }
-        );
+        const matchesRarity =
+          rarity === "All" ||
+          sprite.rarity === rarity;
 
 
-      container.innerHTML = "";
+        if (
+          !matchesSearch ||
+          !matchesRarity
+        ) {
+
+          return false;
+
+        }
 
 
-      if (!filtered.length) {
+        /*
+          Find all active variants
+          belonging to this Sprite.
+        */
 
-        container.innerHTML = `
-          <div class="message">
-            No sprites found.
-          </div>
-        `;
-
-        updateStats(0);
-
-        return;
-
-      }
-
-
-      filtered.forEach(
-        sprite => {
-
-          const card =
-            document.createElement(
-              "div"
-            );
-
-
-          card.className =
-            "sprite-card";
-
-
-          card.innerHTML = `
-
-            <img
-              class="sprite-image"
-              src="${sprite.image_url || ""}"
-              alt="${sprite.sprite_name || ""}"
-            >
-
-            <div class="sprite-info">
-
-              <div class="sprite-name">
-                ${sprite.sprite_name || "Unknown"}
-              </div>
-
-              <div class="rarity">
-                ${sprite.rarity || "Unknown"}
-              </div>
-
-              <div class="season">
-                ${sprite.season || ""}
-              </div>
-
-            </div>
-
-          `;
-
-
-          card.addEventListener(
-            "click",
-            () =>
-              openModal(sprite)
+        const spriteVariants =
+          allVariants.filter(
+            variant =>
+              variant.sprite_id ===
+                sprite.sprite_id &&
+              variant.active !== false
           );
 
 
-          container.appendChild(
-            card
+        /*
+          Find the collection rows
+          belonging to those variants.
+        */
+
+        const ownedVariants =
+          spriteVariants.filter(
+            variant => {
+
+              const collection =
+                myCollection.find(
+                  item =>
+                    item.variant_id ===
+                    variant.variant_id
+                );
+
+              return (
+                collection?.owned ===
+                true
+              );
+
+            }
+          );
+
+
+        const masteredVariants =
+          spriteVariants.filter(
+            variant => {
+
+              const collection =
+                myCollection.find(
+                  item =>
+                    item.variant_id ===
+                    variant.variant_id
+                );
+
+              return (
+                collection?.mastered ===
+                true
+              );
+
+            }
+          );
+
+
+        /*
+          Collection filters.
+        */
+
+        if (
+          activeFilter ===
+          "owned"
+        ) {
+
+          return (
+            ownedVariants.length >
+            0
           );
 
         }
+
+
+        if (
+          activeFilter ===
+          "missing"
+        ) {
+
+          return (
+            ownedVariants.length <
+            spriteVariants.length
+          );
+
+        }
+
+
+        if (
+          activeFilter ===
+          "mastered"
+        ) {
+
+          return (
+            masteredVariants.length >
+            0
+          );
+
+        }
+
+
+        return true;
+
+      }
+    );
+
+
+  container.innerHTML = "";
+
+
+  if (!filtered.length) {
+
+    container.innerHTML = `
+      <div class="message">
+        No sprites found.
+      </div>
+    `;
+
+    updateStats(0);
+
+    return;
+
+  }
+
+
+  filtered.forEach(
+    sprite => {
+
+      const card =
+        document.createElement(
+          "div"
+        );
+
+
+      card.className =
+        "sprite-card";
+
+
+      card.innerHTML = `
+
+        <img
+          class="sprite-image"
+          src="${sprite.image_url || ""}"
+          alt="${sprite.sprite_name || ""}"
+        >
+
+        <div class="sprite-info">
+
+          <div class="sprite-name">
+            ${sprite.sprite_name || "Unknown"}
+          </div>
+
+          <div class="rarity">
+            ${sprite.rarity || "Unknown"}
+          </div>
+
+          <div class="season">
+            ${sprite.season || ""}
+          </div>
+
+        </div>
+
+      `;
+
+
+      card.addEventListener(
+        "click",
+        () =>
+          openModal(sprite)
       );
 
 
-      updateStats(
-        filtered.length
+      container.appendChild(
+        card
       );
 
     }
+  );
+
+
+  updateStats(
+    filtered.length
+  );
+
+}
 
 
     /* =========================
@@ -2594,7 +2772,44 @@
         "change",
         renderSprites
       );
+document
+  .querySelectorAll(
+    ".collection-filter"
+  )
+  .forEach(
+    button => {
 
+      button.addEventListener(
+        "click",
+        () => {
+
+          document
+            .querySelectorAll(
+              ".collection-filter"
+            )
+            .forEach(
+              filterButton => {
+
+                filterButton.classList.remove(
+                  "active"
+                );
+
+              }
+            );
+
+
+          button.classList.add(
+            "active"
+          );
+
+
+          renderSprites();
+
+        }
+      );
+
+    }
+  );
 
     document
       .getElementById("loginButton")
