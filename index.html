@@ -527,6 +527,86 @@
   color: white;
   border-color: #777;
 }
+    .collection-dashboard {
+  margin: 25px 0;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 14px;
+  background: #151515;
+}
+
+.collection-header {
+  margin-bottom: 18px;
+}
+
+.collection-title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.collection-player {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #888;
+}
+
+.collection-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.collection-stat {
+  padding: 14px;
+  border-radius: 10px;
+  background: #202020;
+  text-align: center;
+}
+
+.collection-stat-number {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.collection-stat-label {
+  margin-top: 3px;
+  font-size: 12px;
+  color: #888;
+}
+
+.collection-progress {
+  margin-top: 20px;
+}
+
+.collection-progress-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #292929;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: 10px;
+  background: #777;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .collection-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
   </style>
 </head>
 
@@ -668,7 +748,23 @@
   >
     Loading sprites...
   </div>
+<span id="collectionCompletion">
+        0%
+      </span>
+    </div>
 
+    <div class="progress-bar">
+
+      <div
+        id="collectionProgressFill"
+        class="progress-fill"
+      ></div>
+
+    </div>
+
+  </div>
+
+</div>
   <div id="sprites"></div>
 
 </main>
@@ -1056,7 +1152,9 @@ async function loadPlayer() {
 
   myCollection = await response.json();
 
-  console.log("My collection:", myCollection);
+console.log("My collection:", myCollection);
+
+updateCollectionStats();
 }
 
 /* =========================
@@ -1451,7 +1549,100 @@ function updateStats(
     " sprites";
 
 }
+function updateCollectionStats() {
 
+  const total =
+    allVariants.filter(
+      variant =>
+        variant.active !== false
+    ).length;
+
+  const owned =
+    myCollection.filter(
+      item =>
+        item.owned === true
+    ).length;
+
+  const mastered =
+    myCollection.filter(
+      item =>
+        item.mastered === true
+    ).length;
+
+  const missing =
+    total - owned;
+
+  const completion =
+    total > 0
+      ? Math.round(
+          (owned / total) * 100
+        )
+      : 0;
+
+  const totalElement =
+    document.getElementById(
+      "collectionTotal"
+    );
+
+  const ownedElement =
+    document.getElementById(
+      "collectionOwned"
+    );
+
+  const missingElement =
+    document.getElementById(
+      "collectionMissing"
+    );
+
+  const masteredElement =
+    document.getElementById(
+      "collectionMastered"
+    );
+
+  const completionElement =
+    document.getElementById(
+      "collectionCompletion"
+    );
+
+  const progressElement =
+    document.getElementById(
+      "collectionProgressFill"
+    );
+
+  if (totalElement)
+    totalElement.textContent = total;
+
+  if (ownedElement)
+    ownedElement.textContent = owned;
+
+  if (missingElement)
+    missingElement.textContent = missing;
+
+  if (masteredElement)
+    masteredElement.textContent = mastered;
+
+  if (completionElement)
+    completionElement.textContent =
+      completion + "%";
+
+  if (progressElement)
+    progressElement.style.width =
+      completion + "%";
+
+  const playerElement =
+    document.getElementById(
+      "collectionPlayer"
+    );
+
+  if (playerElement) {
+
+    playerElement.textContent =
+      currentPlayer
+        ? currentPlayer.display_name
+        : "Not logged in";
+
+  }
+}
 
 /* =========================
    OPEN MODAL
