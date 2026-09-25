@@ -60,7 +60,7 @@
       font-size: 14px;
     }
 
-    .account-button {
+    .account- {
       padding: 10px 15px;
       border-radius: 8px;
       border: 1px solid #303038;
@@ -70,7 +70,7 @@
       cursor: pointer;
     }
 
-    .account-button:hover {
+    .account-:hover {
       background: #292930;
     }
 
@@ -289,7 +289,7 @@
       padding: 30px;
     }
 
-    .close-button {
+    .close- {
       position: absolute;
       top: 15px;
       right: 18px;
@@ -303,7 +303,7 @@
       cursor: pointer;
     }
 
-    .close-button:hover {
+    .close-:hover {
       background: #3a3a43;
     }
 
@@ -460,6 +460,74 @@
         font-size: 26px;
       }
     }
+    .owned-button {
+  margin-top: 10px;
+  padding: 7px 12px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: #222;
+  color: #ccc;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.owned-button:hover {
+  background: #333;
+}
+
+.owned-button.owned {
+  background: #444;
+  color: white;
+  border-color: #777;
+}
+
+.variant-controls {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.level-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.level-input {
+  width: 70px;
+  padding: 6px 8px;
+  border: 1px solid #555;
+  border-radius: 7px;
+  background: #181818;
+  color: white;
+  text-align: center;
+}
+
+.mastered-button {
+  padding: 7px 12px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: #222;
+  color: #aaa;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mastered-button:hover {
+  background: #333;
+}
+
+.mastered-button.mastered {
+  background: #444;
+  color: white;
+  border-color: #777;
+}
   </style>
 </head>
 
@@ -481,20 +549,20 @@
       Not logged in
     </div>
 
-    <button
-      id="loginButton"
-      class="account-button"
+    <
+      id="login"
+      class="account-"
     >
       Login
-    </button>
+    </>
 
-    <button
-      id="logoutButton"
-      class="account-button"
+    <
+      id="logout"
+      class="account-"
       style="display:none;"
     >
       Logout
-    </button>
+    </>
 
   </div>
 
@@ -532,12 +600,12 @@
     autocomplete="current-password"
   >
 
-  <button
+  <
     id="loginSubmit"
     class="login-submit"
   >
     Login
-  </button>
+  </>
 
   <div
     id="loginMessage"
@@ -616,12 +684,12 @@
 
   <div class="modal-content">
 
-    <button
+    <
       id="closeModal"
-      class="close-button"
+      class="close-"
     >
       ×
-    </button>
+    </>
 
     <div class="modal-top">
 
@@ -1003,14 +1071,14 @@ function updateAccountUI() {
       "accountName"
     );
 
-  const loginButton =
+  const login =
     document.getElementById(
-      "loginButton"
+      "login"
     );
 
-  const logoutButton =
+  const logout =
     document.getElementById(
-      "logoutButton"
+      "logout"
     );
 
   const loginPanel =
@@ -1026,10 +1094,10 @@ function updateAccountUI() {
       currentPlayer.discord_name ||
       "Player";
 
-    loginButton.style.display =
+    login.style.display =
       "none";
 
-    logoutButton.style.display =
+    logout.style.display =
       "block";
 
     loginPanel.classList.remove(
@@ -1041,10 +1109,10 @@ function updateAccountUI() {
     accountName.textContent =
       "Not logged in";
 
-    loginButton.style.display =
+    login.style.display =
       "block";
 
-    logoutButton.style.display =
+    logout.style.display =
       "none";
 
   }
@@ -1521,23 +1589,16 @@ function openModal(
 function renderVariants(spriteId) {
 
   const container =
-    document.getElementById(
-      "modalVariants"
-    );
-
+    document.getElementById("modalVariants");
 
   const variants =
     allVariants.filter(
       variant =>
-        variant.sprite_id ===
-          spriteId &&
+        variant.sprite_id === spriteId &&
         variant.active !== false
     );
 
-
-  container.innerHTML =
-    "";
-
+  container.innerHTML = "";
 
   if (!variants.length) {
 
@@ -1548,107 +1609,114 @@ function renderVariants(spriteId) {
     `;
 
     return;
-
   }
 
+  variants.forEach(variant => {
 
-  variants.forEach(
-    variant => {
+    const card =
+      document.createElement("div");
 
-      const card =
-        document.createElement(
-          "div"
-        );
+    card.className =
+      "variant-card";
 
+    const collection =
+      myCollection.find(
+        item =>
+          item.variant_id ===
+          variant.variant_id
+      );
 
-      card.className =
-        "variant-card";
+    const owned =
+      collection?.owned === true;
 
+    card.innerHTML = `
 
-      const collection =
-        myCollection.find(
-          item =>
-            item.variant_id ===
-            variant.variant_id
-        );
+      <img
+        class="variant-image"
+        src="${variant.image_url || ""}"
+        alt="${variant.variant_name || ""}"
+      >
 
+      <div class="variant-info">
 
-      const owned =
-        collection?.owned === true;
+        <div class="variant-name">
+          ${variant.variant_name || "Variant"}
+        </div>
 
-
-      card.innerHTML = `
-
-        <img
-          class="variant-image"
-          src="${variant.image_url || ""}"
-          alt="${variant.variant_name || ""}"
-        >
+        ${
+          variant.variant_type
+            ? `
+              <div class="variant-type">
+                ${variant.variant_type}
+              </div>
+            `
+            : ""
+        }
 
         <div class="variant-controls">
 
-  <button
-    class="owned-button ${owned ? "owned" : ""}"
-    data-variant-id="${variant.variant_id}"
-  >
-    ${owned ? "★ Owned" : "☆ Owned"}
-  </button>
-
-  ${
-    owned
-      ? `
-        <div class="level-control">
-
-          <label>
-            Level
-          </label>
-
-          <input
-            type="number"
-            class="level-input"
-            min="1"
-            max="999"
-            value="${collection?.level ?? ""}"
-            placeholder="—"
+          <button
+            class="owned-button ${owned ? "owned" : ""}"
             data-variant-id="${variant.variant_id}"
           >
+            ${owned ? "★ Owned" : "☆ Owned"}
+          </button>
+
+          ${
+            owned
+              ? `
+                <div class="level-control">
+
+                  <label>
+                    Level
+                  </label>
+
+                  <input
+                    type="number"
+                    class="level-input"
+                    min="1"
+                    max="999"
+                    value="${collection?.level ?? ""}"
+                    placeholder="—"
+                    data-variant-id="${variant.variant_id}"
+                  >
+
+                </div>
+
+                <button
+                  class="mastered-button ${
+                    collection?.mastered === true
+                      ? "mastered"
+                      : ""
+                  }"
+                  data-variant-id="${variant.variant_id}"
+                >
+                  ${
+                    collection?.mastered === true
+                      ? "🏆 Mastered"
+                      : "☆ Mastered"
+                  }
+                </button>
+              `
+              : ""
+          }
 
         </div>
 
-        <button
-          class="mastered-button ${
-            collection?.mastered === true
-              ? "mastered"
-              : ""
-          }"
-          data-variant-id="${variant.variant_id}"
-        >
-          ${
-            collection?.mastered === true
-              ? "🏆 Mastered"
-              : "☆ Mastered"
-          }
-        </button>
-      `
-      : ""
-  }
+      </div>
 
-</div>
+    `;
 
-      `;
+    const ownedButton =
+      card.querySelector(".owned-button");
 
+    ownedButton.addEventListener(
+      "click",
+      async event => {
 
-      const ownedButton =
-        card.querySelector(
-          ".owned-button"
-        );
+        event.stopPropagation();
 
-
-      ownedButton.addEventListener(
-        "click",
-        async event => {
-
-          event.stopPropagation();
+        try {
 
           await toggleOwned(
             variant.variant_id
@@ -1658,23 +1726,109 @@ function renderVariants(spriteId) {
             spriteId
           );
 
+        } catch (error) {
+
+          console.error(error);
+
+          alert(
+            "Could not update collection."
+          );
+
+        }
+
+      }
+    );
+
+    const levelInput =
+      card.querySelector(".level-input");
+
+    if (levelInput) {
+
+      levelInput.addEventListener(
+        "change",
+        async event => {
+
+          event.stopPropagation();
+
+          try {
+
+            await updateVariantLevel(
+              variant.variant_id,
+              event.target.value
+            );
+
+            renderVariants(
+              spriteId
+            );
+
+          } catch (error) {
+
+            console.error(error);
+
+            alert(
+              "Could not update level."
+            );
+
+          }
+
         }
       );
 
+    }
 
-      container.appendChild(
-        card
+    const masteredButton =
+      card.querySelector(
+        ".mastered-button"
+      );
+
+    if (masteredButton) {
+
+      masteredButton.addEventListener(
+        "click",
+        async event => {
+
+          event.stopPropagation();
+
+          try {
+
+            await toggleMastered(
+              variant.variant_id
+            );
+
+            renderVariants(
+              spriteId
+            );
+
+          } catch (error) {
+
+            console.error(error);
+
+            alert(
+              "Could not update mastery."
+            );
+
+          }
+
+        }
       );
 
     }
-  );
+
+    container.appendChild(card);
+
+  });
 
 }
-  async function toggleOwned(variantId) {
+
+
+async function toggleOwned(variantId) {
 
   if (!currentPlayer || !accessToken) {
+
     alert("Please log in first.");
+
     return;
+
   }
 
   const existing =
@@ -1716,13 +1870,10 @@ function renderVariants(spriteId) {
               newOwned,
 
             last_updated:
-              now,
-
-            first_collected:
-              existing.first_collected ||
-              (newOwned ? now : null)
+              now
 
           })
+
         }
       );
 
@@ -1735,6 +1886,7 @@ function renderVariants(spriteId) {
         "Could not update collection: " +
         error
       );
+
     }
 
     const updated =
@@ -1751,9 +1903,11 @@ function renderVariants(spriteId) {
 
       myCollection[index] =
         updated[0];
+
     }
 
     return;
+
   }
 
   const collectionId =
@@ -1803,6 +1957,7 @@ function renderVariants(spriteId) {
             null
 
         })
+
       }
     );
 
@@ -1815,6 +1970,7 @@ function renderVariants(spriteId) {
       "Could not add to collection: " +
       error
     );
+
   }
 
   const created =
@@ -1825,10 +1981,190 @@ function renderVariants(spriteId) {
     myCollection.push(
       created[0]
     );
+
   }
 
 }
 
+
+async function updateVariantLevel(
+  variantId,
+  level
+) {
+
+  if (!currentPlayer || !accessToken) {
+    return;
+  }
+
+  const response =
+    await supabaseRequest(
+      "/rest/v1/collections" +
+      "?player_id=eq." +
+      encodeURIComponent(
+        currentPlayer.player_id
+      ) +
+      "&variant_id=eq." +
+      encodeURIComponent(
+        variantId
+      ),
+      {
+        method: "PATCH",
+
+        headers: {
+          "Prefer":
+            "return=representation"
+        },
+
+        body: JSON.stringify({
+
+          level:
+            level === ""
+              ? null
+              : Number(level),
+
+          last_updated:
+            new Date().toISOString()
+
+        })
+
+      }
+    );
+
+  if (!response.ok) {
+
+    const error =
+      await response.text();
+
+    throw new Error(
+      "Could not update level: " +
+      error
+    );
+
+  }
+
+  const updated =
+    await response.json();
+
+  if (updated.length) {
+
+    const index =
+      myCollection.findIndex(
+        item =>
+          item.variant_id ===
+          variantId
+      );
+
+    if (index !== -1) {
+
+      myCollection[index] =
+        updated[0];
+
+    }
+
+  }
+
+}
+
+
+async function toggleMastered(
+  variantId
+) {
+
+  if (!currentPlayer || !accessToken) {
+    return;
+  }
+
+  const existing =
+    myCollection.find(
+      item =>
+        item.variant_id ===
+        variantId
+    );
+
+  if (!existing) {
+    return;
+  }
+
+  const newMastered =
+    existing.mastered !== true;
+
+  const now =
+    new Date().toISOString();
+
+  const response =
+    await supabaseRequest(
+      "/rest/v1/collections" +
+      "?player_id=eq." +
+      encodeURIComponent(
+        currentPlayer.player_id
+      ) +
+      "&variant_id=eq." +
+      encodeURIComponent(
+        variantId
+      ),
+      {
+        method: "PATCH",
+
+        headers: {
+          "Prefer":
+            "return=representation"
+        },
+
+        body: JSON.stringify({
+
+          mastered:
+            newMastered,
+
+          first_mastered:
+            newMastered
+              ? (
+                  existing.first_mastered ||
+                  now
+                )
+              : existing.first_mastered,
+
+          last_updated:
+            now
+
+        })
+
+      }
+    );
+
+  if (!response.ok) {
+
+    const error =
+      await response.text();
+
+    throw new Error(
+      "Could not update mastered: " +
+      error
+    );
+
+  }
+
+  const updated =
+    await response.json();
+
+  if (updated.length) {
+
+    const index =
+      myCollection.findIndex(
+        item =>
+          item.variant_id ===
+          variantId
+      );
+
+    if (index !== -1) {
+
+      myCollection[index] =
+        updated[0];
+
+    }
+
+  }
+
+}
 
 /* =========================
    CLOSE MODAL
@@ -1928,12 +2264,12 @@ document
 
 
 /* =========================
-   LOGIN BUTTONS
+   LOGIN S
 ========================= */
 
 document
   .getElementById(
-    "loginButton"
+    "login"
   )
   .addEventListener(
     "click",
@@ -1963,7 +2299,7 @@ document
 
 document
   .getElementById(
-    "logoutButton"
+    "logout"
   )
   .addEventListener(
     "click",
