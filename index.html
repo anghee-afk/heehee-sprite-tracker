@@ -896,6 +896,7 @@ async function login() {
 
 
     await loadPlayer();
+await loadMyCollection();
 
 
     message.textContent =
@@ -968,6 +969,28 @@ async function loadPlayer() {
 
 }
 
+  async function loadMyCollection() {
+  if (!currentPlayer) {
+    myCollection = [];
+    return;
+  }
+
+  const response = await supabaseRequest(
+    "/rest/v1/collections" +
+    "?select=*" +
+    "&player_id=eq." +
+    encodeURIComponent(currentPlayer.player_id)
+  );
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error("Could not load collection: " + error);
+  }
+
+  myCollection = await response.json();
+
+  console.log("My collection:", myCollection);
+}
 
 /* =========================
    UPDATE ACCOUNT UI
@@ -1101,6 +1124,7 @@ async function restoreSession() {
 
 
     await loadPlayer();
+await loadMyCollection();
 
     updateAccountUI();
 
