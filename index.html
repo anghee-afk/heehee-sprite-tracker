@@ -1,14 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
   <meta charset="UTF-8">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+>
 
   <title>HeeHee Sprite Tracker</title>
 
@@ -30,6 +32,7 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+
 
     /* =========================
        HEADER
@@ -57,6 +60,7 @@
       color: #888;
       font-size: 14px;
     }
+
 
     /* =========================
        ACCOUNT
@@ -91,6 +95,7 @@
     .account-button:hover {
       background: #292929;
     }
+
 
     /* =========================
        LOGIN
@@ -141,6 +146,7 @@
       color: #999;
     }
 
+
     /* =========================
        CONTROLS
     ========================= */
@@ -149,7 +155,7 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 20px;
+      margin-bottom: 12px;
     }
 
     .controls input,
@@ -166,24 +172,62 @@
       min-width: 220px;
     }
 
+
+    /* =========================
+       COLLECTION FILTERS
+    ========================= */
+
+    .collection-filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .collection-filter {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #181818;
+      color: #aaa;
+      cursor: pointer;
+
+      transition:
+        background 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease;
+    }
+
+    .collection-filter:hover {
+      background: #242424;
+      color: #fff;
+    }
+
+    .collection-filter.active {
+      background: #303030;
+      border-color: #555;
+      color: #fff;
+    }
+
+
     /* =========================
        COLLECTION DASHBOARD
     ========================= */
 
     .collection-dashboard {
       margin: 25px 0;
-      padding: 20px;
+      padding: 18px;
       border: 1px solid #333;
       border-radius: 14px;
       background: #151515;
     }
 
     .collection-header {
-  margin-bottom: 18px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     .collection-title {
       font-size: 20px;
@@ -199,42 +243,42 @@
     .collection-stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 8px;
     }
 
     .collection-stat {
-      padding: 14px;
-      border-radius: 10px;
+      padding: 12px;
+      border-radius: 9px;
       background: #202020;
       text-align: center;
     }
 
     .collection-stat-number {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 700;
     }
 
     .collection-stat-label {
       margin-top: 3px;
-      font-size: 12px;
+      font-size: 11px;
       color: #888;
     }
 
     .collection-progress {
-      margin-top: 20px;
+      margin-top: 16px;
     }
 
     .collection-progress-top {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 7px;
-      font-size: 13px;
+      margin-bottom: 6px;
+      font-size: 12px;
       color: #aaa;
     }
 
     .progress-bar {
       width: 100%;
-      height: 8px;
+      height: 7px;
       border-radius: 10px;
       overflow: hidden;
       background: #292929;
@@ -248,82 +292,95 @@
       transition: width 0.3s ease;
     }
 
+
     /* =========================
        SPRITE GRID
     ========================= */
 
-    #sprites {
+    .sprite-grid {
       display: grid;
+
       grid-template-columns:
-        repeat(auto-fill, minmax(180px, 1fr));
-      gap: 15px;
+        repeat(
+          auto-fill,
+          minmax(150px, 1fr)
+        );
+
+      gap: 12px;
     }
 
     .sprite-card {
-      background: #171717;
-      border: 1px solid #2d2d2d;
-      border-radius: 12px;
+      background: #181818;
+      border: 1px solid #292929;
+      border-radius: 10px;
       overflow: hidden;
       cursor: pointer;
+
       transition:
         transform 0.15s ease,
         border-color 0.15s ease;
     }
 
     .sprite-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
+      border-color: #444;
+    }
+
+    .sprite-card.collection-partial {
+      border-color: #3a3a3a;
+    }
+
+    .sprite-card.collection-complete {
       border-color: #555;
     }
 
     .sprite-image {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      height: 140px;
       object-fit: cover;
       display: block;
-      background: #222;
+      background: #111;
     }
 
     .sprite-info {
-      padding: 12px;
+      padding: 9px 10px 10px;
     }
 
     .sprite-name {
-      font-weight: 700;
-      margin-bottom: 5px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .rarity {
-      font-size: 12px;
+      font-size: 10px;
       color: #aaa;
+      margin-bottom: 3px;
     }
 
     .season {
-      margin-top: 3px;
-      font-size: 11px;
+      font-size: 10px;
       color: #666;
     }
-.sprite-collection-status {
-  margin-top: 8px;
-  font-size: 12px;
-  color: #888;
-}
 
-.sprite-collection-status.partial {
-  color: #aaa;
-}
+    .sprite-collection-status {
+      margin-top: 6px;
+      font-size: 10px;
+      color: #666;
+    }
 
-.sprite-collection-status.complete {
-  color: #fff;
-  font-weight: 600;
-}
+    .sprite-collection-status.partial {
+      color: #aaa;
+    }
 
-.sprite-card.collection-complete {
-  border-color: #555;
-}
+    .sprite-collection-status.complete {
+      color: #fff;
+      font-weight: 600;
+    }
 
-.sprite-card.collection-partial {
-  border-color: #3d3d3d;
-}
     .message {
       grid-column: 1 / -1;
       padding: 30px;
@@ -331,200 +388,276 @@
       color: #777;
     }
 
+
     /* =========================
        MODAL
     ========================= */
 
     .modal {
-      display: none;
       position: fixed;
       inset: 0;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background: rgba(0, 0, 0, 0.75);
+
       z-index: 1000;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 30px 15px;
-      overflow-y: auto;
     }
 
     .modal.show {
       display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .modal-content {
-      width: 100%;
-      max-width: 800px;
-      background: #151515;
-      border: 1px solid #333;
-      border-radius: 16px;
-      padding: 25px;
+      width: min(650px, 92vw);
+      max-height: 88vh;
+
+      overflow-y: auto;
+
+      padding: 18px;
+
       position: relative;
+
+      background: #181818;
+      border: 1px solid #333;
+      border-radius: 12px;
     }
 
     .modal-close {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
+
+      top: 10px;
+      right: 10px;
+
+      width: 32px;
+      height: 32px;
+
       border: 1px solid #444;
-      background: #202020;
+      border-radius: 50%;
+
+      background: #222;
       color: #fff;
-      cursor: pointer;
+
       font-size: 18px;
+      line-height: 30px;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      z-index: 5;
     }
+
+    .modal-close:hover {
+      background: #303030;
+    }
+
+
+    /* =========================
+       MODAL MAIN
+    ========================= */
 
     .modal-main {
       display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 25px;
-      margin-bottom: 25px;
+
+      grid-template-columns:
+        180px 1fr;
+
+      gap: 18px;
+
+      align-items: start;
+
+      margin-bottom: 20px;
     }
 
     .modal-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
+      width: 180px;
+      height: 180px;
+
       object-fit: cover;
-      border-radius: 12px;
-      background: #222;
+
+      border-radius: 9px;
+
+      background: #111;
     }
 
     .modal-title {
-      margin-top: 0;
-      margin-bottom: 10px;
-      font-size: 26px;
+      margin: 0 0 8px 0;
+
+      font-size: 22px;
+      font-weight: 700;
     }
 
-    .modal-rarity {
-      color: #aaa;
-      margin-bottom: 8px;
-    }
-
+    .modal-rarity,
     .modal-season {
-      color: #777;
-      font-size: 13px;
-      margin-bottom: 15px;
+      margin-bottom: 5px;
+
+      font-size: 12px;
+      color: #888;
     }
 
     .modal-description {
-      color: #bbb;
+      margin-top: 12px;
+
+      font-size: 13px;
       line-height: 1.5;
-      font-size: 14px;
+
+      color: #aaa;
     }
 
     .modal-ability {
-      margin-top: 15px;
-      color: #aaa;
-      font-size: 14px;
+      margin-top: 10px;
+
+      font-size: 13px;
+      line-height: 1.5;
+
+      color: #ccc;
     }
 
+
     /* =========================
-       VARIANTS
+       MODAL VARIANTS
     ========================= */
 
     .variants-title {
-      margin-bottom: 15px;
-      font-size: 18px;
+      margin-bottom: 10px;
+
+      font-size: 16px;
       font-weight: 700;
     }
 
     #modalVariants {
       display: grid;
+
       grid-template-columns:
-        repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
+        repeat(
+          auto-fill,
+          minmax(145px, 1fr)
+        );
+
+      gap: 10px;
     }
 
     .variant-card {
-      background: #1d1d1d;
-      border: 1px solid #303030;
-      border-radius: 12px;
+      background: #111;
+
+      border: 1px solid #292929;
+      border-radius: 9px;
+
       overflow: hidden;
     }
 
     .variant-image {
       width: 100%;
+
       aspect-ratio: 1 / 1;
+
       object-fit: cover;
+
       display: block;
-      background: #222;
+
+      background: #181818;
     }
 
     .variant-info {
-      padding: 12px;
+      padding: 9px;
     }
 
     .variant-name {
+      margin-bottom: 3px;
+
+      font-size: 12px;
       font-weight: 700;
-      margin-bottom: 4px;
     }
 
     .variant-type {
-      color: #777;
-      font-size: 11px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+
+      font-size: 10px;
+      color: #666;
     }
 
     .variant-controls {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 6px;
     }
 
     .owned-button,
     .mastered-button {
       width: 100%;
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid #444;
-      background: #252525;
-      color: #ccc;
+
+      padding: 7px;
+
+      border: 1px solid #333;
+      border-radius: 6px;
+
+      background: #1c1c1c;
+      color: #aaa;
+
+      font-size: 11px;
+
       cursor: pointer;
     }
 
     .owned-button:hover,
     .mastered-button:hover {
-      background: #303030;
+      background: #292929;
+      color: #fff;
     }
 
     .owned-button.owned {
       background: #303030;
       color: #fff;
+      border-color: #555;
     }
 
     .mastered-button.mastered {
-      background: #353535;
+      background: #303030;
       color: #fff;
+      border-color: #555;
     }
 
     .level-control {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     .level-control label {
-      font-size: 12px;
-      color: #888;
+      font-size: 10px;
+      color: #777;
     }
 
     .level-input {
-      flex: 1;
+      width: 100%;
       min-width: 0;
-      padding: 7px;
-      border-radius: 7px;
-      border: 1px solid #444;
-      background: #111;
+
+      padding: 6px;
+
+      border: 1px solid #333;
+      border-radius: 6px;
+
+      background: #181818;
       color: #fff;
+
+      font-size: 11px;
     }
 
     .no-variants {
       grid-column: 1 / -1;
+
       padding: 20px;
-      color: #777;
+
       text-align: center;
+
+      color: #666;
     }
+
 
     /* =========================
        RESPONSIVE
@@ -536,13 +669,29 @@
         padding: 20px 12px;
       }
 
+      .modal {
+        padding: 12px;
+      }
+
+      .modal-content {
+        width: 100%;
+        max-height: 92vh;
+        padding: 14px;
+      }
+
       .modal-main {
         grid-template-columns: 1fr;
       }
 
       .modal-image {
-        max-width: 250px;
+        width: 140px;
+        height: 140px;
         margin: 0 auto;
+      }
+
+      #modalVariants {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
       }
 
     }
@@ -550,40 +699,21 @@
     @media (max-width: 600px) {
 
       .collection-stats {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+
+      .sprite-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .sprite-image {
+        height: 130px;
       }
 
     }
-.collection-filters {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
 
-.collection-filter {
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: 1px solid #333;
-  background: #181818;
-  color: #aaa;
-  cursor: pointer;
-  transition:
-    background 0.15s ease,
-    color 0.15s ease,
-    border-color 0.15s ease;
-}
-
-.collection-filter:hover {
-  background: #242424;
-  color: #fff;
-}
-
-.collection-filter.active {
-  background: #303030;
-  border-color: #555;
-  color: #fff;
-}
   </style>
 
 </head>
@@ -592,108 +722,109 @@
 
   <div class="container">
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+```
+<!-- =========================
+     HEADER
+========================= -->
 
-    <header>
+<header>
 
-      <div class="brand">
-        HEEHEE
-      </div>
+  <div class="brand">
+    HEEHEE
+  </div>
 
-      <h1>
-        Fortnite Sprite Tracker
-      </h1>
+  <h1>
+    Fortnite Sprite Tracker
+  </h1>
 
-      <div class="subtitle">
-        Collect every Sprite in Fortnite.
-      </div>
+  <div class="subtitle">
+    Collect every Sprite in Fortnite.
+  </div>
 
-    </header>
-
-
-    <!-- =========================
-         ACCOUNT
-    ========================= -->
-
-    <div class="account-bar">
-
-      <span
-        id="accountName"
-        class="account-name"
-      >
-        Not logged in
-      </span>
-
-      <button
-        id="loginButton"
-        class="account-button"
-      >
-        Login
-      </button>
-
-      <button
-        id="logoutButton"
-        class="account-button"
-        style="display: none;"
-      >
-        Logout
-      </button>
-
-    </div>
+</header>
 
 
-    <!-- =========================
-         LOGIN PANEL
-    ========================= -->
+<!-- =========================
+     ACCOUNT
+========================= -->
 
-    <div
-      id="loginPanel"
-      class="login-panel"
-      style="display: none;"
+<div class="account-bar">
+
+  <span
+    id="accountName"
+    class="account-name"
+  >
+    Not logged in
+  </span>
+
+  <button
+    id="loginButton"
+    class="account-button"
+  >
+    Login
+  </button>
+
+  <button
+    id="logoutButton"
+    class="account-button"
+    style="display: none;"
+  >
+    Logout
+  </button>
+
+</div>
+
+
+<!-- =========================
+     LOGIN PANEL
+========================= -->
+
+<div
+  id="loginPanel"
+  class="login-panel"
+  style="display: none;"
+>
+
+  <h2>
+    Login
+  </h2>
+
+  <div class="login-fields">
+
+    <input
+      id="emailInput"
+      type="email"
+      placeholder="Email"
     >
 
-      <h2>
-        Login
-      </h2>
+    <input
+      id="passwordInput"
+      type="password"
+      placeholder="Password"
+    >
 
-      <div class="login-fields">
+    <button
+      id="loginSubmit"
+      class="login-submit"
+    >
+      Login
+    </button>
 
-        <input
-          id="emailInput"
-          type="email"
-          placeholder="Email"
-        >
+  </div>
 
-        <input
-          id="passwordInput"
-          type="password"
-          placeholder="Password"
-        >
+  <div
+    id="loginMessage"
+    class="login-message"
+  ></div>
 
-        <button
-          id="loginSubmit"
-          class="login-submit"
-        >
-          Login
-        </button>
-
-      </div>
-
-      <div
-        id="loginMessage"
-        class="login-message"
-      ></div>
-
-    </div>
+</div>
 
 
-    <!-- =========================
-         CONTROLS
-    ========================= -->
+<!-- =========================
+     CONTROLS
+========================= -->
 
-    <div class="controls">
+<div class="controls">
 
   <input
     id="search"
@@ -728,6 +859,10 @@
 </div>
 
 
+<!-- =========================
+     COLLECTION FILTERS
+========================= -->
+
 <div class="collection-filters">
 
   <button
@@ -761,11 +896,11 @@
 </div>
 
 
-    <!-- =========================
-         COLLECTION DASHBOARD
-    ========================= -->
+<!-- =========================
+     COLLECTION DASHBOARD
+========================= -->
 
-   <div
+<div
   id="collectionDashboard"
   class="collection-dashboard"
 >
@@ -792,6 +927,7 @@
 
 
   <div class="collection-stats">
+
 
     <div class="collection-stat">
 
@@ -856,6 +992,7 @@
 
     </div>
 
+
   </div>
 
 
@@ -874,7 +1011,6 @@
       </span>
 
     </div>
-
 
     <div class="progress-bar">
 
@@ -904,7 +1040,6 @@
 
     </div>
 
-
     <div class="progress-bar">
 
       <div
@@ -916,121 +1051,34 @@
 
   </div>
 
+
 </div>
 
 
-      <div class="collection-stats">
+<!-- =========================
+     SPRITE STATS
+========================= -->
 
-        <div class="collection-stat">
-
-          <div
-            id="collectionTotal"
-            class="collection-stat-number"
-          >
-            0
-          </div>
-
-          <div class="collection-stat-label">
-            Total
-          </div>
-
-        </div>
+<div
+  id="stats"
+  class="subtitle"
+>
+  Loading sprites...
+</div>
 
 
-        <div class="collection-stat">
+<!-- =========================
+     SPRITE GRID
+========================= -->
 
-          <div
-            id="collectionOwned"
-            class="collection-stat-number"
-          >
-            0
-          </div>
-
-          <div class="collection-stat-label">
-            Owned
-          </div>
-
-        </div>
-
-
-        <div class="collection-stat">
-
-          <div
-            id="collectionMissing"
-            class="collection-stat-number"
-          >
-            0
-          </div>
-
-          <div class="collection-stat-label">
-            Missing
-          </div>
-
-        </div>
-
-
-        <div class="collection-stat">
-
-          <div
-            id="collectionMastered"
-            class="collection-stat-number"
-          >
-            0
-          </div>
-
-          <div class="collection-stat-label">
-            Mastered
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="collection-progress">
-
-        <div class="collection-progress-top">
-
-          <span>
-            Completion
-          </span>
-
-          <span id="collectionCompletion">
-            0%
-          </span>
-
-        </div>
-
-
-        <div class="progress-bar">
-
-          <div
-            id="collectionProgressFill"
-            class="progress-fill"
-          ></div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- =========================
-         SPRITES
-    ========================= -->
-
-    <div id="stats" class="subtitle">
-      Loading sprites...
-    </div>
-
-    <div
-      id="sprites"
-      style="margin-top: 15px;"
-    ></div>
+<div
+  id="sprites"
+  class="sprite-grid"
+  style="margin-top: 15px;"
+></div>
+```
 
   </div>
-
 
   <!-- =========================
        MODAL
@@ -1041,70 +1089,82 @@
     class="modal"
   >
 
-    <div class="modal-content">
-
-      <button
-        id="modalClose"
-        class="modal-close"
-      >
-        ×
-      </button>
+```
+<div class="modal-content">
 
 
-      <div class="modal-main">
-
-        <img
-          id="modalImage"
-          class="modal-image"
-          src=""
-          alt=""
-        >
-
-
-        <div>
-
-          <h2
-            id="modalTitle"
-            class="modal-title"
-          ></h2>
-
-          <div
-            id="modalRarity"
-            class="modal-rarity"
-          ></div>
-
-          <div
-            id="modalSeason"
-            class="modal-season"
-          ></div>
-
-          <div
-            id="modalDescription"
-            class="modal-description"
-          ></div>
-
-          <div
-            id="modalAbility"
-            class="modal-ability"
-          ></div>
-
-        </div>
-
-      </div>
+  <button
+    id="modalClose"
+    class="modal-close"
+    type="button"
+  >
+    ×
+  </button>
 
 
-      <div class="variants-title">
-        Variants
-      </div>
+  <div class="modal-main">
 
-      <div id="modalVariants"></div>
+
+    <img
+      id="modalImage"
+      class="modal-image"
+      src=""
+      alt=""
+    >
+
+
+    <div>
+
+      <h2
+        id="modalTitle"
+        class="modal-title"
+      ></h2>
+
+
+      <div
+        id="modalRarity"
+        class="modal-rarity"
+      ></div>
+
+
+      <div
+        id="modalSeason"
+        class="modal-season"
+      ></div>
+
+
+      <div
+        id="modalDescription"
+        class="modal-description"
+      ></div>
+
+
+      <div
+        id="modalAbility"
+        class="modal-ability"
+      ></div>
 
     </div>
+
 
   </div>
 
 
+  <div class="variants-title">
+    Variants
+  </div>
+
+
+  <div id="modalVariants"></div>
+
+
+</div>
+```
+
+  </div>
+
   <script>
+
 
     /* =========================
        SUPABASE
@@ -1257,6 +1317,8 @@
       );
 
 
+      renderSprites();
+
       updateCollectionStats();
 
     }
@@ -1273,6 +1335,7 @@
           .getElementById("emailInput")
           .value
           .trim();
+
 
       const password =
         document
@@ -1305,20 +1368,26 @@
           SUPABASE_URL +
           "/auth/v1/token?grant_type=password",
           {
+
             method: "POST",
 
             headers: {
+
               "apikey":
                 SUPABASE_KEY,
 
               "Content-Type":
                 "application/json"
+
             },
 
-            body: JSON.stringify({
-              email,
-              password
-            })
+            body:
+              JSON.stringify({
+
+                email,
+                password
+
+              })
 
           }
         );
@@ -1335,10 +1404,12 @@
           data
         );
 
+
         message.textContent =
           data.error_description ||
           data.msg ||
           "Login failed.";
+
 
         return;
 
@@ -1348,6 +1419,7 @@
       accessToken =
         data.access_token;
 
+
       refreshToken =
         data.refresh_token;
 
@@ -1356,6 +1428,7 @@
         "accessToken",
         accessToken
       );
+
 
       localStorage.setItem(
         "refreshToken",
@@ -1373,6 +1446,8 @@
       updateAccountUI();
 
       updateCollectionStats();
+
+      renderSprites();
 
 
       document.getElementById(
@@ -1578,10 +1653,12 @@
           "accountName"
         );
 
+
       const loginButton =
         document.getElementById(
           "loginButton"
         );
+
 
       const logoutButton =
         document.getElementById(
@@ -1595,8 +1672,10 @@
           currentPlayer.display_name ||
           "Logged in";
 
+
         loginButton.style.display =
           "none";
+
 
         logoutButton.style.display =
           "inline-block";
@@ -1606,8 +1685,10 @@
         accountName.textContent =
           "Not logged in";
 
+
         loginButton.style.display =
           "inline-block";
+
 
         logoutButton.style.display =
           "none";
@@ -1628,6 +1709,7 @@
           "accessToken"
         );
 
+
       const storedRefreshToken =
         localStorage.getItem(
           "refreshToken"
@@ -1646,6 +1728,7 @@
       accessToken =
         storedAccessToken;
 
+
       refreshToken =
         storedRefreshToken;
 
@@ -1658,7 +1741,10 @@
 
         await loadMyCollection();
 
+
         updateAccountUI();
+
+        renderSprites();
 
       } catch (error) {
 
@@ -1666,6 +1752,7 @@
           "Session restore failed:",
           error
         );
+
 
         logout();
 
@@ -1680,289 +1767,331 @@
 
     function renderSprites() {
 
-  const container =
-    document.getElementById(
-      "sprites"
-    );
+      const container =
+        document.getElementById(
+          "sprites"
+        );
 
-  const search =
-    document
-      .getElementById("search")
-      .value
-      .toLowerCase();
 
-  const rarity =
-    document.getElementById(
-      "rarity"
-    ).value;
+      const search =
+        document
+          .getElementById("search")
+          .value
+          .toLowerCase();
 
-  const activeFilter =
-    document.querySelector(
-      ".collection-filter.active"
-    )?.dataset.filter ||
-    "all";
 
-  const filtered =
-    allSprites.filter(
-      sprite => {
+      const rarity =
+        document.getElementById(
+          "rarity"
+        ).value;
 
-        const name =
-          sprite.sprite_name ||
-          "";
 
-        const matchesSearch =
-          name
-            .toLowerCase()
-            .includes(search);
+      const activeFilter =
+        document.querySelector(
+          ".collection-filter.active"
+        )?.dataset.filter ||
+        "all";
 
-        const matchesRarity =
-          rarity === "All" ||
-          sprite.rarity === rarity;
 
-        if (
-          !matchesSearch ||
-          !matchesRarity
-        ) {
+      const filtered =
+        allSprites.filter(
+          sprite => {
 
-          return false;
 
-        }
+            const name =
+              sprite.sprite_name ||
+              "";
 
-        const spriteVariants =
-          allVariants.filter(
-            variant =>
-              variant.sprite_id ===
-                sprite.sprite_id &&
-              variant.active !== false
-          );
 
-        const ownedVariants =
-          spriteVariants.filter(
-            variant => {
+            const matchesSearch =
+              name
+                .toLowerCase()
+                .includes(search);
 
-              const collection =
-                myCollection.find(
-                  item =>
-                    item.variant_id ===
-                    variant.variant_id
-                );
+
+            const matchesRarity =
+              rarity === "All" ||
+              sprite.rarity === rarity;
+
+
+            if (
+              !matchesSearch ||
+              !matchesRarity
+            ) {
+
+              return false;
+
+            }
+
+
+            const spriteVariants =
+              allVariants.filter(
+                variant =>
+                  variant.sprite_id ===
+                    sprite.sprite_id &&
+                  variant.active !== false
+              );
+
+
+            const ownedVariants =
+              spriteVariants.filter(
+                variant => {
+
+                  const collection =
+                    myCollection.find(
+                      item =>
+                        item.variant_id ===
+                        variant.variant_id
+                    );
+
+
+                  return (
+                    collection?.owned ===
+                    true
+                  );
+
+                }
+              );
+
+
+            const masteredVariants =
+              spriteVariants.filter(
+                variant => {
+
+                  const collection =
+                    myCollection.find(
+                      item =>
+                        item.variant_id ===
+                        variant.variant_id
+                    );
+
+
+                  return (
+                    collection?.mastered ===
+                    true
+                  );
+
+                }
+              );
+
+
+            if (
+              activeFilter ===
+              "owned"
+            ) {
 
               return (
-                collection?.owned ===
-                true
+                ownedVariants.length >
+                0
               );
 
             }
-          );
 
-        const masteredVariants =
-          spriteVariants.filter(
-            variant => {
 
-              const collection =
-                myCollection.find(
-                  item =>
-                    item.variant_id ===
-                    variant.variant_id
-                );
+            if (
+              activeFilter ===
+              "missing"
+            ) {
 
               return (
-                collection?.mastered ===
-                true
+                ownedVariants.length <
+                spriteVariants.length
               );
 
             }
-          );
 
-        if (
-          activeFilter ===
-          "owned"
-        ) {
 
-          return (
-            ownedVariants.length >
-            0
-          );
+            if (
+              activeFilter ===
+              "mastered"
+            ) {
 
-        }
+              return (
+                masteredVariants.length >
+                0
+              );
 
-        if (
-          activeFilter ===
-          "missing"
-        ) {
+            }
 
-          return (
-            ownedVariants.length <
-            spriteVariants.length
-          );
 
-        }
+            return true;
 
-        if (
-          activeFilter ===
-          "mastered"
-        ) {
+          }
+        );
 
-          return (
-            masteredVariants.length >
-            0
-          );
 
-        }
+      container.innerHTML = "";
 
-        return true;
+
+      if (!filtered.length) {
+
+        container.innerHTML = `
+          <div class="message">
+            No sprites found.
+          </div>
+        `;
+
+
+        updateStats(0);
+
+        return;
 
       }
-    );
 
-  container.innerHTML = "";
 
-  if (!filtered.length) {
+      filtered.forEach(
+        sprite => {
 
-    container.innerHTML = `
-      <div class="message">
-        No sprites found.
-      </div>
-    `;
 
-    updateStats(0);
+          const card =
+            document.createElement(
+              "div"
+            );
 
-    return;
 
-  }
+          card.className =
+            "sprite-card";
 
-  filtered.forEach(
-    sprite => {
 
-      const card =
-        document.createElement(
-          "div"
-        );
+          const spriteVariants =
+            allVariants.filter(
+              variant =>
+                variant.sprite_id ===
+                  sprite.sprite_id &&
+                variant.active !== false
+            );
 
-      card.className =
-        "sprite-card";
 
-      const spriteVariants =
-        allVariants.filter(
-          variant =>
-            variant.sprite_id ===
-              sprite.sprite_id &&
-            variant.active !== false
-        );
+          const ownedCount =
+            spriteVariants.filter(
+              variant => {
 
-      const ownedCount =
-        spriteVariants.filter(
-          variant => {
+                const collection =
+                  myCollection.find(
+                    item =>
+                      item.variant_id ===
+                      variant.variant_id
+                  );
 
-            const collection =
-              myCollection.find(
-                item =>
-                  item.variant_id ===
-                  variant.variant_id
-              );
 
-            return (
-              collection?.owned ===
-              true
+                return (
+                  collection?.owned ===
+                  true
+                );
+
+              }
+            ).length;
+
+
+          const totalVariants =
+            spriteVariants.length;
+
+
+          let collectionStatus =
+            totalVariants === 0
+              ? "No variants"
+              : `0 / ${totalVariants} variants owned`;
+
+
+          let statusClass = "";
+
+
+          if (
+            totalVariants > 0 &&
+            ownedCount ===
+              totalVariants
+          ) {
+
+            collectionStatus =
+              "✓ Complete";
+
+
+            statusClass =
+              "complete";
+
+
+            card.classList.add(
+              "collection-complete"
+            );
+
+          } else if (
+            ownedCount > 0
+          ) {
+
+            collectionStatus =
+              `${ownedCount} / ${totalVariants} variants owned`;
+
+
+            statusClass =
+              "partial";
+
+
+            card.classList.add(
+              "collection-partial"
             );
 
           }
-        ).length;
 
-      const totalVariants =
-        spriteVariants.length;
 
-      let collectionStatus =
-        "No variants owned";
+          card.innerHTML = `
 
-      if (
-        ownedCount ===
-        totalVariants &&
-        totalVariants > 0
-      ) {
+            <img
+              class="sprite-image"
+              src="${sprite.image_url || ""}"
+              alt="${sprite.sprite_name || ""}"
+            >
 
-        collectionStatus =
-          "✓ Complete";
 
-        card.classList.add(
-          "collection-complete"
-        );
+            <div class="sprite-info">
 
-      } else if (
-        ownedCount > 0
-      ) {
 
-        collectionStatus =
-          `${ownedCount} / ${totalVariants} variants owned`;
+              <div class="sprite-name">
+                ${sprite.sprite_name || "Unknown"}
+              </div>
 
-        card.classList.add(
-          "collection-partial"
-        );
 
-      } else if (
-        totalVariants > 0
-      ) {
+              <div class="rarity">
+                ${sprite.rarity || "Unknown"}
+              </div>
 
-        collectionStatus =
-          `0 / ${totalVariants} variants owned`;
 
-      }
+              <div class="season">
+                ${sprite.season || ""}
+              </div>
 
-      card.innerHTML = `
 
-        <img
-          class="sprite-image"
-          src="${sprite.image_url || ""}"
-          alt="${sprite.sprite_name || ""}"
-        >
+              <div
+                class="sprite-collection-status ${statusClass}"
+              >
+                ${collectionStatus}
+              </div>
 
-        <div class="sprite-info">
 
-          <div class="sprite-name">
-            ${sprite.sprite_name || "Unknown"}
-          </div>
+            </div>
 
-          <div class="rarity">
-            ${sprite.rarity || "Unknown"}
-          </div>
+          `;
 
-          <div class="season">
-            ${sprite.season || ""}
-          </div>
 
-          <div class="sprite-collection-status ${
-            ownedCount === totalVariants &&
-            totalVariants > 0
-              ? "complete"
-              : ownedCount > 0
-                ? "partial"
-                : ""
-          }">
-            ${collectionStatus}
-          </div>
+          card.addEventListener(
+            "click",
+            () =>
+              openModal(sprite)
+          );
 
-        </div>
 
-      `;
+          container.appendChild(
+            card
+          );
 
-      card.addEventListener(
-        "click",
-        () =>
-          openModal(sprite)
+        }
       );
 
-      container.appendChild(
-        card
+
+      updateStats(
+        filtered.length
       );
 
     }
-  );
-
-  updateStats(
-    filtered.length
-  );
-
-}
 
 
     /* =========================
@@ -1990,249 +2119,181 @@
 
     function updateCollectionStats() {
 
-  /*
-    Total active variants.
-  */
+      const total =
+        allVariants.filter(
+          variant =>
+            variant.active !== false
+        ).length;
 
-  const total =
-    allVariants.filter(
-      variant =>
-        variant.active !== false
-    ).length;
 
+      const owned =
+        myCollection.filter(
+          item =>
+            item.owned === true
+        ).length;
 
-  /*
-    Owned variants.
-  */
 
-  const owned =
-    myCollection.filter(
-      item =>
-        item.owned === true
-    ).length;
+      const mastered =
+        myCollection.filter(
+          item =>
+            item.mastered === true
+        ).length;
 
 
-  /*
-    Mastered variants.
-  */
+      const missing =
+        Math.max(
+          total - owned,
+          0
+        );
 
-  const mastered =
-    myCollection.filter(
-      item =>
-        item.mastered === true
-    ).length;
 
+      const completion =
+        total > 0
+          ? Math.round(
+              (owned / total) * 100
+            )
+          : 0;
 
-  /*
-    Missing variants.
-  */
 
-  const missing =
-    Math.max(
-      total - owned,
-      0
-    );
+      const mastery =
+        owned > 0
+          ? Math.round(
+              (mastered / owned) * 100
+            )
+          : 0;
 
 
-  /*
-    Collection completion.
-  */
+      const totalElement =
+        document.getElementById(
+          "collectionTotal"
+        );
 
-  const completion =
-    total > 0
-      ? Math.round(
-          (owned / total) * 100
-        )
-      : 0;
 
+      const ownedElement =
+        document.getElementById(
+          "collectionOwned"
+        );
 
-  /*
-    Mastery completion.
 
-    Mastery is calculated from
-    the variants you own.
+      const missingElement =
+        document.getElementById(
+          "collectionMissing"
+        );
 
-    Example:
-    10 owned
-    4 mastered
-    = 40% mastery
-  */
 
-  const mastery =
-    owned > 0
-      ? Math.round(
-          (mastered / owned) * 100
-        )
-      : 0;
+      const masteredElement =
+        document.getElementById(
+          "collectionMastered"
+        );
 
 
-  /*
-    Update total.
-  */
+      const completionElement =
+        document.getElementById(
+          "collectionCompletion"
+        );
 
-  const totalElement =
-    document.getElementById(
-      "collectionTotal"
-    );
 
+      const progressElement =
+        document.getElementById(
+          "collectionProgressFill"
+        );
 
-  if (totalElement) {
 
-    totalElement.textContent =
-      total;
+      const masteryElement =
+        document.getElementById(
+          "masteryCompletion"
+        );
 
-  }
 
+      const masteryProgressElement =
+        document.getElementById(
+          "masteryProgressFill"
+        );
 
-  /*
-    Update owned.
-  */
 
-  const ownedElement =
-    document.getElementById(
-      "collectionOwned"
-    );
+      if (totalElement) {
 
+        totalElement.textContent =
+          total;
 
-  if (ownedElement) {
+      }
 
-    ownedElement.textContent =
-      owned;
 
-  }
+      if (ownedElement) {
 
+        ownedElement.textContent =
+          owned;
 
-  /*
-    Update missing.
-  */
+      }
 
-  const missingElement =
-    document.getElementById(
-      "collectionMissing"
-    );
 
+      if (missingElement) {
 
-  if (missingElement) {
+        missingElement.textContent =
+          missing;
 
-    missingElement.textContent =
-      missing;
+      }
 
-  }
 
+      if (masteredElement) {
 
-  /*
-    Update mastered.
-  */
+        masteredElement.textContent =
+          mastered;
 
-  const masteredElement =
-    document.getElementById(
-      "collectionMastered"
-    );
+      }
 
 
-  if (masteredElement) {
+      if (completionElement) {
 
-    masteredElement.textContent =
-      mastered;
+        completionElement.textContent =
+          completion + "%";
 
-  }
+      }
 
 
-  /*
-    Update collection percentage.
-  */
+      if (progressElement) {
 
-  const completionElement =
-    document.getElementById(
-      "collectionCompletion"
-    );
+        progressElement.style.width =
+          completion + "%";
 
+      }
 
-  if (completionElement) {
 
-    completionElement.textContent =
-      completion + "%";
+      if (masteryElement) {
 
-  }
+        masteryElement.textContent =
+          mastery + "%";
 
+      }
 
-  /*
-    Update collection bar.
-  */
 
-  const progressElement =
-    document.getElementById(
-      "collectionProgressFill"
-    );
+      if (masteryProgressElement) {
 
+        masteryProgressElement.style.width =
+          mastery + "%";
 
-  if (progressElement) {
+      }
 
-    progressElement.style.width =
-      completion + "%";
 
-  }
+      const playerElement =
+        document.getElementById(
+          "collectionPlayer"
+        );
 
 
-  /*
-    Update mastery percentage.
-  */
+      if (playerElement) {
 
-  const masteryElement =
-    document.getElementById(
-      "masteryCompletion"
-    );
+        playerElement.textContent =
+          currentPlayer
+            ? (
+                currentPlayer.display_name ||
+                "Logged in"
+              )
+            : "Not logged in";
 
+      }
 
-  if (masteryElement) {
-
-    masteryElement.textContent =
-      mastery + "%";
-
-  }
-
-
-  /*
-    Update mastery bar.
-  */
-
-  const masteryProgressElement =
-    document.getElementById(
-      "masteryProgressFill"
-    );
-
-
-  if (masteryProgressElement) {
-
-    masteryProgressElement.style.width =
-      mastery + "%";
-
-  }
-
-
-  /*
-    Update player name.
-  */
-
-  const playerElement =
-    document.getElementById(
-      "collectionPlayer"
-    );
-
-
-  if (playerElement) {
-
-    playerElement.textContent =
-      currentPlayer
-        ? (
-            currentPlayer.display_name ||
-            "Logged in"
-          )
-        : "Not logged in";
-
-  }
-
-}
+    }
 
 
     /* =========================
@@ -2365,6 +2426,7 @@
       variants.forEach(
         variant => {
 
+
           const card =
             document.createElement(
               "div"
@@ -2399,11 +2461,14 @@
               alt="${variant.variant_name || ""}"
             >
 
+
             <div class="variant-info">
+
 
               <div class="variant-name">
                 ${variant.variant_name || "Variant"}
               </div>
+
 
               ${
                 variant.variant_type
@@ -2415,13 +2480,18 @@
                   : ""
               }
 
+
               <div class="variant-controls">
+
 
                 <button
                   class="owned-button ${
-                    owned ? "owned" : ""
+                    owned
+                      ? "owned"
+                      : ""
                   }"
                   data-variant-id="${variant.variant_id}"
+                  type="button"
                 >
                   ${
                     owned
@@ -2429,6 +2499,7 @@
                       : "☆ Owned"
                   }
                 </button>
+
 
                 ${
                   owned
@@ -2463,6 +2534,7 @@
                             : ""
                         }"
                         data-variant-id="${variant.variant_id}"
+                        type="button"
                       >
                         ${
                           mastered
@@ -2475,12 +2547,18 @@
                     : ""
                 }
 
+
               </div>
+
 
             </div>
 
           `;
 
+
+          /* =========================
+             OWNED BUTTON
+          ========================= */
 
           const ownedButton =
             card.querySelector(
@@ -2506,11 +2584,15 @@
                   spriteId
                 );
 
+
+                renderSprites();
+
               } catch (error) {
 
                 console.error(
                   error
                 );
+
 
                 alert(
                   "Could not update collection."
@@ -2521,6 +2603,10 @@
             }
           );
 
+
+          /* =========================
+             LEVEL INPUT
+          ========================= */
 
           const levelInput =
             card.querySelector(
@@ -2549,11 +2635,15 @@
                     spriteId
                   );
 
+
+                  renderSprites();
+
                 } catch (error) {
 
                   console.error(
                     error
                   );
+
 
                   alert(
                     "Could not update level."
@@ -2566,6 +2656,10 @@
 
           }
 
+
+          /* =========================
+             MASTERED BUTTON
+          ========================= */
 
           const masteredButton =
             card.querySelector(
@@ -2593,11 +2687,15 @@
                     spriteId
                   );
 
+
+                  renderSprites();
+
                 } catch (error) {
 
                   console.error(
                     error
                   );
+
 
                   alert(
                     "Could not update mastery."
@@ -2737,9 +2835,9 @@
 
         updateCollectionStats();
 
-renderSprites();
+        renderSprites();
 
-return;
+        return;
 
       }
 
@@ -2829,9 +2927,9 @@ return;
 
       updateCollectionStats();
 
-renderSprites();
+      renderSprites();
 
-}
+    }
 
 
     /* =========================
@@ -2929,11 +3027,11 @@ renderSprites();
       }
 
 
-    updateCollectionStats();
+      updateCollectionStats();
 
-renderSprites();
+      renderSprites();
 
-}
+    }
 
 
     /* =========================
@@ -3059,11 +3157,11 @@ renderSprites();
       }
 
 
-     updateCollectionStats();
+      updateCollectionStats();
 
-renderSprites();
+      renderSprites();
 
-}
+    }
 
 
     /* =========================
@@ -3084,44 +3182,47 @@ renderSprites();
         "change",
         renderSprites
       );
-document
-  .querySelectorAll(
-    ".collection-filter"
-  )
-  .forEach(
-    button => {
 
-      button.addEventListener(
-        "click",
-        () => {
 
-          document
-            .querySelectorAll(
-              ".collection-filter"
-            )
-            .forEach(
-              filterButton => {
+    document
+      .querySelectorAll(
+        ".collection-filter"
+      )
+      .forEach(
+        button => {
 
-                filterButton.classList.remove(
-                  "active"
+          button.addEventListener(
+            "click",
+            () => {
+
+              document
+                .querySelectorAll(
+                  ".collection-filter"
+                )
+                .forEach(
+                  filterButton => {
+
+                    filterButton.classList.remove(
+                      "active"
+                    );
+
+                  }
                 );
 
-              }
-            );
+
+              button.classList.add(
+                "active"
+              );
 
 
-          button.classList.add(
-            "active"
+              renderSprites();
+
+            }
           );
-
-
-          renderSprites();
 
         }
       );
 
-    }
-  );
 
     document
       .getElementById("loginButton")
@@ -3227,6 +3328,8 @@ document
         updateCollectionStats();
 
         updateAccountUI();
+
+        renderSprites();
 
 
       } catch (error) {
