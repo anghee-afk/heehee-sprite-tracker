@@ -1564,34 +1564,20 @@
     ========================= -->
 
     <div class="account-bar">
+  <span id="accountName" class="account-name">Not logged in</span>
 
+  <button id="loginButton" class="account-button">
+    Login
+  </button>
 
-      <span
-        id="accountName"
-        class="account-name"
-      >
-        Not logged in
-      </span>
+  <button id="registerButton" class="account-button">
+    Create Account
+  </button>
 
-
-      <button
-        id="loginButton"
-        class="account-button"
-      >
-        Login
-      </button>
-
-
-      <button
-        id="logoutButton"
-        class="account-button"
-        style="display: none;"
-      >
-        Logout
-      </button>
-
-
-    </div>
+  <button id="logoutButton" class="account-button" style="display: none;">
+    Logout
+  </button>
+</div>
 
 
     <!-- =========================
@@ -1645,7 +1631,51 @@
 
 
     </div>
+<div id="registerPanel" class="login-panel" style="display: none;">
+  <h2>Create Account</h2>
 
+  <div class="login-fields">
+
+    <input
+      id="registerDisplayName"
+      type="text"
+      placeholder="Display Name"
+      maxlength="50"
+    >
+
+    <input
+      id="registerDiscordName"
+      type="text"
+      placeholder="Discord Name"
+      maxlength="50"
+    >
+
+    <input
+      id="registerEmail"
+      type="email"
+      placeholder="Email"
+    >
+
+    <input
+      id="registerPassword"
+      type="password"
+      placeholder="Password"
+    >
+
+    <input
+      id="registerPasswordConfirm"
+      type="password"
+      placeholder="Confirm Password"
+    >
+
+    <button id="registerSubmit" class="login-submit">
+      Create Account
+    </button>
+
+  </div>
+
+  <div id="registerMessage" class="login-message"></div>
+</div>
 
     <!-- =========================
          CONTROLS
@@ -2375,7 +2405,125 @@
 
 
     }
+async function register() {
+  const displayName = document
+    .getElementById("registerDisplayName")
+    .value
+    .trim();
 
+  const discordName = document
+    .getElementById("registerDiscordName")
+    .value
+    .trim();
+
+  const email = document
+    .getElementById("registerEmail")
+    .value
+    .trim();
+
+  const password = document
+    .getElementById("registerPassword")
+    .value;
+
+  const passwordConfirm = document
+    .getElementById("registerPasswordConfirm")
+    .value;
+
+  const message = document.getElementById("registerMessage");
+
+  message.textContent = "";
+
+  if (!displayName || !discordName || !email || !password || !passwordConfirm) {
+    message.textContent = "Please fill in all fields.";
+    return;
+  }
+
+  if (password !== passwordConfirm) {
+    message.textContent = "Passwords do not match.";
+    return;
+  }
+
+  if (password.length < 6) {
+    message.textContent = "Password must be at least 6 characters.";
+    return;
+  }
+
+  message.textContent = "Creating account...";
+
+  try {
+    const response = await fetch(
+      SUPABASE_URL + "/auth/v1/signup",
+      {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.msg ||
+        data.message ||
+        data.error_description ||
+        "Could not create account."
+      );
+    }
+
+    const user = data.user;
+
+    if (!user) {
+      throw new Error("Account was created, but no user was returned.");
+    }
+
+    /*
+     * Create the player's profile.
+     */
+    const playerId = crypto.randomUUID();
+
+    const playerResponse = await supabaseRequest(
+      "/rest/v1/players",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          player_id: playerId,
+          discord_id: null,
+          discord_name: discordName,
+          display_name: displayName,
+          active: true,
+          admin: false,
+          auth_user_id: user.id
+        })
+      }
+    );
+
+    if (!playerResponse.ok) {
+      const error = await playerResponse.text();
+
+      throw new Error(
+        "Account created, but player profile could not be created: " +
+        error
+      );
+    }
+
+    message.textContent =
+      "Account created successfully! You can now log in.";
+
+    document.getElementById("registerPassword").value = "";
+    document.getElementById("registerPasswordConfirm").value = "";
+
+  } catch (error) {
+    console.error("Registration error:", error);
+    message.textContent = error.message;
+  }
+}
 
     /* =========================
        LOAD CURRENT USER
@@ -4337,28 +4485,15 @@
       );
 
 
-    document
-      .getElementById("loginButton")
-      .addEventListener(
-        "click",
-        () => {
+    document.getElementById("loginButton").addEventListener("click", () => {
+  const loginPanel = document.getElementById("loginPanel");
+  const registerPanel = document.getElementById("registerPanel");
 
+  loginPanel.style.display =
+    loginPanel.style.display === "none" ? "block" : "none";
 
-          const panel =
-            document.getElementById(
-              "loginPanel"
-            );
-
-
-          panel.style.display =
-            panel.style.display ===
-            "none"
-              ? "block"
-              : "none";
-
-
-        }
-      );
+  registerPanel.style.display = "none";
+});
 
 
     document
@@ -4367,7 +4502,16 @@
         "click",
         login
       );
+document.getElementById("registerButton").addEventListener("click", () => {
+  const registerPanel = document.getElementById("registerPanel");
+  const loginPanel = document.getElementById("loginPanel");
 
+  registerPanel.style.display =
+    registerPanel.style.display === "none" ? "block" : "none";
+
+  loginPanel.style.display = "none";
+});
+    document.getElementById("registerSubmit").addEventListener("click", register);
 
     document
       .getElementById("logoutButton")
