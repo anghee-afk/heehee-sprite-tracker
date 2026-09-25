@@ -1518,9 +1518,7 @@ function openModal(
    RENDER VARIANTS
 ========================= */
 
-function renderVariants(
-  spriteId
-) {
+function renderVariants(spriteId) {
 
   const container =
     document.getElementById(
@@ -1567,6 +1565,18 @@ function renderVariants(
         "variant-card";
 
 
+      const collection =
+        myCollection.find(
+          item =>
+            item.variant_id ===
+            variant.variant_id
+        );
+
+
+      const owned =
+        collection?.owned === true;
+
+
       card.innerHTML = `
 
         <img
@@ -1591,9 +1601,40 @@ function renderVariants(
               : ""
           }
 
+          <button
+            class="owned-button ${owned ? "owned" : ""}"
+            data-variant-id="${variant.variant_id}"
+          >
+            ${owned ? "★ Owned" : "☆ Owned"}
+          </button>
+
         </div>
 
       `;
+
+
+      const ownedButton =
+        card.querySelector(
+          ".owned-button"
+        );
+
+
+      ownedButton.addEventListener(
+        "click",
+        async event => {
+
+          event.stopPropagation();
+
+          await toggleOwned(
+            variant.variant_id
+          );
+
+          renderVariants(
+            spriteId
+          );
+
+        }
+      );
 
 
       container.appendChild(
