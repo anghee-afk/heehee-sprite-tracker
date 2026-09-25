@@ -302,7 +302,28 @@
       font-size: 11px;
       color: #666;
     }
+.sprite-collection-status {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #888;
+}
 
+.sprite-collection-status.partial {
+  color: #aaa;
+}
+
+.sprite-collection-status.complete {
+  color: #fff;
+  font-weight: 600;
+}
+
+.sprite-card.collection-complete {
+  border-color: #555;
+}
+
+.sprite-card.collection-partial {
+  border-color: #3d3d3d;
+}
     .message {
       grid-column: 1 / -1;
       padding: 30px;
@@ -1664,26 +1685,22 @@
       "sprites"
     );
 
-
   const search =
     document
       .getElementById("search")
       .value
       .toLowerCase();
 
-
   const rarity =
     document.getElementById(
       "rarity"
     ).value;
-
 
   const activeFilter =
     document.querySelector(
       ".collection-filter.active"
     )?.dataset.filter ||
     "all";
-
 
   const filtered =
     allSprites.filter(
@@ -1693,17 +1710,14 @@
           sprite.sprite_name ||
           "";
 
-
         const matchesSearch =
           name
             .toLowerCase()
             .includes(search);
 
-
         const matchesRarity =
           rarity === "All" ||
           sprite.rarity === rarity;
-
 
         if (
           !matchesSearch ||
@@ -1714,12 +1728,6 @@
 
         }
 
-
-        /*
-          Find all active variants
-          belonging to this Sprite.
-        */
-
         const spriteVariants =
           allVariants.filter(
             variant =>
@@ -1727,12 +1735,6 @@
                 sprite.sprite_id &&
               variant.active !== false
           );
-
-
-        /*
-          Find the collection rows
-          belonging to those variants.
-        */
 
         const ownedVariants =
           spriteVariants.filter(
@@ -1753,7 +1755,6 @@
             }
           );
 
-
         const masteredVariants =
           spriteVariants.filter(
             variant => {
@@ -1773,11 +1774,6 @@
             }
           );
 
-
-        /*
-          Collection filters.
-        */
-
         if (
           activeFilter ===
           "owned"
@@ -1789,7 +1785,6 @@
           );
 
         }
-
 
         if (
           activeFilter ===
@@ -1803,7 +1798,6 @@
 
         }
 
-
         if (
           activeFilter ===
           "mastered"
@@ -1816,15 +1810,12 @@
 
         }
 
-
         return true;
 
       }
     );
 
-
   container.innerHTML = "";
-
 
   if (!filtered.length) {
 
@@ -1840,7 +1831,6 @@
 
   }
 
-
   filtered.forEach(
     sprite => {
 
@@ -1849,10 +1839,74 @@
           "div"
         );
 
-
       card.className =
         "sprite-card";
 
+      const spriteVariants =
+        allVariants.filter(
+          variant =>
+            variant.sprite_id ===
+              sprite.sprite_id &&
+            variant.active !== false
+        );
+
+      const ownedCount =
+        spriteVariants.filter(
+          variant => {
+
+            const collection =
+              myCollection.find(
+                item =>
+                  item.variant_id ===
+                  variant.variant_id
+              );
+
+            return (
+              collection?.owned ===
+              true
+            );
+
+          }
+        ).length;
+
+      const totalVariants =
+        spriteVariants.length;
+
+      let collectionStatus =
+        "No variants owned";
+
+      if (
+        ownedCount ===
+        totalVariants &&
+        totalVariants > 0
+      ) {
+
+        collectionStatus =
+          "✓ Complete";
+
+        card.classList.add(
+          "collection-complete"
+        );
+
+      } else if (
+        ownedCount > 0
+      ) {
+
+        collectionStatus =
+          `${ownedCount} / ${totalVariants} variants owned`;
+
+        card.classList.add(
+          "collection-partial"
+        );
+
+      } else if (
+        totalVariants > 0
+      ) {
+
+        collectionStatus =
+          `0 / ${totalVariants} variants owned`;
+
+      }
 
       card.innerHTML = `
 
@@ -1876,10 +1930,20 @@
             ${sprite.season || ""}
           </div>
 
+          <div class="sprite-collection-status ${
+            ownedCount === totalVariants &&
+            totalVariants > 0
+              ? "complete"
+              : ownedCount > 0
+                ? "partial"
+                : ""
+          }">
+            ${collectionStatus}
+          </div>
+
         </div>
 
       `;
-
 
       card.addEventListener(
         "click",
@@ -1887,14 +1951,12 @@
           openModal(sprite)
       );
 
-
       container.appendChild(
         card
       );
 
     }
   );
-
 
   updateStats(
     filtered.length
