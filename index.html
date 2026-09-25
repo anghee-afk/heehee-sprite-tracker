@@ -2,14 +2,11 @@
 <html lang="en">
 
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>HeeHee Sprite Tracker</title>
 
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -41,7 +38,6 @@
       font-size: 14px;
     }
 
-
     /* MAIN */
 
     main {
@@ -59,7 +55,6 @@
       color: #8f8f98;
       margin-bottom: 30px;
     }
-
 
     /* CONTROLS */
 
@@ -96,7 +91,6 @@
       cursor: pointer;
     }
 
-
     /* STATS */
 
     .stats {
@@ -105,20 +99,13 @@
       font-size: 14px;
     }
 
-
-    /* GRID */
+    /* SPRITE GRID */
 
     #sprites {
       display: grid;
-      grid-template-columns: repeat(
-        auto-fill,
-        minmax(220px, 1fr)
-      );
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
     }
-
-
-    /* CARD */
 
     .sprite-card {
       background: #18181d;
@@ -134,7 +121,6 @@
       border-color: #555563;
     }
 
-
     .sprite-image {
       width: 100%;
       height: 220px;
@@ -142,7 +128,6 @@
       background: #222229;
       display: block;
     }
-
 
     .sprite-info {
       padding: 16px;
@@ -165,19 +150,154 @@
       font-size: 13px;
     }
 
-
-    /* STATES */
-
     .message {
       padding: 40px;
       text-align: center;
       color: #8f8f98;
     }
 
+    /* MODAL */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 100%;
+      max-width: 850px;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #18181d;
+      border: 1px solid #303038;
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 15px;
+      right: 18px;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      background: #292930;
+      color: white;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .close-button:hover {
+      background: #3a3a43;
+    }
+
+    .modal-top {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 320px;
+      object-fit: contain;
+      background: #222229;
+      border-radius: 12px;
+    }
+
+    .modal-name {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 10px 0;
+    }
+
+    .modal-rarity {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .modal-season {
+      color: #8f8f98;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .detail-section {
+      margin-top: 25px;
+    }
+
+    .detail-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8f8f98;
+      margin-bottom: 8px;
+    }
+
+    .detail-text {
+      color: #dddddf;
+      line-height: 1.6;
+    }
+
+    /* VARIANTS */
+
+    .variants {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+    }
+
+    .variant-card {
+      background: #222229;
+      border: 1px solid #303038;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .variant-image {
+      width: 100%;
+      height: 120px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .variant-info {
+      padding: 10px;
+    }
+
+    .variant-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .variant-type {
+      color: #777782;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .no-variants {
+      color: #777782;
+      font-size: 14px;
+    }
 
     /* MOBILE */
 
-    @media (max-width: 600px) {
+    @media (max-width: 700px) {
 
       header {
         padding: 24px;
@@ -193,10 +313,7 @@
       }
 
       #sprites {
-        grid-template-columns: repeat(
-          2,
-          minmax(0, 1fr)
-        );
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
       }
 
@@ -212,41 +329,40 @@
         font-size: 16px;
       }
 
+      .modal-content {
+        padding: 20px;
+      }
+
+      .modal-top {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .modal-image {
+        height: 250px;
+      }
+
+      .modal-name {
+        font-size: 26px;
+      }
     }
-
   </style>
-
 </head>
-
 
 <body>
 
-
 <header>
-
-  <div class="logo">
-    HEEHEE
-  </div>
-
-  <div class="subtitle">
-    Fortnite Sprite Tracker
-  </div>
-
+  <div class="logo">HEEHEE</div>
+  <div class="subtitle">Fortnite Sprite Tracker</div>
 </header>
-
-
 
 <main>
 
-
-  <h1 class="page-title">
-    Sprites
-  </h1>
+  <h1 class="page-title">Sprites</h1>
 
   <div class="page-description">
     Collect every Sprite in Fortnite.
   </div>
-
 
   <div class="controls">
 
@@ -257,10 +373,7 @@
       placeholder="Search sprites..."
     >
 
-    <select
-      id="rarity"
-      class="filter"
-    >
+    <select id="rarity" class="filter">
 
       <option value="All">
         All Rarities
@@ -286,40 +399,142 @@
 
   </div>
 
-
-  <div
-    id="stats"
-    class="stats"
-  >
+  <div id="stats" class="stats">
     Loading sprites...
   </div>
 
-
   <div id="sprites"></div>
-
 
 </main>
 
 
+<!-- SPRITE DETAILS MODAL -->
+
+<div id="spriteModal" class="modal">
+
+  <div class="modal-content">
+
+    <button
+      id="closeModal"
+      class="close-button"
+    >
+      ×
+    </button>
+
+    <div class="modal-top">
+
+      <img
+        id="modalImage"
+        class="modal-image"
+        src=""
+        alt=""
+      >
+
+      <div>
+
+        <div
+          id="modalName"
+          class="modal-name"
+        ></div>
+
+        <div
+          id="modalRarity"
+          class="modal-rarity"
+        ></div>
+
+        <div
+          id="modalSeason"
+          class="modal-season"
+        ></div>
+
+        <div class="detail-section">
+
+          <div class="detail-title">
+            Description
+          </div>
+
+          <div
+            id="modalDescription"
+            class="detail-text"
+          >
+          </div>
+
+        </div>
+
+        <div
+          id="abilitySection"
+          class="detail-section"
+        >
+
+          <div class="detail-title">
+            Ability
+          </div>
+
+          <div
+            id="modalAbility"
+            class="detail-text"
+          >
+          </div>
+
+        </div>
+
+        <div
+          id="levelSection"
+          class="detail-section"
+        >
+
+          <div class="detail-title">
+            Max Level
+          </div>
+
+          <div
+            id="modalLevel"
+            class="detail-text"
+          >
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- VARIANTS -->
+
+    <div class="detail-section">
+
+      <div class="detail-title">
+        Variants
+      </div>
+
+      <div
+        id="modalVariants"
+        class="variants"
+      >
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <script>
 
-
-const SUPABASE_URL =
-  "https://mvspchowsinkymgytyeb.supabase.co/rest/v1/";
-
-
-const SUPABASE_KEY =
-  "sb_publishable_mbdvlfY7O8Mb61KtZYoimw_b9Aer0Sb";
-
-
+const SUPABASE_URL = "https://mvspchowsinkymgytyeb.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_mbdvlfY7O8Mb61KtZYoimw_b9Aer0Sb";
 
 let allSprites = [];
+let allVariants = [];
 
 
+/* =========================
+   LOAD SPRITES
+========================= */
 
 async function loadSprites() {
-
 
   const container =
     document.getElementById("sprites");
@@ -327,63 +542,88 @@ async function loadSprites() {
   const stats =
     document.getElementById("stats");
 
-
   try {
 
-
-    const response =
-      await fetch(
-        SUPABASE_URL + "/sprites?select=*",
-        {
-          headers: {
-            "apikey": SUPABASE_KEY,
-            "Authorization":
-              "Bearer " + SUPABASE_KEY
-          }
+    const response = await fetch(
+      SUPABASE_URL + "/sprites?select=*",
+      {
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization":
+            "Bearer " + SUPABASE_KEY
         }
-      );
-
+      }
+    );
 
     if (!response.ok) {
-
       throw new Error(
         "Supabase returned " +
         response.status
       );
-
     }
 
-
-    allSprites =
-      await response.json();
-
+    allSprites = await response.json();
 
     renderSprites();
 
-
   } catch (error) {
 
-
     console.error(error);
-
 
     stats.textContent =
       "Collection error: " +
       error.message;
-
-
   }
-
 }
 
 
+/* =========================
+   LOAD VARIANTS
+========================= */
+
+async function loadVariants() {
+
+  try {
+
+    const response = await fetch(
+      SUPABASE_URL + "/variants?select=*",
+      {
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization":
+            "Bearer " + SUPABASE_KEY
+        }
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        "Supabase returned " +
+        response.status
+      );
+    }
+
+    allVariants = await response.json();
+
+  } catch (error) {
+
+    console.error(
+      "Variant loading error:",
+      error
+    );
+
+  }
+}
+
+
+/* =========================
+   RENDER SPRITES
+========================= */
 
 function renderSprites() {
 
-
   const container =
     document.getElementById("sprites");
-
 
   const search =
     document
@@ -391,27 +631,24 @@ function renderSprites() {
       .value
       .toLowerCase();
 
-
   const rarity =
-    document
-      .getElementById("rarity")
-      .value;
+    document.getElementById("rarity").value;
 
 
   const filtered =
     allSprites.filter(sprite => {
 
+      const name =
+        sprite.sprite_name || "";
 
       const matchesSearch =
-        sprite.sprite_name
+        name
           .toLowerCase()
           .includes(search);
-
 
       const matchesRarity =
         rarity === "All" ||
         sprite.rarity === rarity;
-
 
       return (
         matchesSearch &&
@@ -421,9 +658,7 @@ function renderSprites() {
     });
 
 
-
   container.innerHTML = "";
-
 
 
   if (filtered.length === 0) {
@@ -437,17 +672,13 @@ function renderSprites() {
     updateStats(0);
 
     return;
-
   }
-
 
 
   filtered.forEach(sprite => {
 
-
     const card =
       document.createElement("div");
-
 
     card.className =
       "sprite-card";
@@ -457,22 +688,22 @@ function renderSprites() {
 
       <img
         class="sprite-image"
-        src="${sprite.image_url}"
-        alt="${sprite.sprite_name}"
+        src="${sprite.image_url || ""}"
+        alt="${sprite.sprite_name || ""}"
       >
 
       <div class="sprite-info">
 
         <div class="sprite-name">
-          ${sprite.sprite_name}
+          ${sprite.sprite_name || "Unknown"}
         </div>
 
         <div class="rarity">
-          ${sprite.rarity}
+          ${sprite.rarity || "Unknown"}
         </div>
 
         <div class="season">
-          ${sprite.season}
+          ${sprite.season || ""}
         </div>
 
       </div>
@@ -480,11 +711,17 @@ function renderSprites() {
     `;
 
 
+    /* CLICK CARD */
+
+    card.addEventListener(
+      "click",
+      () => openModal(sprite)
+    );
+
+
     container.appendChild(card);
 
-
   });
-
 
 
   updateStats(filtered.length);
@@ -492,10 +729,15 @@ function renderSprites() {
 }
 
 
+/* =========================
+   UPDATE STATS
+========================= */
 
 function updateStats(count) {
 
-  document.getElementById("stats").textContent =
+  document.getElementById(
+    "stats"
+  ).textContent =
     count +
     " of " +
     allSprites.length +
@@ -504,6 +746,267 @@ function updateStats(count) {
 }
 
 
+/* =========================
+   OPEN MODAL
+========================= */
+
+function openModal(sprite) {
+
+  const modal =
+    document.getElementById(
+      "spriteModal"
+    );
+
+
+  document.getElementById(
+    "modalImage"
+  ).src =
+    sprite.image_url || "";
+
+
+  document.getElementById(
+    "modalImage"
+  ).alt =
+    sprite.sprite_name || "";
+
+
+  document.getElementById(
+    "modalName"
+  ).textContent =
+    sprite.sprite_name || "Unknown";
+
+
+  document.getElementById(
+    "modalRarity"
+  ).textContent =
+    "Rarity: " +
+    (sprite.rarity || "Unknown");
+
+
+  document.getElementById(
+    "modalSeason"
+  ).textContent =
+    sprite.season || "";
+
+
+  document.getElementById(
+    "modalDescription"
+  ).textContent =
+    sprite.description ||
+    "No description available.";
+
+
+  /* ABILITY */
+
+  const abilitySection =
+    document.getElementById(
+      "abilitySection"
+    );
+
+  const ability =
+    document.getElementById(
+      "modalAbility"
+    );
+
+
+  if (sprite.ability) {
+
+    ability.textContent =
+      sprite.ability;
+
+    abilitySection.style.display =
+      "block";
+
+  } else {
+
+    abilitySection.style.display =
+      "none";
+
+  }
+
+
+  /* MAX LEVEL */
+
+  const levelSection =
+    document.getElementById(
+      "levelSection"
+    );
+
+  const level =
+    document.getElementById(
+      "modalLevel"
+    );
+
+
+  if (sprite.max_level) {
+
+    level.textContent =
+      sprite.max_level;
+
+    levelSection.style.display =
+      "block";
+
+  } else {
+
+    levelSection.style.display =
+      "none";
+
+  }
+
+
+  /* VARIANTS */
+
+  renderVariants(sprite.sprite_id);
+
+
+  modal.classList.add("open");
+
+}
+
+
+/* =========================
+   RENDER VARIANTS
+========================= */
+
+function renderVariants(spriteId) {
+
+  const container =
+    document.getElementById(
+      "modalVariants"
+    );
+
+
+  const variants =
+    allVariants.filter(
+      variant =>
+        variant.sprite_id === spriteId &&
+        variant.active !== false
+    );
+
+
+  container.innerHTML = "";
+
+
+  if (variants.length === 0) {
+
+    container.innerHTML = `
+      <div class="no-variants">
+        No variants available.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  variants.forEach(variant => {
+
+    const card =
+      document.createElement("div");
+
+    card.className =
+      "variant-card";
+
+
+    card.innerHTML = `
+
+      <img
+        class="variant-image"
+        src="${variant.image_url || ""}"
+        alt="${variant.variant_name || ""}"
+      >
+
+      <div class="variant-info">
+
+        <div class="variant-name">
+          ${variant.variant_name || "Variant"}
+        </div>
+
+        ${
+          variant.variant_type
+            ? `
+              <div class="variant-type">
+                ${variant.variant_type}
+              </div>
+            `
+            : ""
+        }
+
+      </div>
+
+    `;
+
+
+    container.appendChild(card);
+
+  });
+
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closeModal() {
+
+  document
+    .getElementById("spriteModal")
+    .classList.remove("open");
+
+}
+
+
+document
+  .getElementById("closeModal")
+  .addEventListener(
+    "click",
+    closeModal
+  );
+
+
+/* CLICK OUTSIDE MODAL */
+
+document
+  .getElementById("spriteModal")
+  .addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target.id ===
+        "spriteModal"
+      ) {
+
+        closeModal();
+
+      }
+
+    }
+  );
+
+
+/* ESC KEY */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key === "Escape"
+    ) {
+
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   SEARCH
+========================= */
 
 document
   .getElementById("search")
@@ -513,6 +1016,9 @@ document
   );
 
 
+/* =========================
+   RARITY FILTER
+========================= */
 
 document
   .getElementById("rarity")
@@ -522,13 +1028,22 @@ document
   );
 
 
+/* =========================
+   START
+========================= */
 
-loadSprites();
+async function startTracker() {
 
+  await Promise.all([
+    loadSprites(),
+    loadVariants()
+  ]);
+
+}
+
+startTracker();
 
 </script>
 
-
 </body>
-
 </html>
