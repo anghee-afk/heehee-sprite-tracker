@@ -1585,30 +1585,55 @@ function renderVariants(spriteId) {
           alt="${variant.variant_name || ""}"
         >
 
-        <div class="variant-info">
+        <div class="variant-controls">
 
-          <div class="variant-name">
-            ${variant.variant_name || "Variant"}
-          </div>
+  <button
+    class="owned-button ${owned ? "owned" : ""}"
+    data-variant-id="${variant.variant_id}"
+  >
+    ${owned ? "★ Owned" : "☆ Owned"}
+  </button>
 
-          ${
-            variant.variant_type
-              ? `
-                <div class="variant-type">
-                  ${variant.variant_type}
-                </div>
-              `
-              : ""
-          }
+  ${
+    owned
+      ? `
+        <div class="level-control">
 
-          <button
-            class="owned-button ${owned ? "owned" : ""}"
+          <label>
+            Level
+          </label>
+
+          <input
+            type="number"
+            class="level-input"
+            min="1"
+            max="999"
+            value="${collection?.level ?? ""}"
+            placeholder="—"
             data-variant-id="${variant.variant_id}"
           >
-            ${owned ? "★ Owned" : "☆ Owned"}
-          </button>
 
         </div>
+
+        <button
+          class="mastered-button ${
+            collection?.mastered === true
+              ? "mastered"
+              : ""
+          }"
+          data-variant-id="${variant.variant_id}"
+        >
+          ${
+            collection?.mastered === true
+              ? "🏆 Mastered"
+              : "☆ Mastered"
+          }
+        </button>
+      `
+      : ""
+  }
+
+</div>
 
       `;
 
@@ -1652,27 +1677,19 @@ function renderVariants(spriteId) {
     return;
   }
 
-
   const existing =
     myCollection.find(
       item =>
-        item.variant_id ===
-        variantId
+        item.variant_id === variantId
     );
-
 
   const now =
     new Date().toISOString();
-
-
-  // If the collection entry already exists,
-  // toggle its Owned status.
 
   if (existing) {
 
     const newOwned =
       existing.owned !== true;
-
 
     const response =
       await supabaseRequest(
@@ -1703,15 +1720,11 @@ function renderVariants(spriteId) {
 
             first_collected:
               existing.first_collected ||
-              (newOwned
-                ? now
-                : null)
+              (newOwned ? now : null)
 
           })
-
         }
       );
-
 
     if (!response.ok) {
 
@@ -1722,13 +1735,10 @@ function renderVariants(spriteId) {
         "Could not update collection: " +
         error
       );
-
     }
-
 
     const updated =
       await response.json();
-
 
     if (updated.length) {
 
@@ -1739,27 +1749,18 @@ function renderVariants(spriteId) {
             variantId
         );
 
-
       myCollection[index] =
         updated[0];
-
     }
 
-
     return;
-
   }
-
-
-  // If there is no entry yet,
-  // create one.
 
   const collectionId =
     "COL_" +
     currentPlayer.player_id +
     "_" +
     variantId;
-
 
   const response =
     await supabaseRequest(
@@ -1786,6 +1787,9 @@ function renderVariants(spriteId) {
           owned:
             true,
 
+          level:
+            null,
+
           mastered:
             false,
 
@@ -1793,13 +1797,14 @@ function renderVariants(spriteId) {
             now,
 
           first_collected:
-            now
+            now,
+
+          first_mastered:
+            null
 
         })
-
       }
     );
-
 
   if (!response.ok) {
 
@@ -1810,20 +1815,16 @@ function renderVariants(spriteId) {
       "Could not add to collection: " +
       error
     );
-
   }
-
 
   const created =
     await response.json();
-
 
   if (created.length) {
 
     myCollection.push(
       created[0]
     );
-
   }
 
 }
