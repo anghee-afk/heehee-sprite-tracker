@@ -1645,6 +1645,188 @@ function renderVariants(spriteId) {
   );
 
 }
+  async function toggleOwned(variantId) {
+
+  if (!currentPlayer || !accessToken) {
+    alert("Please log in first.");
+    return;
+  }
+
+
+  const existing =
+    myCollection.find(
+      item =>
+        item.variant_id ===
+        variantId
+    );
+
+
+  const now =
+    new Date().toISOString();
+
+
+  // If the collection entry already exists,
+  // toggle its Owned status.
+
+  if (existing) {
+
+    const newOwned =
+      existing.owned !== true;
+
+
+    const response =
+      await supabaseRequest(
+        "/rest/v1/collections" +
+        "?player_id=eq." +
+        encodeURIComponent(
+          currentPlayer.player_id
+        ) +
+        "&variant_id=eq." +
+        encodeURIComponent(
+          variantId
+        ),
+        {
+          method: "PATCH",
+
+          headers: {
+            "Prefer":
+              "return=representation"
+          },
+
+          body: JSON.stringify({
+
+            owned:
+              newOwned,
+
+            last_updated:
+              now,
+
+            first_collected:
+              existing.first_collected ||
+              (newOwned
+                ? now
+                : null)
+
+          })
+
+        }
+      );
+
+
+    if (!response.ok) {
+
+      const error =
+        await response.text();
+
+      throw new Error(
+        "Could not update collection: " +
+        error
+      );
+
+    }
+
+
+    const updated =
+      await response.json();
+
+
+    if (updated.length) {
+
+      const index =
+        myCollection.findIndex(
+          item =>
+            item.variant_id ===
+            variantId
+        );
+
+
+      myCollection[index] =
+        updated[0];
+
+    }
+
+
+    return;
+
+  }
+
+
+  // If there is no entry yet,
+  // create one.
+
+  const collectionId =
+    "COL_" +
+    currentPlayer.player_id +
+    "_" +
+    variantId;
+
+
+  const response =
+    await supabaseRequest(
+      "/rest/v1/collections",
+      {
+        method: "POST",
+
+        headers: {
+          "Prefer":
+            "return=representation"
+        },
+
+        body: JSON.stringify({
+
+          collection_id:
+            collectionId,
+
+          player_id:
+            currentPlayer.player_id,
+
+          variant_id:
+            variantId,
+
+          owned:
+            true,
+
+          mastered:
+            false,
+
+          last_updated:
+            now,
+
+          first_collected:
+            now
+
+        })
+
+      }
+    );
+
+
+  if (!response.ok) {
+
+    const error =
+      await response.text();
+
+    throw new Error(
+      "Could not add to collection: " +
+      error
+    );
+
+  }
+
+
+  const created =
+    await response.json();
+
+
+  if (created.length) {
+
+    myCollection.push(
+      created[0]
+    );
+
+  }
+
+}
 
 
 /* =========================
