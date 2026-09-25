@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,9 +22,17 @@
     /* HEADER */
 
     header {
-      padding: 30px 6%;
+      padding: 24px 6%;
       border-bottom: 1px solid #29292f;
       background: #141418;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .header-left {
+      min-width: 0;
     }
 
     .logo {
@@ -36,6 +45,101 @@
       color: #8f8f98;
       margin-top: 6px;
       font-size: 14px;
+    }
+
+    /* ACCOUNT */
+
+    .account-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .account-name {
+      color: #dddddf;
+      font-size: 14px;
+    }
+
+    .account-button {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #303038;
+      background: #19191f;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .account-button:hover {
+      background: #292930;
+    }
+
+    /* LOGIN */
+
+    .login-panel {
+      max-width: 420px;
+      margin: 40px auto;
+      padding: 25px;
+      background: #18181d;
+      border: 1px solid #303038;
+      border-radius: 14px;
+      display: none;
+    }
+
+    .login-panel.open {
+      display: block;
+    }
+
+    .login-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .login-description {
+      color: #8f8f98;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 13px 14px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: 1px solid #303038;
+      background: #19191f;
+      color: white;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .login-input:focus {
+      border-color: #666675;
+    }
+
+    .login-submit {
+      width: 100%;
+      padding: 13px;
+      border-radius: 8px;
+      border: none;
+      background: #ffffff;
+      color: #111111;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .login-submit:hover {
+      background: #dddddf;
+    }
+
+    .login-message {
+      margin-top: 15px;
+      color: #8f8f98;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     /* MAIN */
@@ -301,6 +405,16 @@
 
       header {
         padding: 24px;
+        align-items: flex-start;
+      }
+
+      .account-area {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .account-name {
+        font-size: 12px;
       }
 
       main {
@@ -352,13 +466,92 @@
 <body>
 
 <header>
-  <div class="logo">HEEHEE</div>
-  <div class="subtitle">Fortnite Sprite Tracker</div>
+
+  <div class="header-left">
+    <div class="logo">HEEHEE</div>
+    <div class="subtitle">Fortnite Sprite Tracker</div>
+  </div>
+
+  <div class="account-area">
+
+    <div
+      id="accountName"
+      class="account-name"
+    >
+      Not logged in
+    </div>
+
+    <button
+      id="loginButton"
+      class="account-button"
+    >
+      Login
+    </button>
+
+    <button
+      id="logoutButton"
+      class="account-button"
+      style="display:none;"
+    >
+      Logout
+    </button>
+
+  </div>
+
 </header>
+
+
+<!-- LOGIN -->
+
+<div
+  id="loginPanel"
+  class="login-panel"
+>
+
+  <div class="login-title">
+    Login
+  </div>
+
+  <div class="login-description">
+    Log in to access your personal Sprite collection.
+  </div>
+
+  <input
+    id="email"
+    class="login-input"
+    type="email"
+    placeholder="Email"
+    autocomplete="email"
+  >
+
+  <input
+    id="password"
+    class="login-input"
+    type="password"
+    placeholder="Password"
+    autocomplete="current-password"
+  >
+
+  <button
+    id="loginSubmit"
+    class="login-submit"
+  >
+    Login
+  </button>
+
+  <div
+    id="loginMessage"
+    class="login-message"
+  ></div>
+
+</div>
+
 
 <main>
 
-  <h1 class="page-title">Sprites</h1>
+  <h1 class="page-title">
+    Sprites
+  </h1>
 
   <div class="page-description">
     Collect every Sprite in Fortnite.
@@ -373,7 +566,10 @@
       placeholder="Search sprites..."
     >
 
-    <select id="rarity" class="filter">
+    <select
+      id="rarity"
+      class="filter"
+    >
 
       <option value="All">
         All Rarities
@@ -399,7 +595,10 @@
 
   </div>
 
-  <div id="stats" class="stats">
+  <div
+    id="stats"
+    class="stats"
+  >
     Loading sprites...
   </div>
 
@@ -410,7 +609,10 @@
 
 <!-- SPRITE DETAILS MODAL -->
 
-<div id="spriteModal" class="modal">
+<div
+  id="spriteModal"
+  class="modal"
+>
 
   <div class="modal-content">
 
@@ -456,8 +658,7 @@
           <div
             id="modalDescription"
             class="detail-text"
-          >
-          </div>
+          ></div>
 
         </div>
 
@@ -473,8 +674,7 @@
           <div
             id="modalAbility"
             class="detail-text"
-          >
-          </div>
+          ></div>
 
         </div>
 
@@ -490,8 +690,7 @@
           <div
             id="modalLevel"
             class="detail-text"
-          >
-          </div>
+          ></div>
 
         </div>
 
@@ -511,8 +710,7 @@
       <div
         id="modalVariants"
         class="variants"
-      >
-      </div>
+      ></div>
 
     </div>
 
@@ -523,11 +721,399 @@
 
 <script>
 
-const SUPABASE_URL = "https://mvspchowsinkymgytyeb.supabase.co/rest/v1/";
-const SUPABASE_KEY = "sb_publishable_mbdvlfY7O8Mb61KtZYoimw_b9Aer0Sb";
+const SUPABASE_URL =
+  "https://mvspchowsinkymgytyeb.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_mbdvlfY7O8Mb61KtZYoimw_b9Aer0Sb";
+
 
 let allSprites = [];
 let allVariants = [];
+
+let accessToken = null;
+let currentUser = null;
+let currentPlayer = null;
+
+
+/* =========================
+   SUPABASE REQUEST
+========================= */
+
+async function supabaseRequest(
+  endpoint,
+  options = {}
+) {
+
+  const headers = {
+
+    "apikey":
+      SUPABASE_KEY,
+
+    "Content-Type":
+      "application/json",
+
+    ...(options.headers || {})
+
+  };
+
+
+  if (accessToken) {
+
+    headers["Authorization"] =
+      "Bearer " + accessToken;
+
+  } else {
+
+    headers["Authorization"] =
+      "Bearer " + SUPABASE_KEY;
+
+  }
+
+
+  return fetch(
+    SUPABASE_URL + endpoint,
+    {
+      ...options,
+      headers
+    }
+  );
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+async function login() {
+
+  const email =
+    document
+      .getElementById("email")
+      .value
+      .trim();
+
+  const password =
+    document
+      .getElementById("password")
+      .value;
+
+  const message =
+    document
+      .getElementById("loginMessage");
+
+
+  if (!email || !password) {
+
+    message.textContent =
+      "Please enter your email and password.";
+
+    return;
+
+  }
+
+
+  message.textContent =
+    "Logging in...";
+
+
+  try {
+
+    const response =
+      await fetch(
+        SUPABASE_URL +
+        "/auth/v1/token?grant_type=password",
+        {
+
+          method: "POST",
+
+          headers: {
+
+            "apikey":
+              SUPABASE_KEY,
+
+            "Content-Type":
+              "application/json"
+
+          },
+
+          body: JSON.stringify({
+
+            email:
+              email,
+
+            password:
+              password
+
+          })
+
+        }
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        data.error_description ||
+        data.msg ||
+        data.message ||
+        "Login failed."
+      );
+
+    }
+
+
+    accessToken =
+      data.access_token;
+
+    currentUser =
+      data.user;
+
+
+    /* SAVE SESSION */
+
+    localStorage.setItem(
+      "heehee_access_token",
+      accessToken
+    );
+
+
+    if (data.refresh_token) {
+
+      localStorage.setItem(
+        "heehee_refresh_token",
+        data.refresh_token
+      );
+
+    }
+
+
+    await loadPlayer();
+
+
+    message.textContent =
+      "Login successful.";
+
+    updateAccountUI();
+
+  } catch (error) {
+
+    console.error(error);
+
+    message.textContent =
+      error.message;
+
+  }
+
+}
+
+
+/* =========================
+   LOAD PLAYER
+========================= */
+
+async function loadPlayer() {
+
+  if (!currentUser) {
+    return;
+  }
+
+
+  const response =
+    await supabaseRequest(
+      "/rest/v1/players" +
+      "?select=*" +
+      "&auth_user_id=eq." +
+      encodeURIComponent(
+        currentUser.id
+      )
+    );
+
+
+  if (!response.ok) {
+
+    const error =
+      await response.text();
+
+    throw new Error(
+      "Could not load player: " +
+      error
+    );
+
+  }
+
+
+  const players =
+    await response.json();
+
+
+  if (!players.length) {
+
+    throw new Error(
+      "Your account exists, but no player record is connected to it."
+    );
+
+  }
+
+
+  currentPlayer =
+    players[0];
+
+}
+
+
+/* =========================
+   UPDATE ACCOUNT UI
+========================= */
+
+function updateAccountUI() {
+
+  const accountName =
+    document.getElementById(
+      "accountName"
+    );
+
+  const loginButton =
+    document.getElementById(
+      "loginButton"
+    );
+
+  const logoutButton =
+    document.getElementById(
+      "logoutButton"
+    );
+
+  const loginPanel =
+    document.getElementById(
+      "loginPanel"
+    );
+
+
+  if (currentPlayer) {
+
+    accountName.textContent =
+      currentPlayer.display_name ||
+      currentPlayer.discord_name ||
+      "Player";
+
+    loginButton.style.display =
+      "none";
+
+    logoutButton.style.display =
+      "block";
+
+    loginPanel.classList.remove(
+      "open"
+    );
+
+  } else {
+
+    accountName.textContent =
+      "Not logged in";
+
+    loginButton.style.display =
+      "block";
+
+    logoutButton.style.display =
+      "none";
+
+  }
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout() {
+
+  accessToken = null;
+  currentUser = null;
+  currentPlayer = null;
+
+
+  localStorage.removeItem(
+    "heehee_access_token"
+  );
+
+  localStorage.removeItem(
+    "heehee_refresh_token"
+  );
+
+
+  updateAccountUI();
+
+}
+
+
+/* =========================
+   RESTORE SESSION
+========================= */
+
+async function restoreSession() {
+
+  const savedToken =
+    localStorage.getItem(
+      "heehee_access_token"
+    );
+
+
+  if (!savedToken) {
+
+    updateAccountUI();
+
+    return;
+
+  }
+
+
+  accessToken =
+    savedToken;
+
+
+  try {
+
+    const response =
+      await supabaseRequest(
+        "/auth/v1/user"
+      );
+
+
+    if (!response.ok) {
+
+      throw new Error(
+        "Session expired."
+      );
+
+    }
+
+
+    currentUser =
+      await response.json();
+
+
+    await loadPlayer();
+
+    updateAccountUI();
+
+  } catch (error) {
+
+    console.log(
+      "Session restore failed:",
+      error.message
+    );
+
+    logout();
+
+  }
+
+}
 
 
 /* =========================
@@ -537,32 +1123,37 @@ let allVariants = [];
 async function loadSprites() {
 
   const container =
-    document.getElementById("sprites");
+    document.getElementById(
+      "sprites"
+    );
 
   const stats =
-    document.getElementById("stats");
+    document.getElementById(
+      "stats"
+    );
+
 
   try {
 
-    const response = await fetch(
-      SUPABASE_URL + "/sprites?select=*",
-      {
-        headers: {
-          "apikey": SUPABASE_KEY,
-          "Authorization":
-            "Bearer " + SUPABASE_KEY
-        }
-      }
-    );
+    const response =
+      await supabaseRequest(
+        "/rest/v1/sprites?select=*"
+      );
+
 
     if (!response.ok) {
+
       throw new Error(
         "Supabase returned " +
         response.status
       );
+
     }
 
-    allSprites = await response.json();
+
+    allSprites =
+      await response.json();
+
 
     renderSprites();
 
@@ -573,7 +1164,9 @@ async function loadSprites() {
     stats.textContent =
       "Collection error: " +
       error.message;
+
   }
+
 }
 
 
@@ -585,25 +1178,24 @@ async function loadVariants() {
 
   try {
 
-    const response = await fetch(
-      SUPABASE_URL + "/variants?select=*",
-      {
-        headers: {
-          "apikey": SUPABASE_KEY,
-          "Authorization":
-            "Bearer " + SUPABASE_KEY
-        }
-      }
-    );
+    const response =
+      await supabaseRequest(
+        "/rest/v1/variants?select=*"
+      );
+
 
     if (!response.ok) {
+
       throw new Error(
         "Supabase returned " +
         response.status
       );
+
     }
 
-    allVariants = await response.json();
+
+    allVariants =
+      await response.json();
 
   } catch (error) {
 
@@ -613,6 +1205,7 @@ async function loadVariants() {
     );
 
   }
+
 }
 
 
@@ -623,7 +1216,10 @@ async function loadVariants() {
 function renderSprites() {
 
   const container =
-    document.getElementById("sprites");
+    document.getElementById(
+      "sprites"
+    );
+
 
   const search =
     document
@@ -631,37 +1227,45 @@ function renderSprites() {
       .value
       .toLowerCase();
 
+
   const rarity =
-    document.getElementById("rarity").value;
+    document.getElementById(
+      "rarity"
+    ).value;
 
 
   const filtered =
-    allSprites.filter(sprite => {
+    allSprites.filter(
+      sprite => {
 
-      const name =
-        sprite.sprite_name || "";
+        const name =
+          sprite.sprite_name || "";
 
-      const matchesSearch =
-        name
-          .toLowerCase()
-          .includes(search);
 
-      const matchesRarity =
-        rarity === "All" ||
-        sprite.rarity === rarity;
+        const matchesSearch =
+          name
+            .toLowerCase()
+            .includes(search);
 
-      return (
-        matchesSearch &&
-        matchesRarity
-      );
 
-    });
+        const matchesRarity =
+          rarity === "All" ||
+          sprite.rarity === rarity;
+
+
+        return (
+          matchesSearch &&
+          matchesRarity
+        );
+
+      }
+    );
 
 
   container.innerHTML = "";
 
 
-  if (filtered.length === 0) {
+  if (!filtered.length) {
 
     container.innerHTML = `
       <div class="message">
@@ -672,59 +1276,67 @@ function renderSprites() {
     updateStats(0);
 
     return;
+
   }
 
 
-  filtered.forEach(sprite => {
+  filtered.forEach(
+    sprite => {
 
-    const card =
-      document.createElement("div");
+      const card =
+        document.createElement(
+          "div"
+        );
 
-    card.className =
-      "sprite-card";
+
+      card.className =
+        "sprite-card";
 
 
-    card.innerHTML = `
+      card.innerHTML = `
 
-      <img
-        class="sprite-image"
-        src="${sprite.image_url || ""}"
-        alt="${sprite.sprite_name || ""}"
-      >
+        <img
+          class="sprite-image"
+          src="${sprite.image_url || ""}"
+          alt="${sprite.sprite_name || ""}"
+        >
 
-      <div class="sprite-info">
+        <div class="sprite-info">
 
-        <div class="sprite-name">
-          ${sprite.sprite_name || "Unknown"}
+          <div class="sprite-name">
+            ${sprite.sprite_name || "Unknown"}
+          </div>
+
+          <div class="rarity">
+            ${sprite.rarity || "Unknown"}
+          </div>
+
+          <div class="season">
+            ${sprite.season || ""}
+          </div>
+
         </div>
 
-        <div class="rarity">
-          ${sprite.rarity || "Unknown"}
-        </div>
-
-        <div class="season">
-          ${sprite.season || ""}
-        </div>
-
-      </div>
-
-    `;
+      `;
 
 
-    /* CLICK CARD */
-
-    card.addEventListener(
-      "click",
-      () => openModal(sprite)
-    );
+      card.addEventListener(
+        "click",
+        () => openModal(sprite)
+      );
 
 
-    container.appendChild(card);
+      container.appendChild(
+        card
+      );
 
-  });
+    }
+  );
 
 
-  updateStats(filtered.length);
+  updateStats(
+    filtered.length
+  );
 
 }
 
@@ -733,7 +1345,9 @@ function renderSprites() {
    UPDATE STATS
 ========================= */
 
-function updateStats(count) {
+function updateStats(
+  count
+) {
 
   document.getElementById(
     "stats"
@@ -750,7 +1364,9 @@ function updateStats(count) {
    OPEN MODAL
 ========================= */
 
-function openModal(sprite) {
+function openModal(
+  sprite
+) {
 
   const modal =
     document.getElementById(
@@ -773,14 +1389,18 @@ function openModal(sprite) {
   document.getElementById(
     "modalName"
   ).textContent =
-    sprite.sprite_name || "Unknown";
+    sprite.sprite_name ||
+    "Unknown";
 
 
   document.getElementById(
     "modalRarity"
   ).textContent =
     "Rarity: " +
-    (sprite.rarity || "Unknown");
+    (
+      sprite.rarity ||
+      "Unknown"
+    );
 
 
   document.getElementById(
@@ -856,10 +1476,14 @@ function openModal(sprite) {
 
   /* VARIANTS */
 
-  renderVariants(sprite.sprite_id);
+  renderVariants(
+    sprite.sprite_id
+  );
 
 
-  modal.classList.add("open");
+  modal.classList.add(
+    "open"
+  );
 
 }
 
@@ -868,7 +1492,9 @@ function openModal(sprite) {
    RENDER VARIANTS
 ========================= */
 
-function renderVariants(spriteId) {
+function renderVariants(
+  spriteId
+) {
 
   const container =
     document.getElementById(
@@ -879,15 +1505,17 @@ function renderVariants(spriteId) {
   const variants =
     allVariants.filter(
       variant =>
-        variant.sprite_id === spriteId &&
+        variant.sprite_id ===
+          spriteId &&
         variant.active !== false
     );
 
 
-  container.innerHTML = "";
+  container.innerHTML =
+    "";
 
 
-  if (variants.length === 0) {
+  if (!variants.length) {
 
     container.innerHTML = `
       <div class="no-variants">
@@ -896,50 +1524,58 @@ function renderVariants(spriteId) {
     `;
 
     return;
+
   }
 
 
-  variants.forEach(variant => {
+  variants.forEach(
+    variant => {
 
-    const card =
-      document.createElement("div");
+      const card =
+        document.createElement(
+          "div"
+        );
 
-    card.className =
-      "variant-card";
+
+      card.className =
+        "variant-card";
 
 
-    card.innerHTML = `
+      card.innerHTML = `
 
-      <img
-        class="variant-image"
-        src="${variant.image_url || ""}"
-        alt="${variant.variant_name || ""}"
-      >
+        <img
+          class="variant-image"
+          src="${variant.image_url || ""}"
+          alt="${variant.variant_name || ""}"
+        >
 
-      <div class="variant-info">
+        <div class="variant-info">
 
-        <div class="variant-name">
-          ${variant.variant_name || "Variant"}
+          <div class="variant-name">
+            ${variant.variant_name || "Variant"}
+          </div>
+
+          ${
+            variant.variant_type
+              ? `
+                <div class="variant-type">
+                  ${variant.variant_type}
+                </div>
+              `
+              : ""
+          }
+
         </div>
 
-        ${
-          variant.variant_type
-            ? `
-              <div class="variant-type">
-                ${variant.variant_type}
-              </div>
-            `
-            : ""
-        }
-
-      </div>
-
-    `;
+      `;
 
 
-    container.appendChild(card);
+      container.appendChild(
+        card
+      );
 
-  });
+    }
+  );
 
 }
 
@@ -951,14 +1587,20 @@ function renderVariants(spriteId) {
 function closeModal() {
 
   document
-    .getElementById("spriteModal")
-    .classList.remove("open");
+    .getElementById(
+      "spriteModal"
+    )
+    .classList.remove(
+      "open"
+    );
 
 }
 
 
 document
-  .getElementById("closeModal")
+  .getElementById(
+    "closeModal"
+  )
   .addEventListener(
     "click",
     closeModal
@@ -968,7 +1610,9 @@ document
 /* CLICK OUTSIDE MODAL */
 
 document
-  .getElementById("spriteModal")
+  .getElementById(
+    "spriteModal"
+  )
   .addEventListener(
     "click",
     event => {
@@ -993,7 +1637,8 @@ document.addEventListener(
   event => {
 
     if (
-      event.key === "Escape"
+      event.key ===
+      "Escape"
     ) {
 
       closeModal();
@@ -1009,7 +1654,9 @@ document.addEventListener(
 ========================= */
 
 document
-  .getElementById("search")
+  .getElementById(
+    "search"
+  )
   .addEventListener(
     "input",
     renderSprites
@@ -1021,10 +1668,56 @@ document
 ========================= */
 
 document
-  .getElementById("rarity")
+  .getElementById(
+    "rarity"
+  )
   .addEventListener(
     "change",
     renderSprites
+  );
+
+
+/* =========================
+   LOGIN BUTTONS
+========================= */
+
+document
+  .getElementById(
+    "loginButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      document
+        .getElementById(
+          "loginPanel"
+        )
+        .classList.toggle(
+          "open"
+        );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "loginSubmit"
+  )
+  .addEventListener(
+    "click",
+    login
+  );
+
+
+document
+  .getElementById(
+    "logoutButton"
+  )
+  .addEventListener(
+    "click",
+    logout
   );
 
 
@@ -1036,10 +1729,12 @@ async function startTracker() {
 
   await Promise.all([
     loadSprites(),
-    loadVariants()
+    loadVariants(),
+    restoreSession()
   ]);
 
 }
+
 
 startTracker();
 
@@ -1047,3 +1742,4 @@ startTracker();
 
 </body>
 </html>
+```
