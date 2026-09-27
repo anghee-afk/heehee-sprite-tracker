@@ -109,7 +109,7 @@ button{font-family:inherit}
     <div class="brand">HEEHEE&nbsp;&nbsp;FORTNITE SPRITE TRACKER</div>
     <div class="account-bar">
       <span id="accountName" class="account-name">Not logged in</span>
-      <button id="profileButton" class="account-button profile-account-button" style="display:none">Profile</button>
+      <button id="profileButton" class="account-button profile-account-button" style="display:none">👤 Profile</button>
       <button id="loginButton" class="account-button">Login</button>
       <button id="registerButton" class="account-button">Create Account</button>
       <button id="logoutButton" class="account-button" style="display:none">Logout</button>
@@ -140,7 +140,7 @@ button{font-family:inherit}
 
 <div class="tracker-dashboard">
   <section class="dashboard-panel notice-panel">
-    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">NOTICE BOARD</div></div><button id="addNoticeButton" class="small-action" type="button" style="display:none">+ Add Notice</button></div>
+    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">NOTICE BOARD</div><h2>Notice Board</h2></div><button id="addNoticeButton" class="small-action" type="button" style="display:none">+ Add Notice</button></div>
     <div id="noticeList" class="notice-list"><div class="dashboard-empty">Loading notices...</div></div>
     <div id="noticeEditor" class="notice-editor" style="display:none">
       <input id="noticeTitle" type="text" placeholder="Notice title">
@@ -193,7 +193,7 @@ button{font-family:inherit}
   <button id="myCollectionButton" class="view-button active">My Collection</button>
   <button id="friendsButton" class="view-button">Friends</button>
   <button id="playersButton" class="view-button">All Players</button>
-  <button id="manageFriendsButton" class="view-button">Manage Friends</button>
+  <button id="manageFriendsButton" class="view-button">👥 Manage Friends</button>
 </div>
 
 <div id="collectionFilterControl" class="collection-view-select">
@@ -209,12 +209,12 @@ button{font-family:inherit}
 <div id="playersPanel" style="display:none">
   <div id="playersListView">
     <section id="playersLeaderboardPanel" class="dashboard-panel leaderboard-panel" style="margin-bottom:14px">
-      <div class="dashboard-panel-header"><div><div class="dashboard-kicker">TOP 5 LEADERBOARD</div></div></div>
+      <div class="dashboard-panel-header"><div><div class="dashboard-kicker">LEADERBOARD</div><h2 id="playersLeaderboardTitle">Top 5 Players</h2></div></div>
       <div id="leaderboard" class="leaderboard-list"><div class="dashboard-empty">Loading leaderboard...</div></div>
     </section>
     <div class="players-toolbar">
       <div class="players-header"><h2 id="playersHeading">All Players</h2><p id="playersDescription">View everyone's collection.</p></div>
-      <div class="players-toolbar-actions"><button id="playersManageFriendsButton" class="small-action" type="button">Manage Friends</button></div>
+      <div class="players-toolbar-actions"><button id="playersManageFriendsButton" class="small-action" type="button">👥 Manage Friends</button></div>
     </div>
     <div id="playersGrid" class="players-grid"></div>
   </div>
@@ -232,7 +232,7 @@ button{font-family:inherit}
   <div class="modal-content">
     <button id="friendsModalClose" class="modal-close" type="button">×</button>
     <div class="variants-title">MY FRIENDS</div>
-    <div class="dashboard-note" style="margin-bottom:12px">Add people here and they’ll appear in your Friends view instead of making you scroll through everyone.</div>
+    <div class="dashboard-note" style="margin-bottom:12px">Add people here and they’ll appear in your Friends view instead of making you scroll through everyone. 👀</div>
     <div class="friends-tools">
       <input id="friendSearch" type="text" placeholder="Find a player..." style="flex:1;min-width:180px;padding:9px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);color:var(--text);outline:none">
     </div>
@@ -267,7 +267,7 @@ button{font-family:inherit}
   <div class="modal-content">
     <button id="shareImageClose" class="modal-close" type="button">×</button>
     <div class="variants-title">SHARE YOUR MISSING SPRITES</div>
-    <div class="dashboard-note" style="margin-bottom:10px">Choose between 3 and 15 missing variants in the Missing tab.</div>
+    <div class="dashboard-note" style="margin-bottom:10px">Choose between 3 and 15 missing variants in the Missing tab. The poster grid will arrange itself automatically. 🕺🏽</div>
     <canvas id="shareCanvas" style="display:none"></canvas>
     <img id="sharePreview" class="share-preview" alt="Share image preview">
     <div id="shareStatus" class="share-status">Choose 3–15 sprites in Missing first.</div>
@@ -694,11 +694,11 @@ function renderLeaderboard(){
   const title=document.getElementById("playersLeaderboardTitle");
   if(!list)return;
   const isFriends=playersMode==="friends";
-  if(title)title.textContent=isFriends?;
+  if(title)title.textContent=isFriends?"Top 3 Friends":"Top 5 Players";
   const pool=isFriends?allPlayers.filter(player=>friendIds.has(player.player_id)):allPlayers;
-  if(!pool.length){list.innerHTML=isFriends?'<div class="dashboard-empty">No friends yet. Add some people to see your leaderboard!</div>':'<div class="dashboard-empty">No players yet.</div>';return;}
+  if(!pool.length){list.innerHTML=isFriends?'<div class="dashboard-empty">No friends yet. Add some people to see your leaderboard! 👀</div>':'<div class="dashboard-empty">No players yet.</div>';return;}
   const ranked=pool.map(player=>({player,stats:playerStats(player.player_id)})).sort((a,b)=>b.stats.owned-a.stats.owned||a.player.display_name.localeCompare(b.player.display_name)).slice(0,isFriends?3:5);
-  const medals=["🥇","🥈","🥉","🦥","🐌"];
+  const medals=["🥇","🥈","🥉","4️⃣","5️⃣"];
   list.innerHTML=ranked.map((item,index)=>`<div class="leaderboard-item"><div class="leaderboard-rank">${medals[index]}</div><div><div class="leaderboard-name">${escapeHtml(item.player.display_name||"Unknown Player")}${currentPlayer&&item.player.player_id===currentPlayer.player_id?" · You":""}</div><div class="leaderboard-sub">${item.stats.percent}% of variants collected</div></div><div class="leaderboard-score">${item.stats.owned}</div></div>`).join("");
 }
 
@@ -769,13 +769,13 @@ function renderPlayers(){
   document.getElementById("playersHeading").textContent=playersMode==="friends"?"Friends":"All Players";
   document.getElementById("playersDescription").textContent=playersMode==="friends"?"View the collections of the players you’ve added.":"View everyone's collection.";
   renderLeaderboard();
-  if(!players.length){grid.innerHTML=playersMode==="friends"?'<div class="message">No friends yet. Add some people from Manage Friends!</div>':'<div class="message">No players found.</div>';return;}
+  if(!players.length){grid.innerHTML=playersMode==="friends"?'<div class="message">No friends yet. Add some people from Manage Friends! 👀</div>':'<div class="message">No players found.</div>';return;}
   players.forEach(player=>{
     const stats=playerStats(player.player_id);
     const card=document.createElement("div");
     card.className="player-card"+(currentPlayer&&player.player_id===currentPlayer.player_id?" current":"");
     const avatar=player.profile_image_url?`<img class="player-avatar" src="${escapeHtml(player.profile_image_url)}" alt="">`:`<div class="player-avatar">${escapeHtml(initials(player.display_name))}</div>`;
-    const badge=currentPlayer&&player.player_id===currentPlayer.player_id?"<span class='player-badge'>THAT'S YOU</span>":(playersMode==="friends"?"<span class='player-badge'>FRIEND ⭐</span>":"<span class='player-badge'>SPRITE COLLECTOR</span>");
+    const badge=currentPlayer&&player.player_id===currentPlayer.player_id?"<span class='player-badge'>THAT'S YOU 👀</span>":(playersMode==="friends"?"<span class='player-badge'>FRIEND ⭐</span>":"<span class='player-badge'>SPRITE COLLECTOR</span>");
     card.innerHTML=`<div class="player-card-top">${avatar}<div class="player-identity"><div class="player-name">${escapeHtml(player.display_name||"Unknown Player")}</div>${badge}</div></div><div class="player-stats-row"><div class="player-mini-stat"><div class="player-mini-number">${stats.owned}</div><div class="player-mini-label">Owned</div></div><div class="player-mini-stat"><div class="player-mini-number">${stats.mastered}</div><div class="player-mini-label">Mastered</div></div><div class="player-mini-stat"><div class="player-mini-number">${stats.missing}</div><div class="player-mini-label">Missing</div></div></div><div class="player-progress"><div class="player-progress-top"><span>${stats.owned} / ${stats.total} variants</span><span>${stats.percent}%</span></div><div class="progress-bar"><div class="progress-fill" style="width:${stats.percent}%"></div></div></div><button class="player-button" type="button">View Collection →</button>`;
     card.querySelector(".player-button").addEventListener("click",()=>openPlayerCollection(player));
     grid.appendChild(card);
@@ -1069,7 +1069,7 @@ async function generateShareImage(){
   }
   ctx.fillStyle="#21c7b7";ctx.fillRect(0,canvas.height-72,width,1);
   ctx.fillStyle="#b7c1c2";ctx.font="14px Arial";ctx.textAlign="center";ctx.fillText("HeeHee Fortnite Sprite Tracker · https://heehee-sprite-tracker.pages.dev/",width/2,canvas.height-39);
-  try{shareImageDataUrl=canvas.toDataURL("image/png");document.getElementById("sharePreview").src=shareImageDataUrl;document.getElementById("downloadShareImage").disabled=false;document.getElementById("shareStatus").textContent="PNG created!🕺🏽";}catch(error){document.getElementById("shareStatus").textContent="One or more sprite images blocked the PNG canvas. Try again after the images have loaded.";console.error(error);}
+  try{shareImageDataUrl=canvas.toDataURL("image/png");document.getElementById("sharePreview").src=shareImageDataUrl;document.getElementById("downloadShareImage").disabled=false;document.getElementById("shareStatus").textContent="PNG created! Download it and send it to the group. 🕺🏽";}catch(error){document.getElementById("shareStatus").textContent="One or more sprite images blocked the PNG canvas. Try again after the images have loaded.";console.error(error);}
 }
 
 function downloadShareImage(){if(!shareImageDataUrl)return;const a=document.createElement("a");a.href=shareImageDataUrl;a.download=`heehee-missing-${shareCount}.png`;a.click();}
