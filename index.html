@@ -56,7 +56,7 @@ button{font-family:inherit}
 .collection-progress{margin-top:16px}.collection-progress-top{display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px;color:var(--text-soft)}
 .progress-bar{width:100%;height:7px;border-radius:10px;overflow:hidden;background:var(--surface-3)}
 .progress-fill{width:0;height:100%;background:var(--gradient);transition:width .3s}
-.sprite-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.sprite-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
 .sprite-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .15s,border-color .15s}
 .sprite-card:hover{transform:translateY(-3px);border-color:var(--border-hover)}
 .sprite-card.collection-partial{border-color:rgba(33,199,183,.35)}.sprite-card.collection-complete{border-color:rgba(94,231,216,.55)}
@@ -86,7 +86,7 @@ button{font-family:inherit}
 .owned-button,.mastered-button{width:100%;padding:6px;border:1px solid var(--border);border-radius:5px;background:var(--surface-2);color:var(--text-soft);font-size:10px;cursor:pointer}.owned-button.owned{background:rgba(33,199,183,.13);color:var(--teal-bright);border-color:rgba(33,199,183,.4)}.mastered-button.mastered{background:rgba(94,231,216,.1);color:var(--teal-bright);border-color:rgba(94,231,216,.35)}
 .no-variants{grid-column:1/-1;padding:15px;text-align:center;color:var(--text-muted)}
 .owner-list{margin-top:8px;padding-top:7px;border-top:1px solid var(--border);font-size:9px;color:var(--text-muted);line-height:1.35}.owner-list strong{color:var(--teal-bright);font-weight:600}
-.missing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.missing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:12px;justify-content:center}
 .missing-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.15s ease;position:relative}.missing-card.selected{border-color:rgba(33,199,183,.65);box-shadow:0 0 0 2px rgba(33,199,183,.08)}
 .missing-card:hover{transform:translateY(-2px);border-color:var(--border-hover)}
 .missing-image-wrap{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.missing-image-wrap:before{content:"";position:absolute;width:72%;height:72%;border-radius:50%;background:radial-gradient(circle,rgba(94,231,216,.20) 0%,rgba(33,199,183,.08) 38%,transparent 72%);filter:blur(10px)}.missing-image{position:relative;width:78%;height:78%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
@@ -202,7 +202,7 @@ button{font-family:inherit}
   <button id="myCollectionButton" class="view-button active">My Collection</button>
   <button id="friendsButton" class="view-button">Friends</button>
   <button id="playersButton" class="view-button">All Players</button>
-  <button id="manageFriendsButton" class="view-button">👥 Manage Friends</button>
+  <button id="manageFriendsButton" class="view-button">Manage Friends</button>
 </div>
 
 <div id="collectionFilterControl" class="collection-view-select">
@@ -219,7 +219,7 @@ button{font-family:inherit}
   <div id="playersListView">
     <div class="players-toolbar">
       <div class="players-header"><h2 id="playersHeading">All Players</h2><p id="playersDescription">View everyone's collection.</p></div>
-      <div class="players-toolbar-actions"><button id="playersManageFriendsButton" class="small-action" type="button">👥 Manage Friends</button></div>
+      <div class="players-toolbar-actions"><button id="playersManageFriendsButton" class="small-action" type="button">Manage Friends</button></div>
     </div>
     <div id="playersGrid" class="players-grid"></div>
   </div>
@@ -272,9 +272,10 @@ button{font-family:inherit}
   <div class="modal-content">
     <button id="shareImageClose" class="modal-close" type="button">×</button>
     <div class="variants-title">SHARE YOUR MISSING SPRITES</div>
-    <div class="dashboard-note" style="margin-bottom:10px">Pick 10 or 15 missing variants, then turn them into a little HeeHee wanted poster. 🕺🏽</div>
+    <div class="dashboard-note" style="margin-bottom:10px">Pick 5, 10 or 15 missing variants, then turn them into a little HeeHee wanted poster. 🕺🏽</div>
     <div class="share-image-options">
-      <button class="share-image-option active" data-share-count="10" type="button">10 Sprites</button>
+      <button class="share-image-option active" data-share-count="5" type="button">5 Sprites</button>
+      <button class="share-image-option" data-share-count="10" type="button">10 Sprites</button>
       <button class="share-image-option" data-share-count="15" type="button">15 Sprites</button>
     </div>
     <canvas id="shareCanvas" style="display:none"></canvas>
@@ -324,7 +325,7 @@ let viewingPlayer=null;
 let refreshPromise=null;
 let notices=[];
 let selectedMissingIds=new Set();
-let shareCount=10;
+let shareCount=5;
 let shareImageDataUrl="";
 let profileImageData=null;
 
@@ -1036,7 +1037,20 @@ async function loadCanvasImage(src){
       const objectUrl=URL.createObjectURL(blob);
       const img=await new Promise(resolve=>{const image=new Image();image.onload=()=>resolve(image);image.onerror=()=>resolve(null);image.src=objectUrl;});
       URL.revokeObjectURL(objectUrl);
-      if(img)return img;
+      if(img){
+        const work=document.createElement("canvas");work.width=img.naturalWidth||img.width;work.height=img.naturalHeight||img.height;
+        const wctx=work.getContext("2d",{willReadFrequently:true});wctx.drawImage(img,0,0);
+        try{
+          const pixels=wctx.getImageData(0,0,work.width,work.height);
+          for(let i=0;i<pixels.data.length;i+=4){
+            const r=pixels.data[i],g=pixels.data[i+1],b=pixels.data[i+2],a=pixels.data[i+3];
+            const max=Math.max(r,g,b),min=Math.min(r,g,b);
+            if(a>0 && min>232 && max-min<18){pixels.data[i+3]=0;}
+          }
+          wctx.putImageData(pixels,0,0);
+          return work;
+        }catch(error){return img;}
+      }
     }catch(error){}
   }
   return null;
@@ -1046,7 +1060,7 @@ async function generateShareImage(){
   const variants=getSelectedMissingVariants();
   if(variants.length!==shareCount){alert(`Please select exactly ${shareCount} missing sprites first.`);return;}
   const canvas=document.getElementById("shareCanvas");
-  const cols=shareCount===15?3:2;const rows=Math.ceil(shareCount/cols);const width=1200;const header=250;const cellW=width/cols;const cellH=260;canvas.width=width;canvas.height=header+rows*cellH+110;
+  const cols=shareCount===15?3:(shareCount===10?2:1);const rows=Math.ceil(shareCount/cols);const width=1200;const header=250;const cellW=width/cols;const cellH=260;canvas.width=width;canvas.height=header+rows*cellH+110;
   const ctx=canvas.getContext("2d");
   ctx.fillStyle="#101214";ctx.fillRect(0,0,canvas.width,canvas.height);
   const glow=ctx.createRadialGradient(width/2,130,20,width/2,130,520);glow.addColorStop(0,"rgba(94,231,216,.20)");glow.addColorStop(1,"rgba(16,18,20,0)");ctx.fillStyle=glow;ctx.fillRect(0,0,width,300);
@@ -1057,15 +1071,19 @@ async function generateShareImage(){
   ctx.fillStyle="#7f8b8d";ctx.font="16px Arial";ctx.fillText(`${shareCount} missing variants · ${new Date().toLocaleDateString()}`,width/2,215);
   for(let i=0;i<variants.length;i++){
     const v=variants[i],sprite=allSprites.find(s=>s.sprite_id===v.sprite_id);const x=(i%cols)*cellW,y=header+Math.floor(i/cols)*cellH;
-    ctx.fillStyle="#171a1c";ctx.fillRect(x+14,y+12,cellW-28,cellH-24);
-    ctx.strokeStyle="#303638";ctx.strokeRect(x+14,y+12,cellW-28,cellH-24);
+    const cardX=x+14,cardY=y+12,cardW=cellW-28,cardH=cellH-24;
+    const cardGlow=ctx.createRadialGradient(x+cellW/2,y+cellH/2,10,x+cellW/2,y+cellH/2,Math.min(cellW,cellH)*0.48);
+    cardGlow.addColorStop(0,"rgba(94,231,216,.16)");cardGlow.addColorStop(.45,"rgba(33,199,183,.07)");cardGlow.addColorStop(1,"rgba(23,26,28,0)");
+    ctx.fillStyle="#171a1c";ctx.fillRect(cardX,cardY,cardW,cardH);
+    ctx.fillStyle=cardGlow;ctx.fillRect(cardX,cardY,cardW,cardH);
+    ctx.strokeStyle="#303638";ctx.strokeRect(cardX,cardY,cardW,cardH);
     const img=await loadCanvasImage(v.image_url||sprite?.image_url||"");
     if(img){const max=cellH-85;const scale=Math.min(max/img.width,max/img.height);const w=img.width*scale,h=img.height*scale;const ix=x+cellW/2-w/2,iy=y+18+(max-h)/2;const rg=ctx.createRadialGradient(x+cellW/2,y+cellH/2,5,x+cellW/2,y+cellH/2,100);rg.addColorStop(0,"rgba(94,231,216,.18)");rg.addColorStop(1,"rgba(94,231,216,0)");ctx.fillStyle=rg;ctx.fillRect(x+20,y+18,cellW-40,max);ctx.drawImage(img,ix,iy,w,h);}
     ctx.fillStyle="#f1f5f5";ctx.font="700 18px Arial";ctx.textAlign="center";ctx.fillText((v.variant_name||"Variant").slice(0,32),x+cellW/2,y+cellH-43);
     ctx.fillStyle="#7f8b8d";ctx.font="13px Arial";ctx.fillText((sprite?.sprite_name||"Sprite").slice(0,38),x+cellW/2,y+cellH-22);
   }
   ctx.fillStyle="#21c7b7";ctx.fillRect(0,canvas.height-72,width,1);
-  ctx.fillStyle="#b7c1c2";ctx.font="14px Arial";ctx.textAlign="center";ctx.fillText("HeeHee Fortnite Sprite Tracker · Collect them all · " + window.location.href,width/2,canvas.height-39);
+  ctx.fillStyle="#b7c1c2";ctx.font="14px Arial";ctx.textAlign="center";ctx.fillText("HeeHee Fortnite Sprite Tracker · https://heehee-sprite-tracker.pages.dev/",width/2,canvas.height-39);
   try{shareImageDataUrl=canvas.toDataURL("image/png");document.getElementById("sharePreview").src=shareImageDataUrl;document.getElementById("downloadShareImage").disabled=false;document.getElementById("shareStatus").textContent="PNG created! Download it and send it to the group. 🕺🏽";}catch(error){document.getElementById("shareStatus").textContent="One or more sprite images blocked the PNG canvas. Try again after the images have loaded.";console.error(error);}
 }
 
