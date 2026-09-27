@@ -48,7 +48,7 @@ button{font-family:inherit}
 .view-switcher{display:flex;gap:8px;margin-bottom:12px}
 .view-button.active,.collection-filter.active{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.45);color:var(--teal-bright)}
 .collection-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.collection-dashboard{margin:25px 0;padding:18px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+.collection-dashboard{margin:12px 0;padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
 .collection-header{margin-bottom:16px}.collection-title{font-size:20px;font-weight:700}.collection-player{margin-top:4px;font-size:13px;color:var(--text-muted)}
 .collection-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .collection-stat{padding:12px;border-radius:9px;background:var(--surface-2);text-align:center}
@@ -95,10 +95,10 @@ button{font-family:inherit}
 .collection-stat{transition:.15s ease}.collection-stat:hover{transform:translateY(-1px);border-color:var(--border-hover)}
 .account-name{font-weight:600}
 
-.tracker-dashboard{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin-bottom:18px}.dashboard-panel{min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px}.dashboard-panel-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}.dashboard-panel-header h2{margin:3px 0 0;font-size:16px}.dashboard-kicker{font-size:9px;letter-spacing:1.4px;color:var(--teal-bright);font-weight:800}.dashboard-note{font-size:10px;color:var(--text-muted);line-height:1.4}.dashboard-empty{padding:14px 4px;color:var(--text-muted);font-size:11px;text-align:center}.small-action{padding:7px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-size:10px;font-weight:700;cursor:pointer}.small-action:hover{background:var(--surface-3);border-color:var(--border-hover)}.small-action.primary{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.35);color:var(--teal-bright)}.notice-list{display:flex;flex-direction:column;gap:8px;max-height:190px;overflow:auto}.notice-item{padding:10px 11px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2)}.notice-title{font-size:12px;font-weight:800}.notice-body{margin-top:4px;font-size:11px;line-height:1.4;color:var(--text-soft);white-space:pre-wrap}.notice-date{margin-top:6px;font-size:9px;color:var(--text-muted)}.notice-editor{margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}.notice-editor input,.notice-editor textarea{width:100%;padding:9px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-family:inherit;outline:none;margin-bottom:7px}.notice-editor textarea{resize:vertical}.notice-editor-actions{display:flex;gap:7px}.leaderboard-list,.recent-list{display:flex;flex-direction:column;gap:7px}.leaderboard-item{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:8px;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.leaderboard-rank{font-size:14px;font-weight:900;text-align:center;color:var(--teal-bright)}.leaderboard-name{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.leaderboard-sub{margin-top:2px;font-size:9px;color:var(--text-muted)}.leaderboard-score{font-size:11px;font-weight:800}.recent-item{display:grid;grid-template-columns:38px 1fr;gap:8px;align-items:center;padding:7px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.recent-thumb{width:38px;height:38px;object-fit:contain;border-radius:6px;background:#0d0f10}.recent-name{font-size:10px;font-weight:700}.recent-owner{margin-top:2px;font-size:9px;color:var(--text-muted)}
-@media(max-width:900px){.tracker-dashboard{grid-template-columns:1fr 1fr}.notice-panel{grid-column:1/-1}}
+.tracker-dashboard{display:block;margin-bottom:12px}.dashboard-panel{min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px}.dashboard-panel-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}.dashboard-panel-header h2{margin:3px 0 0;font-size:19px}.dashboard-kicker{font-size:9px;letter-spacing:1.4px;color:var(--teal-bright);font-weight:800}.dashboard-note{font-size:10px;color:var(--text-muted);line-height:1.4}.dashboard-empty{padding:14px 4px;color:var(--text-muted);font-size:11px;text-align:center}.small-action{padding:7px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-size:10px;font-weight:700;cursor:pointer}.small-action:hover{background:var(--surface-3);border-color:var(--border-hover)}.small-action.primary{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.35);color:var(--teal-bright)}.notice-list{display:flex;flex-direction:column;gap:8px;max-height:150px;overflow:auto}.notice-item{padding:10px 11px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2)}.notice-title{font-size:12px;font-weight:800}.notice-body{margin-top:4px;font-size:11px;line-height:1.4;color:var(--text-soft);white-space:pre-wrap}.notice-date{margin-top:6px;font-size:9px;color:var(--text-muted)}.notice-editor{margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}.notice-editor input,.notice-editor textarea{width:100%;padding:9px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-family:inherit;outline:none;margin-bottom:7px}.notice-editor textarea{resize:vertical}.notice-editor-actions{display:flex;gap:7px}.leaderboard-list,.recent-list{display:flex;flex-direction:column;gap:7px}.leaderboard-item{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:8px;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.leaderboard-rank{font-size:14px;font-weight:900;text-align:center;color:var(--teal-bright)}.leaderboard-name{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.leaderboard-sub{margin-top:2px;font-size:9px;color:var(--text-muted)}.leaderboard-score{font-size:11px;font-weight:800}.recent-item{display:grid;grid-template-columns:38px 1fr;gap:8px;align-items:center;padding:7px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.recent-thumb{width:38px;height:38px;object-fit:contain;border-radius:6px;background:#0d0f10}.recent-name{font-size:10px;font-weight:700}.recent-owner{margin-top:2px;font-size:9px;color:var(--text-muted)}
+@media(max-width:900px){.tracker-dashboard{display:block}}
 @media(max-width:700px){body{padding:18px 10px}.brand-row{align-items:flex-start;flex-wrap:wrap;gap:12px}.heehee-logo{width:54px;height:54px}.brand{font-size:21px;letter-spacing:1.8px;line-height:1.15}.account-bar{width:100%;justify-content:flex-start;margin-top:2px}.account-name{font-size:15px}.account-button,.view-button,.collection-filter,.back-button,.player-button{padding:10px 13px;font-size:14px}.profile-layout{grid-template-columns:1fr}.profile-avatar-large{margin:0 auto}.missing-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.missing-image-wrap{height:135px}.missing-info{padding:10px}.missing-action{font-size:12px;padding:9px 5px}.controls input,.controls select{font-size:14px;padding:11px}.collection-view-select label{font-size:12px}.collection-view-select select{font-size:14px;padding:10px}.collection-title{font-size:23px}.collection-player{font-size:15px}.collection-stat-number{font-size:23px}.collection-stat-label{font-size:12px}.dashboard-panel-header h2{font-size:19px}.dashboard-kicker{font-size:10px}.dashboard-note,.notice-body{font-size:13px}.notice-title{font-size:14px}.players-header h2{font-size:22px}.players-header p{font-size:14px}.player-name{font-size:18px}.player-badge{font-size:9px}.player-mini-number{font-size:15px}.player-mini-label{font-size:9px}.player-progress-top{font-size:12px}.player-button{font-size:14px}.modal{padding:10px}.modal-content{width:100%;max-height:94vh;padding:14px}.modal-main{grid-template-columns:1fr}.modal-image{width:160px;height:160px;margin:0 auto}.modal-title{font-size:23px}.modal-rarity,.modal-season{font-size:13px}#modalVariants{grid-template-columns:repeat(2,minmax(0,1fr))}.variant-name{font-size:13px}.variant-type{font-size:11px}.owned-button,.mastered-button{font-size:12px;padding:8px}.share-brand-title{font-size:22px}.share-status{font-size:13px}.small-action{font-size:12px;padding:9px 11px}}h1{font-size:26px}.modal{position:fixed}
-@media(max-width:600px){.collection-stats{grid-template-columns:repeat(2,1fr)}.sprite-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sprite-image-wrap{height:110px}.missing-image-wrap{height:130px}.tracker-dashboard{grid-template-columns:1fr}.notice-panel{grid-column:auto}.controls select{flex:1}}
+@media(max-width:600px){.collection-stats{grid-template-columns:repeat(2,1fr)}.sprite-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sprite-image-wrap{height:110px}.missing-image-wrap{height:130px}.controls select{flex:1}.dashboard-panel-header h2{font-size:22px}.dashboard-kicker{font-size:11px}.notice-list{max-height:130px}}
 </style>
 </head>
 <body>
@@ -150,15 +150,6 @@ button{font-family:inherit}
     </div>
   </section>
 
-  <section class="dashboard-panel leaderboard-panel">
-    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">TOP 5 LEADERBOARD</div></div></div>
-    <div id="leaderboard" class="leaderboard-list"><div class="dashboard-empty">Loading leaderboard...</div></div>
-  </section>
-
-  <section class="dashboard-panel recent-panel">
-    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">RECENTLY COLLECTED</div></div></div>
-    <div id="recentCollected" class="recent-list"><div class="dashboard-empty">Loading recent finds...</div></div>
-  </section>
 </div>
 
 <div id="myCollectionView">
@@ -217,6 +208,10 @@ button{font-family:inherit}
 
 <div id="playersPanel" style="display:none">
   <div id="playersListView">
+    <section id="playersLeaderboardPanel" class="dashboard-panel leaderboard-panel" style="margin-bottom:14px">
+      <div class="dashboard-panel-header"><div><div class="dashboard-kicker">TOP 5 LEADERBOARD</div></div></div>
+      <div id="leaderboard" class="leaderboard-list"><div class="dashboard-empty">Loading leaderboard...</div></div>
+    </section>
     <div class="players-toolbar">
       <div class="players-header"><h2 id="playersHeading">All Players</h2><p id="playersDescription">View everyone's collection.</p></div>
       <div class="players-toolbar-actions"><button id="playersManageFriendsButton" class="small-action" type="button">Manage Friends</button></div>
@@ -414,7 +409,7 @@ async function loadAllCollections(){
   const response=await supabaseRequest("/rest/v1/collections?select=*");
   if(!response.ok)throw new Error("Could not load player collections: "+await response.text());
   allCollections=await response.json();
-  renderPlayers();renderLeaderboard();renderRecentCollected();
+  renderPlayers();renderLeaderboard();
 }
 
 async function loadNotices(){
@@ -696,27 +691,18 @@ function renderNotices(){
 
 function renderLeaderboard(){
   const list=document.getElementById("leaderboard");
-  if(!allPlayers.length){list.innerHTML='<div class="dashboard-empty">No players yet.</div>';return;}
-  const ranked=allPlayers.map(player=>({player,stats:playerStats(player.player_id)})).sort((a,b)=>b.stats.owned-a.stats.owned||a.player.display_name.localeCompare(b.player.display_name)).slice(0,5);
+  const title=document.getElementById("playersLeaderboardTitle");
+  if(!list)return;
+  const isFriends=playersMode==="friends";
+  if(title)title.textContent=isFriends?;
+  const pool=isFriends?allPlayers.filter(player=>friendIds.has(player.player_id)):allPlayers;
+  if(!pool.length){list.innerHTML=isFriends?'<div class="dashboard-empty">No friends yet. Add some people to see your leaderboard!</div>':'<div class="dashboard-empty">No players yet.</div>';return;}
+  const ranked=pool.map(player=>({player,stats:playerStats(player.player_id)})).sort((a,b)=>b.stats.owned-a.stats.owned||a.player.display_name.localeCompare(b.player.display_name)).slice(0,isFriends?3:5);
   const medals=["🥇","🥈","🥉","🦥","🐌"];
   list.innerHTML=ranked.map((item,index)=>`<div class="leaderboard-item"><div class="leaderboard-rank">${medals[index]}</div><div><div class="leaderboard-name">${escapeHtml(item.player.display_name||"Unknown Player")}${currentPlayer&&item.player.player_id===currentPlayer.player_id?" · You":""}</div><div class="leaderboard-sub">${item.stats.percent}% of variants collected</div></div><div class="leaderboard-score">${item.stats.owned}</div></div>`).join("");
 }
 
-function renderRecentCollected(){
-  const list=document.getElementById("recentCollected");
-  const recent=[];
-  allCollections.filter(c=>c.owned===true&&c.first_collected).forEach(c=>{
-    const variant=allVariants.find(v=>v.variant_id===c.variant_id);
-    const sprite=variant?allSprites.find(s=>s.sprite_id===variant.sprite_id):null;
-    const player=allPlayers.find(p=>p.player_id===c.player_id);
-    if(variant&&player)recent.push({c,variant,sprite,player});
-  });
-  recent.sort((a,b)=>new Date(b.c.first_collected)-new Date(a.c.first_collected));
-  if(!recent.length){list.innerHTML='<div class="dashboard-empty">No collections yet.</div>';return;}
-  list.innerHTML=recent.slice(0,5).map(item=>`<div class="recent-item"><img class="recent-thumb" src="${escapeHtml(item.variant.image_url||item.sprite?.image_url||"")}" alt=""><div><div class="recent-name">${escapeHtml(item.variant.variant_name||"Variant")}</div><div class="recent-owner">${escapeHtml(item.player.display_name||"Player")} · ${new Date(item.c.first_collected).toLocaleDateString()}</div></div></div>`).join("");
-}
-
-function renderDashboard(){renderNotices();renderLeaderboard();renderRecentCollected();}
+function renderDashboard(){renderNotices();}
 
 function openFriends(){
   if(!currentUser){alert("Please log in first.");return;}
@@ -782,6 +768,7 @@ function renderPlayers(){
   const players=playersMode==="friends"?allPlayers.filter(p=>friendIds.has(p.player_id)):allPlayers;
   document.getElementById("playersHeading").textContent=playersMode==="friends"?"Friends":"All Players";
   document.getElementById("playersDescription").textContent=playersMode==="friends"?"View the collections of the players you’ve added.":"View everyone's collection.";
+  renderLeaderboard();
   if(!players.length){grid.innerHTML=playersMode==="friends"?'<div class="message">No friends yet. Add some people from Manage Friends!</div>':'<div class="message">No players found.</div>';return;}
   players.forEach(player=>{
     const stats=playerStats(player.player_id);
@@ -1082,7 +1069,7 @@ async function generateShareImage(){
   }
   ctx.fillStyle="#21c7b7";ctx.fillRect(0,canvas.height-72,width,1);
   ctx.fillStyle="#b7c1c2";ctx.font="14px Arial";ctx.textAlign="center";ctx.fillText("HeeHee Fortnite Sprite Tracker · https://heehee-sprite-tracker.pages.dev/",width/2,canvas.height-39);
-  try{shareImageDataUrl=canvas.toDataURL("image/png");document.getElementById("sharePreview").src=shareImageDataUrl;document.getElementById("downloadShareImage").disabled=false;document.getElementById("shareStatus").textContent="PNG created!";}catch(error){document.getElementById("shareStatus").textContent="One or more sprite images blocked the PNG canvas. Try again after the images have loaded.";console.error(error);}
+  try{shareImageDataUrl=canvas.toDataURL("image/png");document.getElementById("sharePreview").src=shareImageDataUrl;document.getElementById("downloadShareImage").disabled=false;document.getElementById("shareStatus").textContent="PNG created!🕺🏽";}catch(error){document.getElementById("shareStatus").textContent="One or more sprite images blocked the PNG canvas. Try again after the images have loaded.";console.error(error);}
 }
 
 function downloadShareImage(){if(!shareImageDataUrl)return;const a=document.createElement("a");a.href=shareImageDataUrl;a.download=`heehee-missing-${shareCount}.png`;a.click();}
