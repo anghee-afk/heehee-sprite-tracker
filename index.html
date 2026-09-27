@@ -56,13 +56,13 @@ button{font-family:inherit}
 .collection-progress{margin-top:16px}.collection-progress-top{display:flex;justify-content:space-between;margin-bottom:6px;font-size:12px;color:var(--text-soft)}
 .progress-bar{width:100%;height:7px;border-radius:10px;overflow:hidden;background:var(--surface-3)}
 .progress-fill{width:0;height:100%;background:var(--gradient);transition:width .3s}
-.sprite-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.sprite-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;max-width:100%}
 .sprite-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .15s,border-color .15s}
 .sprite-card:hover{transform:translateY(-3px);border-color:var(--border-hover)}
 .sprite-card.collection-partial{border-color:rgba(33,199,183,.35)}.sprite-card.collection-complete{border-color:rgba(94,231,216,.55)}
-.sprite-image-wrap{height:125px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.sprite-image-wrap:before{content:"";position:absolute;width:75%;height:75%;border-radius:50%;background:radial-gradient(circle,rgba(94,231,216,.20) 0%,rgba(33,199,183,.08) 38%,transparent 72%);filter:blur(10px)}.sprite-image{position:relative;width:82%;height:82%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
-.sprite-info{padding:9px 10px 10px}.sprite-name{font-size:13px;font-weight:600;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rarity,.season,.sprite-collection-status{font-size:10px;color:var(--text-muted)}.sprite-collection-status{margin-top:6px}.sprite-collection-status.partial{color:var(--teal)}.sprite-collection-status.complete{color:var(--teal-bright);font-weight:600}
+.sprite-image-wrap{height:115px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.sprite-image-wrap:before{content:"";position:absolute;width:75%;height:75%;border-radius:50%;background:radial-gradient(circle,rgba(94,231,216,.20) 0%,rgba(33,199,183,.08) 38%,transparent 72%);filter:blur(10px)}.sprite-image{position:relative;width:82%;height:82%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
+.sprite-info{padding:10px 11px 11px}.sprite-name{font-size:14px;font-weight:600;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rarity,.season,.sprite-collection-status{font-size:11px;color:var(--text-muted)}.sprite-collection-status{margin-top:6px}.sprite-collection-status.partial{color:var(--teal)}.sprite-collection-status.complete{color:var(--teal-bright);font-weight:600}
 .message{grid-column:1/-1;padding:30px;text-align:center;color:var(--text-muted)}
 .players-header{margin:25px 0 15px}.players-header h2{margin:0 0 5px}.players-header p{margin:0;color:var(--text-muted);font-size:13px}
 .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
@@ -75,7 +75,7 @@ button{font-family:inherit}
 .players-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.players-toolbar .players-header{margin:25px 0 15px}.players-toolbar-actions{display:flex;gap:7px;flex-wrap:wrap}.view-button.friends-active{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.45);color:var(--teal-bright)}
 .collection-view-select{display:flex;align-items:center;gap:8px;margin-bottom:18px}.collection-view-select label{font-size:10px;color:var(--text-muted);font-weight:700}.collection-view-select select{padding:9px 11px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none;min-width:150px}
 .share-brand-header{text-align:center;margin:2px 0 14px}.share-brand-logo{width:112px;height:112px;object-fit:contain;display:block;margin:0 auto 4px}.share-brand-title{font-size:20px;font-weight:900;letter-spacing:1.8px;color:var(--teal-bright)}
-.profile-layout{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}.profile-avatar-large{width:120px;height:120px;border-radius:50%;object-fit:cover;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;color:var(--teal-bright)}.profile-fields{display:flex;flex-direction:column;gap:8px}.profile-fields label{font-size:10px;color:var(--text-muted);font-weight:700}.profile-fields input{width:100%;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none}.profile-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.profile-note{font-size:10px;color:var(--text-muted);line-height:1.4}.share-image-options{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.share-image-option{padding:8px 11px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);cursor:pointer;font-size:10px;font-weight:800}.share-image-option.active{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.45);color:var(--teal-bright)}.share-preview{width:100%;max-height:52vh;object-fit:contain;border-radius:8px;background:#0d0f10;display:block}.share-status{margin-top:9px;font-size:10px;color:var(--text-muted)}
+.profile-layout{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}.profile-avatar-large{width:120px;height:120px;border-radius:50%;object-fit:cover;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;color:var(--teal-bright)}.profile-fields{display:flex;flex-direction:column;gap:8px}.profile-fields label{font-size:10px;color:var(--text-muted);font-weight:700}.profile-fields input{width:100%;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none}.profile-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.profile-note{font-size:10px;color:var(--text-muted);line-height:1.4}.share-preview{width:100%;max-height:52vh;object-fit:contain;border-radius:8px;background:#0d0f10;display:block}.share-status{margin-top:9px;font-size:12px;color:var(--text-muted)}
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:30px;background:rgba(0,0,0,.78);backdrop-filter:blur(4px);z-index:1000}.modal.show{display:flex}
 .modal-content{width:min(560px,90vw);max-height:80vh;overflow-y:auto;padding:16px;position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 25px 70px rgba(0,0,0,.55)}
 .modal-close{position:absolute;top:8px;right:8px;width:30px;height:30px;border:1px solid var(--border);border-radius:50%;background:var(--surface-3);color:var(--text);font-size:17px;cursor:pointer}
@@ -86,18 +86,18 @@ button{font-family:inherit}
 .owned-button,.mastered-button{width:100%;padding:6px;border:1px solid var(--border);border-radius:5px;background:var(--surface-2);color:var(--text-soft);font-size:10px;cursor:pointer}.owned-button.owned{background:rgba(33,199,183,.13);color:var(--teal-bright);border-color:rgba(33,199,183,.4)}.mastered-button.mastered{background:rgba(94,231,216,.1);color:var(--teal-bright);border-color:rgba(94,231,216,.35)}
 .no-variants{grid-column:1/-1;padding:15px;text-align:center;color:var(--text-muted)}
 .owner-list{margin-top:8px;padding-top:7px;border-top:1px solid var(--border);font-size:9px;color:var(--text-muted);line-height:1.35}.owner-list strong{color:var(--teal-bright);font-weight:600}
-.missing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:12px;justify-content:center}
+.missing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:12px;justify-content:center}
 .missing-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.15s ease;position:relative}.missing-card.selected{border-color:rgba(33,199,183,.65);box-shadow:0 0 0 2px rgba(33,199,183,.08)}
 .missing-card:hover{transform:translateY(-2px);border-color:var(--border-hover)}
 .missing-image-wrap{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.missing-image-wrap:before{content:"";position:absolute;width:72%;height:72%;border-radius:50%;background:radial-gradient(circle,rgba(94,231,216,.20) 0%,rgba(33,199,183,.08) 38%,transparent 72%);filter:blur(10px)}.missing-image{position:relative;width:78%;height:78%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
-.missing-select{position:absolute;top:9px;left:9px;z-index:2;width:18px;height:18px;accent-color:var(--teal);cursor:pointer}.missing-info{padding:10px}.missing-name{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.missing-parent{margin-top:3px;font-size:10px;color:var(--text-muted)}
-.missing-share-bar{grid-column:1/-1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);margin-bottom:2px}.missing-share-count{font-size:11px;color:var(--text-soft);margin-right:auto}.missing-share-count strong{color:var(--teal-bright)}.missing-share-button{padding:8px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);font-size:10px;font-weight:800;cursor:pointer}.missing-share-button:hover{background:var(--surface-3);border-color:var(--border-hover)}.missing-share-button.primary{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.35);color:var(--teal-bright)}.missing-share-button:disabled{opacity:.4;cursor:not-allowed}.missing-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.missing-action{padding:8px 6px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);font-size:10px;font-weight:700;cursor:pointer}.missing-action:hover{background:var(--surface-3);border-color:var(--border-hover);color:var(--text)}
+.missing-select{position:absolute;top:9px;left:9px;z-index:2;width:18px;height:18px;accent-color:var(--teal);cursor:pointer}.missing-info{padding:10px}.missing-name{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.missing-parent{margin-top:4px;font-size:11px;color:var(--text-muted)}
+.missing-share-bar{grid-column:1/-1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);margin-bottom:2px}.missing-share-count{font-size:11px;color:var(--text-soft);margin-right:auto}.missing-share-count strong{color:var(--teal-bright)}.missing-share-button{padding:8px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);font-size:10px;font-weight:800;cursor:pointer}.missing-share-button:hover{background:var(--surface-3);border-color:var(--border-hover)}.missing-share-button.primary{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.35);color:var(--teal-bright)}.missing-share-button:disabled{opacity:.4;cursor:not-allowed}.missing-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.missing-action{padding:9px 6px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);font-size:10px;font-weight:700;cursor:pointer}.missing-action:hover{background:var(--surface-3);border-color:var(--border-hover);color:var(--text)}
 .collection-stat{transition:.15s ease}.collection-stat:hover{transform:translateY(-1px);border-color:var(--border-hover)}
 .account-name{font-weight:600}
 
 .tracker-dashboard{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin-bottom:18px}.dashboard-panel{min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px}.dashboard-panel-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}.dashboard-panel-header h2{margin:3px 0 0;font-size:16px}.dashboard-kicker{font-size:9px;letter-spacing:1.4px;color:var(--teal-bright);font-weight:800}.dashboard-note{font-size:10px;color:var(--text-muted);line-height:1.4}.dashboard-empty{padding:14px 4px;color:var(--text-muted);font-size:11px;text-align:center}.small-action{padding:7px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-size:10px;font-weight:700;cursor:pointer}.small-action:hover{background:var(--surface-3);border-color:var(--border-hover)}.small-action.primary{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.35);color:var(--teal-bright)}.notice-list{display:flex;flex-direction:column;gap:8px;max-height:190px;overflow:auto}.notice-item{padding:10px 11px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2)}.notice-title{font-size:12px;font-weight:800}.notice-body{margin-top:4px;font-size:11px;line-height:1.4;color:var(--text-soft);white-space:pre-wrap}.notice-date{margin-top:6px;font-size:9px;color:var(--text-muted)}.notice-editor{margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}.notice-editor input,.notice-editor textarea{width:100%;padding:9px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-family:inherit;outline:none;margin-bottom:7px}.notice-editor textarea{resize:vertical}.notice-editor-actions{display:flex;gap:7px}.leaderboard-list,.recent-list{display:flex;flex-direction:column;gap:7px}.leaderboard-item{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:8px;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.leaderboard-rank{font-size:14px;font-weight:900;text-align:center;color:var(--teal-bright)}.leaderboard-name{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.leaderboard-sub{margin-top:2px;font-size:9px;color:var(--text-muted)}.leaderboard-score{font-size:11px;font-weight:800}.recent-item{display:grid;grid-template-columns:38px 1fr;gap:8px;align-items:center;padding:7px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.recent-thumb{width:38px;height:38px;object-fit:contain;border-radius:6px;background:#0d0f10}.recent-name{font-size:10px;font-weight:700}.recent-owner{margin-top:2px;font-size:9px;color:var(--text-muted)}
 @media(max-width:900px){.tracker-dashboard{grid-template-columns:1fr 1fr}.notice-panel{grid-column:1/-1}}
-@media(max-width:700px){body{padding:20px 12px}.brand-row{align-items:flex-start;flex-wrap:wrap}.account-bar{width:100%;justify-content:flex-end;margin-top:4px}.profile-layout{grid-template-columns:1fr}.profile-avatar-large{margin:0 auto}.missing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}h1{font-size:26px}.modal{padding:12px}.modal-content{width:100%;max-height:92vh;padding:14px}.modal-main{grid-template-columns:1fr}.modal-image{width:140px;height:140px;margin:0 auto}#modalVariants{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){body{padding:18px 10px}.brand-row{align-items:flex-start;flex-wrap:wrap;gap:12px}.heehee-logo{width:54px;height:54px}.brand{font-size:21px;letter-spacing:1.8px;line-height:1.15}.account-bar{width:100%;justify-content:flex-start;margin-top:2px}.account-name{font-size:15px}.account-button,.view-button,.collection-filter,.back-button,.player-button{padding:10px 13px;font-size:14px}.profile-layout{grid-template-columns:1fr}.profile-avatar-large{margin:0 auto}.missing-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.missing-image-wrap{height:135px}.missing-info{padding:10px}.missing-action{font-size:12px;padding:9px 5px}.controls input,.controls select{font-size:14px;padding:11px}.collection-view-select label{font-size:12px}.collection-view-select select{font-size:14px;padding:10px}.collection-title{font-size:23px}.collection-player{font-size:15px}.collection-stat-number{font-size:23px}.collection-stat-label{font-size:12px}.dashboard-panel-header h2{font-size:19px}.dashboard-kicker{font-size:10px}.dashboard-note,.notice-body{font-size:13px}.notice-title{font-size:14px}.players-header h2{font-size:22px}.players-header p{font-size:14px}.player-name{font-size:18px}.player-badge{font-size:9px}.player-mini-number{font-size:15px}.player-mini-label{font-size:9px}.player-progress-top{font-size:12px}.player-button{font-size:14px}.modal{padding:10px}.modal-content{width:100%;max-height:94vh;padding:14px}.modal-main{grid-template-columns:1fr}.modal-image{width:160px;height:160px;margin:0 auto}.modal-title{font-size:23px}.modal-rarity,.modal-season{font-size:13px}#modalVariants{grid-template-columns:repeat(2,minmax(0,1fr))}.variant-name{font-size:13px}.variant-type{font-size:11px}.owned-button,.mastered-button{font-size:12px;padding:8px}.share-brand-title{font-size:22px}.share-status{font-size:13px}.small-action{font-size:12px;padding:9px 11px}}h1{font-size:26px}.modal{position:fixed}
 @media(max-width:600px){.collection-stats{grid-template-columns:repeat(2,1fr)}.sprite-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sprite-image-wrap{height:110px}.missing-image-wrap{height:130px}.tracker-dashboard{grid-template-columns:1fr}.notice-panel{grid-column:auto}.controls select{flex:1}}
 </style>
 </head>
@@ -109,7 +109,7 @@ button{font-family:inherit}
     <div class="brand">HEEHEE&nbsp;&nbsp;FORTNITE SPRITE TRACKER</div>
     <div class="account-bar">
       <span id="accountName" class="account-name">Not logged in</span>
-      <button id="profileButton" class="account-button profile-account-button" style="display:none">👤 Profile</button>
+      <button id="profileButton" class="account-button profile-account-button" style="display:none">Profile</button>
       <button id="loginButton" class="account-button">Login</button>
       <button id="registerButton" class="account-button">Create Account</button>
       <button id="logoutButton" class="account-button" style="display:none">Logout</button>
@@ -140,7 +140,7 @@ button{font-family:inherit}
 
 <div class="tracker-dashboard">
   <section class="dashboard-panel notice-panel">
-    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">NOTICE BOARD</div><h2>Notice Board</h2></div><button id="addNoticeButton" class="small-action" type="button" style="display:none">+ Add Notice</button></div>
+    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">NOTICE BOARD</div></div><button id="addNoticeButton" class="small-action" type="button" style="display:none">+ Add Notice</button></div>
     <div id="noticeList" class="notice-list"><div class="dashboard-empty">Loading notices...</div></div>
     <div id="noticeEditor" class="notice-editor" style="display:none">
       <input id="noticeTitle" type="text" placeholder="Notice title">
@@ -151,12 +151,12 @@ button{font-family:inherit}
   </section>
 
   <section class="dashboard-panel leaderboard-panel">
-    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">LEADERBOARD</div><h2>Top 5 Leaderboard</h2></div></div>
+    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">TOP 5 LEADERBOARD</div></div></div>
     <div id="leaderboard" class="leaderboard-list"><div class="dashboard-empty">Loading leaderboard...</div></div>
   </section>
 
   <section class="dashboard-panel recent-panel">
-    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">RECENTLY COLLECTED</div><h2>Recently Collected</h2></div></div>
+    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">RECENTLY COLLECTED</div></div></div>
     <div id="recentCollected" class="recent-list"><div class="dashboard-empty">Loading recent finds...</div></div>
   </section>
 </div>
@@ -237,7 +237,7 @@ button{font-family:inherit}
   <div class="modal-content">
     <button id="friendsModalClose" class="modal-close" type="button">×</button>
     <div class="variants-title">MY FRIENDS</div>
-    <div class="dashboard-note" style="margin-bottom:12px">Add people here and they’ll appear in your Friends view instead of making you scroll through everyone. 👀</div>
+    <div class="dashboard-note" style="margin-bottom:12px">Add people here and they’ll appear in your Friends view instead of making you scroll through everyone.</div>
     <div class="friends-tools">
       <input id="friendSearch" type="text" placeholder="Find a player..." style="flex:1;min-width:180px;padding:9px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);color:var(--text);outline:none">
     </div>
@@ -272,16 +272,11 @@ button{font-family:inherit}
   <div class="modal-content">
     <button id="shareImageClose" class="modal-close" type="button">×</button>
     <div class="variants-title">SHARE YOUR MISSING SPRITES</div>
-    <div class="dashboard-note" style="margin-bottom:10px">Pick 5, 10 or 15 missing variants, then turn them into a little HeeHee wanted poster. 🕺🏽</div>
-    <div class="share-image-options">
-      <button class="share-image-option active" data-share-count="5" type="button">5 Sprites</button>
-      <button class="share-image-option" data-share-count="10" type="button">10 Sprites</button>
-      <button class="share-image-option" data-share-count="15" type="button">15 Sprites</button>
-    </div>
+    <div class="dashboard-note" style="margin-bottom:10px">Choose between 3 and 15 missing variants in the Missing tab.</div>
     <canvas id="shareCanvas" style="display:none"></canvas>
     <img id="sharePreview" class="share-preview" alt="Share image preview">
-    <div id="shareStatus" class="share-status">Select the required number of sprites in Missing first.</div>
-    <div class="profile-actions"><button id="generateShareImage" class="small-action primary" type="button">✨ Create PNG</button><button id="downloadShareImage" class="small-action" type="button" disabled>Download PNG</button></div>
+    <div id="shareStatus" class="share-status">Choose 3–15 sprites in Missing first.</div>
+    <div class="profile-actions"><button id="downloadShareImage" class="small-action primary" type="button" disabled>Download PNG</button></div>
   </div>
 </div>
 
@@ -325,7 +320,7 @@ let viewingPlayer=null;
 let refreshPromise=null;
 let notices=[];
 let selectedMissingIds=new Set();
-let shareCount=5;
+let shareCount=0;
 let shareImageDataUrl="";
 let profileImageData=null;
 
@@ -703,7 +698,7 @@ function renderLeaderboard(){
   const list=document.getElementById("leaderboard");
   if(!allPlayers.length){list.innerHTML='<div class="dashboard-empty">No players yet.</div>';return;}
   const ranked=allPlayers.map(player=>({player,stats:playerStats(player.player_id)})).sort((a,b)=>b.stats.owned-a.stats.owned||a.player.display_name.localeCompare(b.player.display_name)).slice(0,5);
-  const medals=["🥇","🥈","🥉","4️⃣","5️⃣"];
+  const medals=["🥇","🥈","🥉","🦥","🐌"];
   list.innerHTML=ranked.map((item,index)=>`<div class="leaderboard-item"><div class="leaderboard-rank">${medals[index]}</div><div><div class="leaderboard-name">${escapeHtml(item.player.display_name||"Unknown Player")}${currentPlayer&&item.player.player_id===currentPlayer.player_id?" · You":""}</div><div class="leaderboard-sub">${item.stats.percent}% of variants collected</div></div><div class="leaderboard-score">${item.stats.owned}</div></div>`).join("");
 }
 
@@ -787,13 +782,13 @@ function renderPlayers(){
   const players=playersMode==="friends"?allPlayers.filter(p=>friendIds.has(p.player_id)):allPlayers;
   document.getElementById("playersHeading").textContent=playersMode==="friends"?"Friends":"All Players";
   document.getElementById("playersDescription").textContent=playersMode==="friends"?"View the collections of the players you’ve added.":"View everyone's collection.";
-  if(!players.length){grid.innerHTML=playersMode==="friends"?'<div class="message">No friends yet. Add some people from Manage Friends! 👀</div>':'<div class="message">No players found.</div>';return;}
+  if(!players.length){grid.innerHTML=playersMode==="friends"?'<div class="message">No friends yet. Add some people from Manage Friends!</div>':'<div class="message">No players found.</div>';return;}
   players.forEach(player=>{
     const stats=playerStats(player.player_id);
     const card=document.createElement("div");
     card.className="player-card"+(currentPlayer&&player.player_id===currentPlayer.player_id?" current":"");
     const avatar=player.profile_image_url?`<img class="player-avatar" src="${escapeHtml(player.profile_image_url)}" alt="">`:`<div class="player-avatar">${escapeHtml(initials(player.display_name))}</div>`;
-    const badge=currentPlayer&&player.player_id===currentPlayer.player_id?"<span class='player-badge'>THAT'S YOU 👀</span>":(playersMode==="friends"?"<span class='player-badge'>FRIEND ⭐</span>":"<span class='player-badge'>SPRITE COLLECTOR</span>");
+    const badge=currentPlayer&&player.player_id===currentPlayer.player_id?"<span class='player-badge'>THAT'S YOU</span>":(playersMode==="friends"?"<span class='player-badge'>FRIEND ⭐</span>":"<span class='player-badge'>SPRITE COLLECTOR</span>");
     card.innerHTML=`<div class="player-card-top">${avatar}<div class="player-identity"><div class="player-name">${escapeHtml(player.display_name||"Unknown Player")}</div>${badge}</div></div><div class="player-stats-row"><div class="player-mini-stat"><div class="player-mini-number">${stats.owned}</div><div class="player-mini-label">Owned</div></div><div class="player-mini-stat"><div class="player-mini-number">${stats.mastered}</div><div class="player-mini-label">Mastered</div></div><div class="player-mini-stat"><div class="player-mini-number">${stats.missing}</div><div class="player-mini-label">Missing</div></div></div><div class="player-progress"><div class="player-progress-top"><span>${stats.owned} / ${stats.total} variants</span><span>${stats.percent}%</span></div><div class="progress-bar"><div class="progress-fill" style="width:${stats.percent}%"></div></div></div><button class="player-button" type="button">View Collection →</button>`;
     card.querySelector(".player-button").addEventListener("click",()=>openPlayerCollection(player));
     grid.appendChild(card);
@@ -907,9 +902,10 @@ function renderMissing(){
   selectedMissingIds=new Set([...selectedMissingIds].filter(id=>missing.some(v=>v.variant_id===id)));
   container.innerHTML="";
   const bar=document.createElement("div");bar.className="missing-share-bar";
-  bar.innerHTML=`<div class="missing-share-count"><strong>${selectedMissingIds.size}</strong> selected · choose ${shareCount} to make a share image</div><button class="missing-share-button" id="selectShareCount">Select ${shareCount}</button><button class="missing-share-button primary" id="openShareImage" ${selectedMissingIds.size===shareCount?"":"disabled"}>✨ Create Share Image</button>`;
+  const selectedCount=selectedMissingIds.size;
+  bar.innerHTML=`<div class="missing-share-count"><strong>${selectedCount}</strong> selected · choose 3–15 sprites</div><button class="missing-share-button" id="clearShareSelection" ${selectedCount?"":"disabled"}>Clear</button><button class="missing-share-button primary" id="openShareImage" ${selectedCount>=3&&selectedCount<=15?"":"disabled"}>✨ Create Share Image</button>`;
   container.appendChild(bar);
-  bar.querySelector("#selectShareCount").addEventListener("click",()=>selectMissingForShare());
+  bar.querySelector("#clearShareSelection").addEventListener("click",()=>{selectedMissingIds.clear();renderMissing();});
   bar.querySelector("#openShareImage").addEventListener("click",()=>openShareImage());
   if(!sortedMissing.length){const empty=document.createElement("div");empty.className="message";empty.textContent="Nothing missing! WHO'S BAD? 🕺🏽";container.appendChild(empty);updateStats(0);return;}
   sortedMissing.forEach(variant=>{
@@ -918,21 +914,19 @@ function renderMissing(){
     card.innerHTML=`<input class="missing-select" type="checkbox" ${selectedMissingIds.has(variant.variant_id)?"checked":""} aria-label="Select ${escapeHtml(variant.variant_name||"variant")} for share image"><div class="missing-image-wrap"><img class="missing-image" src="${escapeHtml(variant.image_url||sprite?.image_url||"")}" alt="${escapeHtml(variant.variant_name||"")}"></div><div class="missing-info"><div class="missing-name">${escapeHtml(variant.variant_name||"Variant")}</div><div class="missing-parent">${escapeHtml(sprite?.sprite_name||"Unknown Sprite")} · ${escapeHtml(sprite?.rarity||"")}</div><div class="missing-actions"><button class="missing-action owned-missing" type="button">☆ Owned</button><button class="missing-action mastered-missing" type="button">🏆 Mastered</button></div></div>`;
     const checkbox=card.querySelector(".missing-select");
     checkbox.addEventListener("click",event=>event.stopPropagation());
-    checkbox.addEventListener("change",()=>{if(checkbox.checked)selectedMissingIds.add(variant.variant_id);else selectedMissingIds.delete(variant.variant_id);renderMissing();});
+    checkbox.addEventListener("change",()=>{
+      if(checkbox.checked){
+        if(selectedMissingIds.size>=15){checkbox.checked=false;alert("You can select a maximum of 15 sprites for a share image.");return;}
+        selectedMissingIds.add(variant.variant_id);
+      }else{selectedMissingIds.delete(variant.variant_id);}
+      renderMissing();
+    });
     card.querySelector(".owned-missing").addEventListener("click",()=>markOwnedAndRefresh(variant.variant_id,false));
     card.querySelector(".mastered-missing").addEventListener("click",()=>markOwnedAndRefresh(variant.variant_id,true));
     card.querySelector(".missing-image-wrap").addEventListener("click",()=>sprite&&openModal(sprite));
     container.appendChild(card);
   });
   updateStats(sortedMissing.length);
-}
-
-function selectMissingForShare(){
-  const missing=allVariants.filter(v=>v.active!==false&&!getVariantRecord(myCollection,v.variant_id)?.owned);
-  const search=document.getElementById("search").value.toLowerCase();const rarity=document.getElementById("rarity").value;
-  const candidates=missing.filter(v=>{const sprite=allSprites.find(s=>s.sprite_id===v.sprite_id);if(!sprite)return false;if(search&&!((v.variant_name||"").toLowerCase().includes(search)||(sprite.sprite_name||"").toLowerCase().includes(search)))return false;if(rarity!=="All"&&sprite.rarity!==rarity)return false;return true;});
-  selectedMissingIds=new Set(candidates.slice(0,shareCount).map(v=>v.variant_id));
-  renderMissing();
 }
 
 function renderSprites(){
@@ -1013,12 +1007,14 @@ function renderVariants(spriteId){
   });
 }
 
-function openShareImage(){
-  if(selectedMissingIds.size!==shareCount){alert(`Please select exactly ${shareCount} missing sprites first.`);return;}
+async function openShareImage(){
+  if(selectedMissingIds.size<3||selectedMissingIds.size>15){alert("Please select between 3 and 15 missing sprites first.");return;}
+  shareCount=selectedMissingIds.size;
   document.getElementById("shareImageModal").classList.add("show");
-  document.getElementById("shareStatus").textContent=`Ready to make your ${shareCount}-sprite wanted poster. ✨`;
+  document.getElementById("shareStatus").textContent=`Creating your ${shareCount}-sprite wanted poster... ✨`;
   document.getElementById("downloadShareImage").disabled=true;
   shareImageDataUrl="";
+  await generateShareImage();
 }
 
 function getSelectedMissingVariants(){return allVariants.filter(v=>selectedMissingIds.has(v.variant_id));}
@@ -1058,9 +1054,11 @@ async function loadCanvasImage(src){
 
 async function generateShareImage(){
   const variants=getSelectedMissingVariants();
-  if(variants.length!==shareCount){alert(`Please select exactly ${shareCount} missing sprites first.`);return;}
+  if(variants.length<3||variants.length>15){alert("Please select between 3 and 15 missing sprites first.");return;}
+  shareCount=variants.length;
   const canvas=document.getElementById("shareCanvas");
-  const cols=shareCount===15?3:(shareCount===10?2:1);const rows=Math.ceil(shareCount/cols);const width=1200;const header=250;const cellW=width/cols;const cellH=260;canvas.width=width;canvas.height=header+rows*cellH+110;
+  const cols=shareCount<=3?shareCount:(shareCount<=5?shareCount:(shareCount<=8?4:(shareCount<=10?5:shareCount===11?4:5)));
+  const rows=Math.ceil(shareCount/cols);const width=1200;const header=250;const cellW=width/cols;const cellH=260;canvas.width=width;canvas.height=header+rows*cellH+110;
   const ctx=canvas.getContext("2d");
   ctx.fillStyle="#101214";ctx.fillRect(0,0,canvas.width,canvas.height);
   const glow=ctx.createRadialGradient(width/2,130,20,width/2,130,520);glow.addColorStop(0,"rgba(94,231,216,.20)");glow.addColorStop(1,"rgba(16,18,20,0)");ctx.fillStyle=glow;ctx.fillRect(0,0,width,300);
@@ -1068,7 +1066,7 @@ async function generateShareImage(){
   if(logoImg){const logoSize=104;ctx.drawImage(logoImg,width/2-logoSize/2,22,logoSize,logoSize);}
   ctx.fillStyle="#5ee7d8";ctx.font="900 34px Arial";ctx.textAlign="center";ctx.fillText("HEEHEE SPRITE TRACKER",width/2,150);
   ctx.fillStyle="#f1f5f5";ctx.font="800 28px Arial";ctx.fillText(`${currentPlayer?.display_name||"Sprite Collector"}'s Missing Sprites`,width/2,190);
-  ctx.fillStyle="#7f8b8d";ctx.font="16px Arial";ctx.fillText(`${shareCount} missing variants · ${new Date().toLocaleDateString()}`,width/2,215);
+  ctx.fillStyle="#7f8b8d";ctx.font="16px Arial";ctx.fillText(`${shareCount} missing variants`,width/2,215);
   for(let i=0;i<variants.length;i++){
     const v=variants[i],sprite=allSprites.find(s=>s.sprite_id===v.sprite_id);const x=(i%cols)*cellW,y=header+Math.floor(i/cols)*cellH;
     const cardX=x+14,cardY=y+12,cardW=cellW-28,cardH=cellH-24;
@@ -1084,7 +1082,7 @@ async function generateShareImage(){
   }
   ctx.fillStyle="#21c7b7";ctx.fillRect(0,canvas.height-72,width,1);
   ctx.fillStyle="#b7c1c2";ctx.font="14px Arial";ctx.textAlign="center";ctx.fillText("HeeHee Fortnite Sprite Tracker · https://heehee-sprite-tracker.pages.dev/",width/2,canvas.height-39);
-  try{shareImageDataUrl=canvas.toDataURL("image/png");document.getElementById("sharePreview").src=shareImageDataUrl;document.getElementById("downloadShareImage").disabled=false;document.getElementById("shareStatus").textContent="PNG created! Download it and send it to the group. 🕺🏽";}catch(error){document.getElementById("shareStatus").textContent="One or more sprite images blocked the PNG canvas. Try again after the images have loaded.";console.error(error);}
+  try{shareImageDataUrl=canvas.toDataURL("image/png");document.getElementById("sharePreview").src=shareImageDataUrl;document.getElementById("downloadShareImage").disabled=false;document.getElementById("shareStatus").textContent="PNG created!";}catch(error){document.getElementById("shareStatus").textContent="One or more sprite images blocked the PNG canvas. Try again after the images have loaded.";console.error(error);}
 }
 
 function downloadShareImage(){if(!shareImageDataUrl)return;const a=document.createElement("a");a.href=shareImageDataUrl;a.download=`heehee-missing-${shareCount}.png`;a.click();}
@@ -1179,9 +1177,7 @@ document.getElementById("saveProfileButton").addEventListener("click",saveProfil
 document.getElementById("profileImageInput").addEventListener("change",async event=>{const file=event.target.files?.[0];if(!file)return;try{profileImageData=await resizeProfileImage(file);document.getElementById("profileAvatarLarge").innerHTML=`<img src="${escapeHtml(profileImageData)}" alt="Profile picture">`;}catch(error){document.getElementById("profileMessage").textContent="Could not read that image.";}});
 document.getElementById("chooseProfileImage").addEventListener("click",()=>document.getElementById("profileImageInput").click());
 document.getElementById("shareImageClose").addEventListener("click",()=>document.getElementById("shareImageModal").classList.remove("show"));
-document.getElementById("generateShareImage").addEventListener("click",generateShareImage);
 document.getElementById("downloadShareImage").addEventListener("click",downloadShareImage);
-document.querySelectorAll(".share-image-option").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".share-image-option").forEach(b=>b.classList.remove("active"));button.classList.add("active");shareCount=Number(button.dataset.shareCount);document.getElementById("shareStatus").textContent=`Select exactly ${shareCount} missing sprites in the Missing tab.`;}));
 document.getElementById("profileModal").addEventListener("click",event=>{if(event.target.id==="profileModal")closeProfile();});
 document.getElementById("shareImageModal").addEventListener("click",event=>{if(event.target.id==="shareImageModal")document.getElementById("shareImageModal").classList.remove("show");});
 
