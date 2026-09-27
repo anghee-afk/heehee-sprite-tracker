@@ -23,13 +23,13 @@
 *{box-sizing:border-box}
 body{margin:0;padding:30px 20px;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
 .container{max-width:1200px;margin:0 auto}
-header{margin-bottom:22px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.06)}
-.brand-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+header{margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.06)}
+.brand-row{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:10px;position:relative}
 .heehee-logo{width:48px;height:48px;flex-shrink:0;display:block;object-fit:contain}
 .brand{font-size:20px;font-weight:800;letter-spacing:3px;color:var(--teal-bright);margin:0}
 h1{margin:0;font-size:32px;letter-spacing:-.8px}
 .subtitle{margin-top:7px;color:var(--text-muted);font-size:14px}
-.account-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.account-bar{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap}
 .account-name{color:var(--text-soft);font-size:13px}
 button{font-family:inherit}
 .account-button,.view-button,.collection-filter,.back-button,.player-button{border:1px solid var(--border);background:var(--surface-2);color:var(--text);padding:8px 14px;border-radius:8px;cursor:pointer;transition:.15s ease}
@@ -38,7 +38,7 @@ button{font-family:inherit}
 .login-panel h2{margin:0 0 15px;font-size:18px}
 .login-fields{display:flex;gap:10px;flex-wrap:wrap}
 .login-fields input{flex:1;min-width:190px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none}
-.login-fields input:focus,.controls input:focus,.controls select:focus,.level-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(33,199,183,.09)}
+.login-fields input:focus,.controls input:focus,.controls select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(33,199,183,.09)}
 .login-submit{padding:10px 18px;border-radius:8px;border:none;background:var(--gradient);color:#071110;font-weight:800;cursor:pointer}
 .login-message{margin-top:10px;font-size:13px;color:var(--text-muted)}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
@@ -59,7 +59,7 @@ button{font-family:inherit}
 .sprite-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .15s,border-color .15s}
 .sprite-card:hover{transform:translateY(-3px);border-color:var(--border-hover)}
 .sprite-card.collection-partial{border-color:rgba(33,199,183,.35)}.sprite-card.collection-complete{border-color:rgba(94,231,216,.55)}
-.sprite-image{width:100%;height:140px;object-fit:cover;display:block;background:#0d0f10}
+.sprite-image-wrap{height:125px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.sprite-image-wrap:before{content:"";position:absolute;width:75%;height:75%;border-radius:50%;background:radial-gradient(circle,rgba(94,231,216,.20) 0%,rgba(33,199,183,.08) 38%,transparent 72%);filter:blur(10px)}.sprite-image{position:relative;width:82%;height:82%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
 .sprite-info{padding:9px 10px 10px}.sprite-name{font-size:13px;font-weight:600;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rarity,.season,.sprite-collection-status{font-size:10px;color:var(--text-muted)}.sprite-collection-status{margin-top:6px}.sprite-collection-status.partial{color:var(--teal)}.sprite-collection-status.complete{color:var(--teal-bright);font-weight:600}
 .message{grid-column:1/-1;padding:30px;text-align:center;color:var(--text-muted)}
@@ -76,10 +76,21 @@ button{font-family:inherit}
 #modalVariants{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}.variant-card{background:#101315;border:1px solid var(--border);border-radius:8px;overflow:hidden}.variant-image{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--surface-2)}
 .variant-info{padding:7px}.variant-name{margin-bottom:2px;font-size:11px;font-weight:700}.variant-type{margin-bottom:6px;font-size:9px;color:var(--text-muted)}.variant-controls{display:flex;flex-direction:column;gap:5px}
 .owned-button,.mastered-button{width:100%;padding:6px;border:1px solid var(--border);border-radius:5px;background:var(--surface-2);color:var(--text-soft);font-size:10px;cursor:pointer}.owned-button.owned{background:rgba(33,199,183,.13);color:var(--teal-bright);border-color:rgba(33,199,183,.4)}.mastered-button.mastered{background:rgba(94,231,216,.1);color:var(--teal-bright);border-color:rgba(94,231,216,.35)}
-.level-control{display:flex;align-items:center;gap:5px}.level-control label{font-size:9px;color:var(--text-muted)}.level-input{width:100%;padding:5px;font-size:10px}.no-variants{grid-column:1/-1;padding:15px;text-align:center;color:var(--text-muted)}
+.no-variants{grid-column:1/-1;padding:15px;text-align:center;color:var(--text-muted)}
 .owner-list{margin-top:8px;padding-top:7px;border-top:1px solid var(--border);font-size:9px;color:var(--text-muted);line-height:1.35}.owner-list strong{color:var(--teal-bright);font-weight:600}
-@media(max-width:700px){body{padding:20px 12px}h1{font-size:26px}.modal{padding:12px}.modal-content{width:100%;max-height:92vh;padding:14px}.modal-main{grid-template-columns:1fr}.modal-image{width:140px;height:140px;margin:0 auto}#modalVariants{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.collection-stats{grid-template-columns:repeat(2,1fr)}.sprite-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sprite-image{height:130px}}
+.missing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.missing-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.15s ease}
+.missing-card:hover{transform:translateY(-2px);border-color:var(--border-hover)}
+.missing-image-wrap{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.missing-image-wrap:before{content:"";position:absolute;width:72%;height:72%;border-radius:50%;background:radial-gradient(circle,rgba(94,231,216,.20) 0%,rgba(33,199,183,.08) 38%,transparent 72%);filter:blur(10px)}.missing-image{position:relative;width:78%;height:78%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
+.missing-info{padding:10px}.missing-name{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.missing-parent{margin-top:3px;font-size:10px;color:var(--text-muted)}
+.missing-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.missing-action{padding:8px 6px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);font-size:10px;font-weight:700;cursor:pointer}.missing-action:hover{background:var(--surface-3);border-color:var(--border-hover);color:var(--text)}
+.collection-stat{transition:.15s ease}.collection-stat:hover{transform:translateY(-1px);border-color:var(--border-hover)}
+.account-name{font-weight:600}
+
+.tracker-dashboard{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin-bottom:18px}.dashboard-panel{min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px}.dashboard-panel-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}.dashboard-panel-header h2{margin:3px 0 0;font-size:16px}.dashboard-kicker{font-size:9px;letter-spacing:1.4px;color:var(--teal-bright);font-weight:800}.dashboard-note{font-size:10px;color:var(--text-muted);line-height:1.4}.dashboard-empty{padding:14px 4px;color:var(--text-muted);font-size:11px;text-align:center}.small-action{padding:7px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-size:10px;font-weight:700;cursor:pointer}.small-action:hover{background:var(--surface-3);border-color:var(--border-hover)}.small-action.primary{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.35);color:var(--teal-bright)}.notice-list{display:flex;flex-direction:column;gap:8px;max-height:190px;overflow:auto}.notice-item{padding:10px 11px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2)}.notice-title{font-size:12px;font-weight:800}.notice-body{margin-top:4px;font-size:11px;line-height:1.4;color:var(--text-soft);white-space:pre-wrap}.notice-date{margin-top:6px;font-size:9px;color:var(--text-muted)}.notice-editor{margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}.notice-editor input,.notice-editor textarea{width:100%;padding:9px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-family:inherit;outline:none;margin-bottom:7px}.notice-editor textarea{resize:vertical}.notice-editor-actions{display:flex;gap:7px}.leaderboard-list,.recent-list{display:flex;flex-direction:column;gap:7px}.leaderboard-item{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:8px;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.leaderboard-rank{font-size:14px;font-weight:900;text-align:center;color:var(--teal-bright)}.leaderboard-name{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.leaderboard-sub{margin-top:2px;font-size:9px;color:var(--text-muted)}.leaderboard-score{font-size:11px;font-weight:800}.recent-item{display:grid;grid-template-columns:38px 1fr;gap:8px;align-items:center;padding:7px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.recent-thumb{width:38px;height:38px;object-fit:contain;border-radius:6px;background:#0d0f10}.recent-name{font-size:10px;font-weight:700}.recent-owner{margin-top:2px;font-size:9px;color:var(--text-muted)}
+@media(max-width:900px){.tracker-dashboard{grid-template-columns:1fr 1fr}.notice-panel{grid-column:1/-1}}
+@media(max-width:700px){body{padding:20px 12px}.brand-row{align-items:flex-start}.account-bar{margin-top:6px}}h1{font-size:26px}.modal{padding:12px}.modal-content{width:100%;max-height:92vh;padding:14px}.modal-main{grid-template-columns:1fr}.modal-image{width:140px;height:140px;margin:0 auto}#modalVariants{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.collection-stats{grid-template-columns:repeat(2,1fr)}.sprite-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sprite-image-wrap{height:110px}.missing-image-wrap{height:130px}.tracker-dashboard{grid-template-columns:1fr}.notice-panel{grid-column:auto}.controls select{flex:1}}
 </style>
 </head>
 <body>
@@ -90,14 +101,13 @@ button{font-family:inherit}
     <div class="brand">HEEHEE&nbsp;&nbsp;FORTNITE SPRITE TRACKER</div>
   </div>
   <div class="subtitle">Shamone</div>
+  <div class="account-bar">
+    <span id="accountName" class="account-name">Not logged in</span>
+    <button id="loginButton" class="account-button">Login</button>
+    <button id="registerButton" class="account-button">Create Account</button>
+    <button id="logoutButton" class="account-button" style="display:none">Logout</button>
+  </div>
 </header>
-
-<div class="account-bar">
-  <span id="accountName" class="account-name">Not logged in</span>
-  <button id="loginButton" class="account-button">Login</button>
-  <button id="registerButton" class="account-button">Create Account</button>
-  <button id="logoutButton" class="account-button" style="display:none">Logout</button>
-</div>
 
 <div id="loginPanel" class="login-panel" style="display:none">
   <h2>Login</h2><div style="margin:-8px 0 15px;color:var(--text-muted);font-size:12px">Use your HeeHee username and password.</div>
@@ -120,6 +130,29 @@ button{font-family:inherit}
   <div id="registerMessage" class="login-message"></div>
 </div>
 
+<div class="tracker-dashboard">
+  <section class="dashboard-panel notice-panel">
+    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">NOTICE BOARD</div><h2>Updates & Notices</h2></div><button id="addNoticeButton" class="small-action" type="button" style="display:none">+ Add Notice</button></div>
+    <div id="noticeList" class="notice-list"><div class="dashboard-empty">Loading notices...</div></div>
+    <div id="noticeEditor" class="notice-editor" style="display:none">
+      <input id="noticeTitle" type="text" placeholder="Notice title">
+      <textarea id="noticeBody" rows="3" placeholder="Write the notice here..."></textarea>
+      <div class="notice-editor-actions"><button id="saveNoticeButton" class="small-action primary" type="button">Publish Notice</button><button id="cancelNoticeButton" class="small-action" type="button">Cancel</button></div>
+      <div id="noticeEditorMessage" class="dashboard-note"></div>
+    </div>
+  </section>
+
+  <section class="dashboard-panel leaderboard-panel">
+    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">LEADERBOARD</div><h2>Top Collectors</h2></div><span class="dashboard-note">Most variants owned</span></div>
+    <div id="leaderboard" class="leaderboard-list"><div class="dashboard-empty">Loading leaderboard...</div></div>
+  </section>
+
+  <section class="dashboard-panel recent-panel">
+    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">RECENTLY COLLECTED</div><h2>Latest Finds</h2></div></div>
+    <div id="recentCollected" class="recent-list"><div class="dashboard-empty">Loading recent finds...</div></div>
+  </section>
+</div>
+
 <div class="controls">
   <input id="search" type="text" placeholder="Search sprites...">
   <select id="rarity">
@@ -128,6 +161,15 @@ button{font-family:inherit}
     <option value="Epic">Epic</option>
     <option value="Legendary">Legendary</option>
     <option value="Mythic">Mythic</option>
+  </select>
+  <select id="sort">
+    <option value="default">Sort: Default</option>
+    <option value="name-asc">Name A–Z</option>
+    <option value="name-desc">Name Z–A</option>
+    <option value="most-owned">Most collected</option>
+    <option value="least-owned">Least collected</option>
+    <option value="rarity">Rarity</option>
+    <option value="recent">Recently collected</option>
   </select>
 </div>
 
@@ -207,38 +249,75 @@ let myCollection=[];
 let allPlayers=[];
 let allCollections=[];
 let viewingPlayer=null;
+let refreshPromise=null;
+let notices=[];
 
-async function supabaseRequest(endpoint,options={}){
-  const headers={
-    "apikey":SUPABASE_KEY,
-    "Authorization":"Bearer "+(accessToken||SUPABASE_KEY),
-    "Content-Type":"application/json",
-    ...(options.headers||{})
+function setSession(session){
+  if(!session)return;
+  accessToken=session.access_token||accessToken;
+  refreshToken=session.refresh_token||refreshToken;
+  if(accessToken)localStorage.setItem("accessToken",accessToken);
+  if(refreshToken)localStorage.setItem("refreshToken",refreshToken);
+}
+
+async function refreshSession(){
+  if(!refreshToken)return false;
+  if(refreshPromise)return refreshPromise;
+  refreshPromise=(async()=>{
+    try{
+      const response=await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=refresh_token",{
+        method:"POST",
+        headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},
+        body:JSON.stringify({refresh_token:refreshToken})
+      });
+      const data=await response.json().catch(()=>({}));
+      if(!response.ok||!data.access_token){
+        accessToken=null;refreshToken=null;
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        return false;
+      }
+      setSession(data);
+      return true;
+    }finally{refreshPromise=null;}
+  })();
+  return refreshPromise;
+}
+
+async function supabaseRequest(endpoint,options={},allowRefresh=true){
+  const makeRequest=()=>{
+    const headers={
+      "apikey":SUPABASE_KEY,
+      "Authorization":"Bearer "+(accessToken||SUPABASE_KEY),
+      "Content-Type":"application/json",
+      ...(options.headers||{})
+    };
+    return fetch(SUPABASE_URL+endpoint,{...options,headers});
   };
-  return fetch(SUPABASE_URL+endpoint,{...options,headers});
+  let response=await makeRequest();
+  if(response.status===401&&allowRefresh&&refreshToken){
+    const refreshed=await refreshSession();
+    if(refreshed)response=await supabaseRequest(endpoint,options,false);
+  }
+  return response;
 }
 
-function escapeHtml(value){
-  return String(value??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));
-}
+function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,m=>{if(m==="&")return "&amp;";if(m==="<")return "&lt;";if(m===">")return "&gt;";if(m==="\"")return "&quot;";return "&#039;";});}
 
 async function loadSprites(){
   const response=await supabaseRequest("/rest/v1/sprites?select=*&active=eq.true");
   if(!response.ok)throw new Error("Could not load sprites: "+await response.text());
   allSprites=await response.json();
-  renderSprites();
 }
 
 async function loadVariants(){
   const response=await supabaseRequest("/rest/v1/variants?select=*&active=eq.true");
   if(!response.ok)throw new Error("Could not load variants: "+await response.text());
   allVariants=await response.json();
-  renderSprites();
-  updateCollectionStats();
 }
 
 async function loadPlayers(){
-  if(!currentUser){allPlayers=[];allCollections=[];renderPlayers();return;}
+  if(!currentUser){allPlayers=[];renderPlayers();return;}
   const response=await supabaseRequest("/rest/v1/players?select=*&active=eq.true&order=display_name.asc");
   if(!response.ok)throw new Error("Could not load players: "+await response.text());
   allPlayers=await response.json();
@@ -250,7 +329,18 @@ async function loadAllCollections(){
   const response=await supabaseRequest("/rest/v1/collections?select=*");
   if(!response.ok)throw new Error("Could not load player collections: "+await response.text());
   allCollections=await response.json();
-  renderPlayers();
+  renderPlayers();renderLeaderboard();renderRecentCollected();
+}
+
+async function loadNotices(){
+  const response=await supabaseRequest("/rest/v1/notices?select=*&active=eq.true&order=created_at.desc");
+  if(!response.ok){
+    const text=await response.text();
+    if(response.status===404||text.includes("relation \"public.notices\" does not exist")){notices=[];renderNotices();return;}
+    throw new Error("Could not load notices: "+text);
+  }
+  notices=await response.json();
+  renderNotices();
 }
 
 async function loadCurrentUser(){
@@ -275,6 +365,8 @@ async function loadMyCollection(){
   updateCollectionStats();
 }
 
+function makeAuthEmail(username){return username.toLowerCase().trim()+"@heehee.local";}
+
 async function login(){
   const username=document.getElementById("emailInput").value.trim();
   const password=document.getElementById("passwordInput").value;
@@ -282,18 +374,13 @@ async function login(){
   if(!username||!password){message.textContent="Please enter your username and password.";return;}
   message.textContent="Logging in...";
   try{
-    const email=makeAuthEmail(username);
     const response=await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=password",{
-      method:"POST",
-      headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},
-      body:JSON.stringify({email,password})
+      method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},
+      body:JSON.stringify({email:makeAuthEmail(username),password})
     });
-    const data=await response.json();
+    const data=await response.json().catch(()=>({}));
     if(!response.ok)throw new Error(data.error_description||data.msg||"Login failed. Check your username and password.");
-    accessToken=data.access_token;
-    refreshToken=data.refresh_token;
-    localStorage.setItem("accessToken",accessToken);
-    localStorage.setItem("refreshToken",refreshToken);
+    setSession(data);
     await loadCurrentUser();
     await loadPlayer();
     if(!currentPlayer)throw new Error("Your account exists, but your player profile is missing.");
@@ -301,18 +388,16 @@ async function login(){
     await loadMyCollection();
     await loadPlayers();
     await loadAllCollections();
+    await loadNotices();
     updateAccountUI();
     document.getElementById("loginPanel").style.display="none";
+    document.getElementById("passwordInput").value="";
     message.textContent="";
     renderSprites();
   }catch(error){
     console.error(error);
     message.textContent=error.message;
   }
-}
-
-function makeAuthEmail(username){
-  return username.toLowerCase().trim()+"@heehee.local";
 }
 
 async function register(){
@@ -321,15 +406,8 @@ async function register(){
   const passwordConfirm=document.getElementById("registerPasswordConfirm").value;
   const message=document.getElementById("registerMessage");
   message.textContent="";
-
-  if(!username||!password||!passwordConfirm){
-    message.textContent="Please enter a username and password.";
-    return;
-  }
-  if(!/^[A-Za-z0-9._-]+$/.test(username)){
-    message.textContent="Username can only use letters, numbers, dots, underscores and hyphens.";
-    return;
-  }
+  if(!username||!password||!passwordConfirm){message.textContent="Please enter a username and password.";return;}
+  if(!/^[A-Za-z0-9._-]+$/.test(username)){message.textContent="Username can only use letters, numbers, dots, underscores and hyphens.";return;}
   if(username.length<3){message.textContent="Username must be at least 3 characters.";return;}
   if(password!==passwordConfirm){message.textContent="Passwords do not match.";return;}
   if(password.length<6){message.textContent="Password must be at least 6 characters.";return;}
@@ -338,71 +416,64 @@ async function register(){
   try{
     const email=makeAuthEmail(username);
     const response=await fetch(SUPABASE_URL+"/auth/v1/signup",{
-      method:"POST",
-      headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},
+      method:"POST",headers:{"apikey":SUPABASE_KEY,"Content-Type":"application/json"},
       body:JSON.stringify({email,password,data:{display_name:username,username:username}})
     });
-    const data=await response.json();
+    const data=await response.json().catch(()=>({}));
     if(!response.ok)throw new Error(data.msg||data.message||data.error_description||"Could not create account.");
     const user=data.user;
-    if(!user)throw new Error("Account was created, but no user was returned.");
+    if(!user)throw new Error("Could not finish creating the account.");
 
-    if(!data.session){
-      message.textContent="Account created, but Supabase is asking for email confirmation. Turn off email confirmation in Supabase Authentication settings, then try again.";
-      return;
+    if(data.session){
+      setSession(data.session);
+      await loadCurrentUser();
+      const playerPayload={
+        player_id:"PLAYER_"+user.id,
+        auth_user_id:user.id,
+        display_name:username,
+        discord_name:username,
+        active:true,
+        admin:false
+      };
+      const playerResponse=await supabaseRequest("/rest/v1/players",{
+        method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify(playerPayload)
+      });
+      if(!playerResponse.ok){
+        const errorText=await playerResponse.text();
+        throw new Error("Account was created, but the player profile could not be created: "+errorText);
+      }
     }
 
-    accessToken=data.session.access_token;
-    refreshToken=data.session.refresh_token;
-    localStorage.setItem("accessToken",accessToken);
-    localStorage.setItem("refreshToken",refreshToken);
-    await loadCurrentUser();
-
-    // Your players table requires the exact `discord-id` column to be non-null.
-    // We no longer ask friends for Discord details, so the username is used there.
-    const playerPayload={
-      player_id:"PLAYER_"+user.id,
-      auth_user_id:user.id,
-      display_name:username,
-      discord_name:username,
-      "discord-id":username,
-      active:true,
-      admin:false
-    };
-
-    const playerResponse=await supabaseRequest("/rest/v1/players",{
-      method:"POST",
-      headers:{"Prefer":"return=representation"},
-      body:JSON.stringify(playerPayload)
-    });
-
-    if(!playerResponse.ok){
-      const errorText=await playerResponse.text();
-      throw new Error("Account was created, but the player profile could not be created: "+errorText);
-    }
-
-    await loadPlayer();
-    await loadMyCollection();
-    await loadPlayers();
-    await loadAllCollections();
-    updateAccountUI();
+    document.getElementById("registerUsername").value="";
+    document.getElementById("registerPassword").value="";
+    document.getElementById("registerPasswordConfirm").value="";
     document.getElementById("registerPanel").style.display="none";
+    document.getElementById("loginPanel").style.display="block";
+    document.getElementById("emailInput").value=username;
+    document.getElementById("loginMessage").textContent="Account created successfully! Please log in.";
     message.textContent="";
-    renderSprites();
+
+    if(data.session){
+      await loadPlayer();
+      await loadMyCollection();
+      await loadPlayers();
+      await loadAllCollections();
+      updateAccountUI();
+      document.getElementById("loginPanel").style.display="none";
+      document.getElementById("loginMessage").textContent="";
+      renderSprites();
+    }
   }catch(error){
     console.error(error);
     message.textContent=error.message;
   }
 }
 
-function logout(){
-  accessToken=null;refreshToken=null;currentUser=null;currentPlayer=null;myCollection=[];allPlayers=[];allCollections=[];viewingPlayer=null;
-  localStorage.removeItem("accessToken");
-  localStorage.removeItem("refreshToken");
-  updateAccountUI();
-  showMyCollection();
-  updateCollectionStats();
-  renderSprites();
+async function logout(){
+  try{if(accessToken)await fetch(SUPABASE_URL+"/auth/v1/logout",{method:"POST",headers:{"apikey":SUPABASE_KEY,"Authorization":"Bearer "+accessToken}});}catch(e){}
+  accessToken=null;refreshToken=null;currentUser=null;currentPlayer=null;myCollection=[];allPlayers=[];allCollections=[];notices=[];viewingPlayer=null;
+  localStorage.removeItem("accessToken");localStorage.removeItem("refreshToken");
+  updateAccountUI();showMyCollection();updateCollectionStats();renderDashboard();renderSprites();
 }
 
 function updateAccountUI(){
@@ -412,33 +483,37 @@ function updateAccountUI(){
   const logoutButton=document.getElementById("logoutButton");
   if(currentPlayer){
     name.textContent=currentPlayer.display_name||"Logged in";
-    loginButton.style.display="none";
-    registerButton.style.display="none";
-    logoutButton.style.display="inline-block";
+    loginButton.style.display="none";registerButton.style.display="none";logoutButton.style.display="inline-block";
   }else{
-    name.textContent="Not logged in";
-    loginButton.style.display="inline-block";
-    registerButton.style.display="inline-block";
-    logoutButton.style.display="none";
+    name.textContent="Not logged in";loginButton.style.display="inline-block";registerButton.style.display="inline-block";logoutButton.style.display="none";
   }
+  renderNotices();
 }
 
 async function restoreSession(){
   const savedAccess=localStorage.getItem("accessToken");
   const savedRefresh=localStorage.getItem("refreshToken");
-  if(!savedAccess){updateAccountUI();return;}
+  if(!savedAccess&&!savedRefresh){updateAccountUI();return;}
   accessToken=savedAccess;refreshToken=savedRefresh;
   try{
-    await loadCurrentUser();
+    let loaded=false;
+    if(accessToken){
+      try{await loadCurrentUser();loaded=true;}catch(e){}
+    }
+    if(!loaded){
+      if(!(await refreshSession()))throw new Error("Session expired");
+      await loadCurrentUser();
+    }
     await loadPlayer();
-    if(!currentPlayer||currentPlayer.active===false){logout();return;}
+    if(!currentPlayer||currentPlayer.active===false){await logout();return;}
     await loadMyCollection();
     await loadPlayers();
     await loadAllCollections();
+    await loadNotices();
     updateAccountUI();
   }catch(error){
     console.error(error);
-    logout();
+    await logout();
   }
 }
 
@@ -453,24 +528,63 @@ function playerStats(playerId){
   return {owned,mastered,total,missing:Math.max(total-owned,0),percent:total?Math.round(owned/total*100):0};
 }
 
+function renderNotices(){
+  const list=document.getElementById("noticeList");
+  const addButton=document.getElementById("addNoticeButton");
+  if(addButton)addButton.style.display=currentPlayer?.admin===true?"inline-block":"none";
+  if(!currentUser){list.innerHTML='<div class="dashboard-empty">Log in to view updates.</div>';return;}
+  if(!notices.length){list.innerHTML='<div class="dashboard-empty">No notices yet.</div>';return;}
+  list.innerHTML=notices.slice(0,8).map(n=>`<article class="notice-item"><div class="notice-title">${escapeHtml(n.title||"Update")}</div><div class="notice-body">${escapeHtml(n.body||"")}</div><div class="notice-date">${n.created_at?new Date(n.created_at).toLocaleDateString():""}</div></article>`).join("");
+}
+
+function renderLeaderboard(){
+  const list=document.getElementById("leaderboard");
+  if(!allPlayers.length){list.innerHTML='<div class="dashboard-empty">No players yet.</div>';return;}
+  const ranked=allPlayers.map(player=>({player,stats:playerStats(player.player_id)})).sort((a,b)=>b.stats.owned-a.stats.owned||a.player.display_name.localeCompare(b.player.display_name)).slice(0,3);
+  const medals=["🥇","🥈","🥉"];
+  list.innerHTML=ranked.map((item,index)=>`<div class="leaderboard-item"><div class="leaderboard-rank">${medals[index]}</div><div><div class="leaderboard-name">${escapeHtml(item.player.display_name||"Unknown Player")}${currentPlayer&&item.player.player_id===currentPlayer.player_id?" · You":""}</div><div class="leaderboard-sub">${item.stats.percent}% of variants collected</div></div><div class="leaderboard-score">${item.stats.owned}</div></div>`).join("");
+}
+
+function renderRecentCollected(){
+  const list=document.getElementById("recentCollected");
+  const recent=[];
+  allCollections.filter(c=>c.owned===true&&c.first_collected).forEach(c=>{
+    const variant=allVariants.find(v=>v.variant_id===c.variant_id);
+    const sprite=variant?allSprites.find(s=>s.sprite_id===variant.sprite_id):null;
+    const player=allPlayers.find(p=>p.player_id===c.player_id);
+    if(variant&&player)recent.push({c,variant,sprite,player});
+  });
+  recent.sort((a,b)=>new Date(b.c.first_collected)-new Date(a.c.first_collected));
+  if(!recent.length){list.innerHTML='<div class="dashboard-empty">No collections yet.</div>';return;}
+  list.innerHTML=recent.slice(0,5).map(item=>`<div class="recent-item"><img class="recent-thumb" src="${escapeHtml(item.variant.image_url||item.sprite?.image_url||"")}" alt=""><div><div class="recent-name">${escapeHtml(item.variant.variant_name||"Variant")}</div><div class="recent-owner">${escapeHtml(item.player.display_name||"Player")} · ${new Date(item.c.first_collected).toLocaleDateString()}</div></div></div>`).join("");
+}
+
+function renderDashboard(){renderNotices();renderLeaderboard();renderRecentCollected();}
+
+async function saveNotice(){
+  if(!currentPlayer?.admin){return;}
+  const title=document.getElementById("noticeTitle").value.trim();
+  const body=document.getElementById("noticeBody").value.trim();
+  const message=document.getElementById("noticeEditorMessage");
+  if(!title||!body){message.textContent="Please enter a title and message.";return;}
+  message.textContent="Publishing...";
+  try{
+    const response=await supabaseRequest("/rest/v1/notices",{method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify({title,body,active:true,created_by:currentPlayer.player_id})});
+    if(!response.ok)throw new Error(await response.text());
+    document.getElementById("noticeTitle").value="";document.getElementById("noticeBody").value="";document.getElementById("noticeEditor").style.display="none";message.textContent="";
+    await loadNotices();
+  }catch(error){message.textContent="Could not publish notice: "+friendlyCollectionError(error);}
+}
+
 function renderPlayers(){
-  const grid=document.getElementById("playersGrid");
-  if(!grid)return;
-  grid.innerHTML="";
+  const grid=document.getElementById("playersGrid");if(!grid)return;grid.innerHTML="";
   if(!currentUser){grid.innerHTML='<div class="message">Log in to view the players.</div>';return;}
   if(!allPlayers.length){grid.innerHTML='<div class="message">No players found.</div>';return;}
   allPlayers.forEach(player=>{
     const stats=playerStats(player.player_id);
     const card=document.createElement("div");
     card.className="player-card"+(currentPlayer&&player.player_id===currentPlayer.player_id?" current":"");
-    card.innerHTML=`
-      <div class="player-name">${escapeHtml(player.display_name||"Unknown Player")}${currentPlayer&&player.player_id===currentPlayer.player_id?" · You":""}</div>
-      <div class="player-discord">${escapeHtml(player.discord_name||player["discord-id"]||"")}</div>
-      <div class="player-progress">
-        <div class="player-progress-top"><span>${stats.owned} / ${stats.total} owned</span><span>${stats.percent}%</span></div>
-        <div class="progress-bar"><div class="progress-fill" style="width:${stats.percent}%"></div></div>
-      </div>
-      <button class="player-button">View Collection</button>`;
+    card.innerHTML=`<div class="player-name">${escapeHtml(player.display_name||"Unknown Player")}${currentPlayer&&player.player_id===currentPlayer.player_id?" · You":""}</div><div class="player-progress"><div class="player-progress-top"><span>${stats.owned} / ${stats.total} owned</span><span>${stats.percent}%</span></div><div class="progress-bar"><div class="progress-fill" style="width:${stats.percent}%"></div></div></div><button class="player-button">View Collection</button>`;
     card.querySelector(".player-button").addEventListener("click",()=>openPlayerCollection(player));
     grid.appendChild(card);
   });
@@ -484,9 +598,8 @@ function openPlayerCollection(player){
   document.getElementById("myCollectionView").style.display="none";
   document.getElementById("stats").textContent="Viewing "+(player.display_name||"player")+"'s collection";
   const stats=playerStats(player.player_id);
-  document.getElementById("viewingPlayerInfo").innerHTML=`<strong>${escapeHtml(player.display_name||"Unknown Player")}</strong><span>${escapeHtml(player.discord_name||player["discord-id"]||"")} · ${stats.owned}/${stats.total} variants owned · ${stats.percent}% collection</span>`;
-  renderSprites();
-  setViewButtons("players");
+  document.getElementById("viewingPlayerInfo").innerHTML=`<strong>${escapeHtml(player.display_name||"Unknown Player")}</strong><span>${stats.owned}/${stats.total} variants owned · ${stats.percent}% collection</span>`;
+  renderSprites();setViewButtons("players");
 }
 
 function showMyCollection(){
@@ -497,9 +610,7 @@ function showMyCollection(){
   document.getElementById("collectionPlayer").textContent=currentPlayer?.display_name||"Not logged in";
   document.getElementById("playersListView").style.display="block";
   document.getElementById("playerCollectionView").style.display="none";
-  setViewButtons("my");
-  updateCollectionStats();
-  renderSprites();
+  setViewButtons("my");updateCollectionStats();renderSprites();
 }
 
 function showPlayers(){
@@ -508,8 +619,7 @@ function showPlayers(){
   document.getElementById("playersPanel").style.display="block";
   document.getElementById("playersListView").style.display="block";
   document.getElementById("playerCollectionView").style.display="none";
-  setViewButtons("players");
-  renderPlayers();
+  setViewButtons("players");renderPlayers();
 }
 
 function setViewButtons(view){
@@ -523,7 +633,7 @@ function updateCollectionStats(){
   const mastered=myCollection.filter(c=>c.mastered===true).length;
   const missing=Math.max(total-owned,0);
   const completion=total?Math.round(owned/total*100):0;
-  const mastery=owned?Math.round(mastered/owned*100):0;
+  const mastery=total?Math.round(mastered/total*100):0;
   document.getElementById("collectionTotal").textContent=total;
   document.getElementById("collectionOwned").textContent=owned;
   document.getElementById("collectionMissing").textContent=missing;
@@ -535,12 +645,66 @@ function updateCollectionStats(){
   document.getElementById("collectionPlayer").textContent=currentPlayer?.display_name||"Not logged in";
 }
 
-function renderSprites(){
+function getVariantOwners(variantId){
+  return allPlayers.filter(player=>allCollections.some(c=>c.player_id===player.player_id&&c.variant_id===variantId&&c.owned===true));
+}
+
+function sortVariantsOrSprites(items, type){
+  const sort=document.getElementById("sort")?.value||"default";
+  if(sort==="default")return items;
+  const rarityOrder={Rare:1,Epic:2,Legendary:3,Mythic:4};
+  const collection=viewingPlayer?getCollectionForPlayer(viewingPlayer.player_id):myCollection;
+  const ownedCount=s=>allVariants.filter(v=>v.sprite_id===s.sprite_id&&v.active!==false&&getVariantRecord(collection,v.variant_id)?.owned===true).length;
+  const recentDate=s=>{const dates=allVariants.filter(v=>v.sprite_id===s.sprite_id&&v.active!==false).map(v=>getVariantRecord(collection,v.variant_id)?.first_collected).filter(Boolean);return dates.length?Math.max(...dates.map(d=>new Date(d).getTime())):0;};
+  return [...items].sort((a,b)=>{
+    if(type==="variant")return sort==="name-desc"?(b.variant_name||"").localeCompare(a.variant_name||""):(a.variant_name||"").localeCompare(b.variant_name||"");
+    if(sort==="name-asc")return (a.sprite_name||"").localeCompare(b.sprite_name||"");
+    if(sort==="name-desc")return (b.sprite_name||"").localeCompare(a.sprite_name||"");
+    if(sort==="most-owned")return ownedCount(b)-ownedCount(a)||(a.sprite_name||"").localeCompare(b.sprite_name||"");
+    if(sort==="least-owned")return ownedCount(a)-ownedCount(b)||(a.sprite_name||"").localeCompare(b.sprite_name||"");
+    if(sort==="rarity")return (rarityOrder[a.rarity]||99)-(rarityOrder[b.rarity]||99)||(a.sprite_name||"").localeCompare(b.sprite_name||"");
+    if(sort==="recent")return recentDate(b)-recentDate(a)||(a.sprite_name||"").localeCompare(b.sprite_name||"");
+    return 0;
+  });
+}
+
+function renderMissing(){
   const container=document.getElementById("sprites");
-  if(!container)return;
   const search=document.getElementById("search").value.toLowerCase();
   const rarity=document.getElementById("rarity").value;
+  if(!currentPlayer){container.innerHTML='<div class="message">Log in to see your missing sprites.</div>';updateStats(0);return;}
+  const missing=allVariants.filter(v=>{
+    if(v.active===false)return false;
+    if(getVariantRecord(myCollection,v.variant_id)?.owned===true)return false;
+    const sprite=allSprites.find(s=>s.sprite_id===v.sprite_id);
+    if(!sprite)return false;
+    if(rarity!=="All"&&sprite.rarity!==rarity)return false;
+    const hay=(v.variant_name||"")+" "+(sprite.sprite_name||"");
+    return hay.toLowerCase().includes(search);
+  });
+  container.className="missing-grid";container.innerHTML="";
+  if(!missing.length){container.innerHTML='<div class="message">🎉 Nothing missing! Your collection is complete for these filters.</div>';updateStats(0);return;}
+  const sortedMissing=sortVariantsOrSprites(missing,"variant");
+  sortedMissing.forEach(variant=>{
+    const sprite=allSprites.find(s=>s.sprite_id===variant.sprite_id);
+    const card=document.createElement("div");card.className="missing-card";
+    card.innerHTML=`<div class="missing-image-wrap"><img class="missing-image" src="${escapeHtml(variant.image_url||sprite?.image_url||"")}" alt="${escapeHtml(variant.variant_name||"")}"></div><div class="missing-info"><div class="missing-name">${escapeHtml(variant.variant_name||"Unknown Variant")}</div><div class="missing-parent">${escapeHtml(sprite?.sprite_name||"Unknown Sprite")}</div><div class="missing-actions"><button class="missing-action" type="button">☆ Owned</button><button class="missing-action" type="button">🏆 Mastered</button></div></div>`;
+    const buttons=card.querySelectorAll(".missing-action");
+    buttons[0].addEventListener("click",async e=>{e.stopPropagation();await markOwnedAndRefresh(variant.variant_id,false);});
+    buttons[1].addEventListener("click",async e=>{e.stopPropagation();await markOwnedAndRefresh(variant.variant_id,true);});
+    card.querySelector(".missing-image").addEventListener("click",()=>openModal(sprite));
+    container.appendChild(card);
+  });
+  updateStats(missing.length);
+}
+
+function renderSprites(){
+  const container=document.getElementById("sprites");if(!container)return;
   const filter=document.querySelector(".collection-filter.active")?.dataset.filter||"all";
+  if(!viewingPlayer&&filter==="missing"){renderMissing();return;}
+  container.className="sprite-grid";
+  const search=document.getElementById("search").value.toLowerCase();
+  const rarity=document.getElementById("rarity").value;
   const collection=viewingPlayer?getCollectionForPlayer(viewingPlayer.player_id):myCollection;
   const filtered=allSprites.filter(sprite=>{
     if(!(sprite.sprite_name||"").toLowerCase().includes(search))return false;
@@ -550,34 +714,31 @@ function renderSprites(){
     const mastered=variants.filter(v=>getVariantRecord(collection,v.variant_id)?.mastered===true);
     if(!viewingPlayer){
       if(filter==="owned")return owned.length>0;
-      if(filter==="missing")return owned.length<variants.length;
       if(filter==="mastered")return mastered.length>0;
     }
     return true;
   });
+  const sortedFiltered=sortVariantsOrSprites(filtered,"sprite");
   container.innerHTML="";
-  if(!filtered.length){container.innerHTML='<div class="message">No sprites found.</div>';updateStats(0);return;}
-  filtered.forEach(sprite=>{
+  if(!sortedFiltered.length){container.innerHTML='<div class="message">No sprites found.</div>';updateStats(0);return;}
+  sortedFiltered.forEach(sprite=>{
     const variants=allVariants.filter(v=>v.sprite_id===sprite.sprite_id&&v.active!==false);
     const owned=variants.filter(v=>getVariantRecord(collection,v.variant_id)?.owned===true).length;
     const total=variants.length;
     let status=total?`${owned} / ${total} variants owned`:"No variants";
     let statusClass="";
-    const card=document.createElement("div");
-    card.className="sprite-card";
+    const card=document.createElement("div");card.className="sprite-card";
     if(total&&owned===total){status="✓ Complete";statusClass="complete";card.classList.add("collection-complete");}
     else if(owned){statusClass="partial";card.classList.add("collection-partial");}
-    card.innerHTML=`<img class="sprite-image" src="${escapeHtml(sprite.image_url||"")}" alt="${escapeHtml(sprite.sprite_name||"")}"><div class="sprite-info"><div class="sprite-name">${escapeHtml(sprite.sprite_name||"Unknown")}</div><div class="rarity">${escapeHtml(sprite.rarity||"Unknown")}</div><div class="season">${escapeHtml(sprite.season||"")}</div><div class="sprite-collection-status ${statusClass}">${status}</div></div>`;
-    card.addEventListener("click",()=>openModal(sprite));
-    container.appendChild(card);
+    card.innerHTML=`<div class="sprite-image-wrap"><img class="sprite-image" src="${escapeHtml(sprite.image_url||"")}" alt="${escapeHtml(sprite.sprite_name||"")}"></div><div class="sprite-info"><div class="sprite-name">${escapeHtml(sprite.sprite_name||"Unknown")}</div><div class="rarity">${escapeHtml(sprite.rarity||"Unknown")}</div><div class="season">${escapeHtml(sprite.season||"")}</div><div class="sprite-collection-status ${statusClass}">${status}</div></div>`;
+    card.addEventListener("click",()=>openModal(sprite));container.appendChild(card);
   });
   updateStats(filtered.length);
 }
 
-function updateStats(count){document.getElementById("stats").textContent=count+" of "+allSprites.length+" sprites";}
-
-function getVariantOwners(variantId){
-  return allPlayers.filter(player=>allCollections.some(c=>c.player_id===player.player_id&&c.variant_id===variantId&&c.owned===true));
+function updateStats(count){
+  const filter=document.querySelector(".collection-filter.active")?.dataset.filter||"all";
+  document.getElementById("stats").textContent=filter==="missing"&&!viewingPlayer?count+" missing variants":count+" of "+allSprites.length+" sprites";
 }
 
 function openModal(sprite){
@@ -588,8 +749,7 @@ function openModal(sprite){
   document.getElementById("modalSeason").textContent=sprite.season?"Season "+sprite.season:"";
   document.getElementById("modalDescription").textContent=sprite.description||"No description available.";
   document.getElementById("modalAbility").textContent=sprite.ability?"Ability: "+sprite.ability:"";
-  renderVariants(sprite.sprite_id);
-  document.getElementById("spriteModal").classList.add("show");
+  renderVariants(sprite.sprite_id);document.getElementById("spriteModal").classList.add("show");
 }
 
 function closeModal(){document.getElementById("spriteModal").classList.remove("show");}
@@ -602,61 +762,50 @@ function renderVariants(spriteId){
   if(!variants.length){container.innerHTML='<div class="no-variants">No variants available.</div>';return;}
   variants.forEach(variant=>{
     const record=getVariantRecord(collection,variant.variant_id);
-    const owned=record?.owned===true;
-    const mastered=record?.mastered===true;
+    const owned=record?.owned===true;const mastered=record?.mastered===true;
     const owners=getVariantOwners(variant.variant_id);
-    const card=document.createElement("div");
-    card.className="variant-card";
+    const card=document.createElement("div");card.className="variant-card";
     const ownerText=owners.length?`<div class="owner-list"><strong>Owned by:</strong> ${owners.map(p=>escapeHtml(p.display_name||"Unknown")).join(", ")}</div>`:`<div class="owner-list">No one owns this yet.</div>`;
-    card.innerHTML=`<img class="variant-image" src="${escapeHtml(variant.image_url||"")}" alt="${escapeHtml(variant.variant_name||"")}"><div class="variant-info"><div class="variant-name">${escapeHtml(variant.variant_name||"Variant")}</div>${variant.variant_type?`<div class="variant-type">${escapeHtml(variant.variant_type)}</div>`:""}<div class="variant-controls"><button class="owned-button ${owned?"owned":""}" type="button">${owned?"★ Owned":"☆ Owned"}</button>${owned&&!viewingPlayer?`<div class="level-control"><label>Level</label><input type="number" class="level-input" min="0" max="5" value="${record?.level??0}"></div><button class="mastered-button ${mastered?"mastered":""}" type="button">${mastered?"🏆 Mastered":"☆ Mastered"}</button>`:""}</div>${ownerText}</div>`;
+    card.innerHTML=`<img class="variant-image" src="${escapeHtml(variant.image_url||"")}" alt="${escapeHtml(variant.variant_name||"")}"><div class="variant-info"><div class="variant-name">${escapeHtml(variant.variant_name||"Variant")}</div>${variant.variant_type?`<div class="variant-type">${escapeHtml(variant.variant_type)}</div>`:""}<div class="variant-controls"><button class="owned-button ${owned?"owned":""}" type="button">${owned?"★ Owned":"☆ Owned"}</button>${owned&&!viewingPlayer?`<button class="mastered-button ${mastered?"mastered":""}" type="button">${mastered?"🏆 Mastered":"☆ Mastered"}</button>`:""}</div>${ownerText}</div>`;
     if(!viewingPlayer){
-      card.querySelector(".owned-button").addEventListener("click",async event=>{event.stopPropagation();try{await toggleOwned(variant.variant_id);renderVariants(spriteId);}catch(error){console.error(error);alert("Could not update collection: "+error.message);}});
-      const levelInput=card.querySelector(".level-input");
-      if(levelInput)levelInput.addEventListener("change",async event=>{event.stopPropagation();try{await updateVariantLevel(variant.variant_id,event.target.value);renderVariants(spriteId);}catch(error){console.error(error);alert("Could not update level: "+error.message);}});
+      card.querySelector(".owned-button").addEventListener("click",async event=>{event.stopPropagation();try{await toggleOwned(variant.variant_id);renderVariants(spriteId);}catch(error){console.error(error);alert("Could not update collection: "+friendlyCollectionError(error));}});
       const masteredButton=card.querySelector(".mastered-button");
-      if(masteredButton)masteredButton.addEventListener("click",async event=>{event.stopPropagation();try{await toggleMastered(variant.variant_id);renderVariants(spriteId);}catch(error){console.error(error);alert("Could not update mastery: "+error.message);}});
+      if(masteredButton)masteredButton.addEventListener("click",async event=>{event.stopPropagation();try{await toggleMastered(variant.variant_id);renderVariants(spriteId);}catch(error){console.error(error);alert("Could not update collection: "+friendlyCollectionError(error));}});
     }
     container.appendChild(card);
   });
 }
 
+function friendlyCollectionError(error){
+  const msg=String(error?.message||error||"");
+  if(msg.includes("JWT expired")||msg.includes("401"))return "Your login session expired. Please log in again.";
+  return msg;
+}
+
 async function toggleOwned(variantId){
-  if(!currentPlayer||!accessToken){alert("Please log in first.");return;}
+  if(!currentPlayer||!accessToken)throw new Error("Please log in first.");
   const existing=myCollection.find(c=>c.variant_id===variantId);
   const now=new Date().toISOString();
   if(existing){
     const newOwned=existing.owned!==true;
-    const response=await supabaseRequest("/rest/v1/collections?player_id=eq."+encodeURIComponent(currentPlayer.player_id)+"&variant_id=eq."+encodeURIComponent(variantId),{method:"PATCH",headers:{"Prefer":"return=representation"},body:JSON.stringify({owned:newOwned,last_updated:now})});
+    const response=await supabaseRequest("/rest/v1/collections?player_id=eq."+encodeURIComponent(currentPlayer.player_id)+"&variant_id=eq."+encodeURIComponent(variantId),{method:"PATCH",headers:{"Prefer":"return=representation"},body:JSON.stringify({owned:newOwned,mastered:newOwned?existing.mastered===true:false,last_updated:now})});
     if(!response.ok)throw new Error(await response.text());
     const updated=await response.json();
     if(updated.length)myCollection[myCollection.findIndex(c=>c.variant_id===variantId)]=updated[0];
   }else{
-    const body={collection_id:"COL_"+currentPlayer.player_id+"_"+variantId,player_id:currentPlayer.player_id,variant_id:variantId,owned:true,level:0,mastered:false,last_updated:now,first_collected:now,first_mastered:null};
+    const body={collection_id:"COL_"+currentPlayer.player_id+"_"+variantId,player_id:currentPlayer.player_id,variant_id:variantId,owned:true,mastered:false,last_updated:now,first_collected:now,first_mastered:null};
     const response=await supabaseRequest("/rest/v1/collections",{method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify(body)});
     if(!response.ok)throw new Error(await response.text());
     const created=await response.json();
     if(created.length)myCollection.push(created[0]);
   }
-  await loadAllCollections();
-  updateCollectionStats();
-  renderSprites();
-}
-
-async function updateVariantLevel(variantId,level){
-  if(!currentPlayer||!accessToken)return;
-  const numericLevel=Math.max(0,Math.min(5,Number(level)||0));
-  const response=await supabaseRequest("/rest/v1/collections?player_id=eq."+encodeURIComponent(currentPlayer.player_id)+"&variant_id=eq."+encodeURIComponent(variantId),{method:"PATCH",headers:{"Prefer":"return=representation"},body:JSON.stringify({level:numericLevel,last_updated:new Date().toISOString()})});
-  if(!response.ok)throw new Error(await response.text());
-  const updated=await response.json();
-  if(updated.length)myCollection[myCollection.findIndex(c=>c.variant_id===variantId)]=updated[0];
   await loadAllCollections();updateCollectionStats();renderSprites();
 }
 
 async function toggleMastered(variantId){
   const existing=myCollection.find(c=>c.variant_id===variantId);
-  if(!existing||!currentPlayer||!accessToken)return;
-  const newMastered=existing.mastered!==true;
-  const now=new Date().toISOString();
+  if(!existing||!currentPlayer||!accessToken)throw new Error("Please mark the variant as owned first.");
+  const newMastered=existing.mastered!==true;const now=new Date().toISOString();
   const response=await supabaseRequest("/rest/v1/collections?player_id=eq."+encodeURIComponent(currentPlayer.player_id)+"&variant_id=eq."+encodeURIComponent(variantId),{method:"PATCH",headers:{"Prefer":"return=representation"},body:JSON.stringify({mastered:newMastered,first_mastered:newMastered?(existing.first_mastered||now):existing.first_mastered,last_updated:now})});
   if(!response.ok)throw new Error(await response.text());
   const updated=await response.json();
@@ -664,14 +813,39 @@ async function toggleMastered(variantId){
   await loadAllCollections();updateCollectionStats();renderSprites();
 }
 
+async function markOwnedAndRefresh(variantId,mastered){
+  try{
+    if(!currentPlayer||!accessToken)throw new Error("Please log in first.");
+    const existing=myCollection.find(c=>c.variant_id===variantId);
+    const now=new Date().toISOString();
+    if(existing){
+      const body={owned:true,mastered:mastered?true:existing.mastered===true,last_updated:now,first_collected:existing.first_collected||now,first_mastered:mastered?(existing.first_mastered||now):existing.first_mastered};
+      const response=await supabaseRequest("/rest/v1/collections?player_id=eq."+encodeURIComponent(currentPlayer.player_id)+"&variant_id=eq."+encodeURIComponent(variantId),{method:"PATCH",headers:{"Prefer":"return=representation"},body:JSON.stringify(body)});
+      if(!response.ok)throw new Error(await response.text());
+      const updated=await response.json();
+      if(updated.length)myCollection[myCollection.findIndex(c=>c.variant_id===variantId)]=updated[0];
+    }else{
+      const body={collection_id:"COL_"+currentPlayer.player_id+"_"+variantId,player_id:currentPlayer.player_id,variant_id:variantId,owned:true,mastered:mastered,last_updated:now,first_collected:now,first_mastered:mastered?now:null};
+      const response=await supabaseRequest("/rest/v1/collections",{method:"POST",headers:{"Prefer":"return=representation"},body:JSON.stringify(body)});
+      if(!response.ok)throw new Error(await response.text());
+      const created=await response.json();if(created.length)myCollection.push(created[0]);
+    }
+    await loadAllCollections();updateCollectionStats();renderMissing();
+  }catch(error){console.error(error);alert("Could not update collection: "+friendlyCollectionError(error));}
+}
+
 document.getElementById("search").addEventListener("input",renderSprites);
 document.getElementById("rarity").addEventListener("change",renderSprites);
+document.getElementById("sort").addEventListener("change",renderSprites);
 document.querySelectorAll(".collection-filter").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".collection-filter").forEach(b=>b.classList.remove("active"));button.classList.add("active");renderSprites();}));
 document.getElementById("loginButton").addEventListener("click",()=>{const panel=document.getElementById("loginPanel");document.getElementById("registerPanel").style.display="none";panel.style.display=panel.style.display==="none"?"block":"none";});
 document.getElementById("registerButton").addEventListener("click",()=>{const panel=document.getElementById("registerPanel");document.getElementById("loginPanel").style.display="none";panel.style.display=panel.style.display==="none"?"block":"none";});
 document.getElementById("loginSubmit").addEventListener("click",login);
 document.getElementById("registerSubmit").addEventListener("click",register);
 document.getElementById("logoutButton").addEventListener("click",logout);
+document.getElementById("addNoticeButton").addEventListener("click",()=>{document.getElementById("noticeEditor").style.display="block";document.getElementById("noticeTitle").focus();});
+document.getElementById("cancelNoticeButton").addEventListener("click",()=>{document.getElementById("noticeEditor").style.display="none";document.getElementById("noticeEditorMessage").textContent="";});
+document.getElementById("saveNoticeButton").addEventListener("click",saveNotice);
 document.getElementById("myCollectionButton").addEventListener("click",showMyCollection);
 document.getElementById("playersButton").addEventListener("click",showPlayers);
 document.getElementById("backToPlayers").addEventListener("click",showPlayers);
@@ -684,14 +858,9 @@ async function startTracker(){
     await loadSprites();
     await loadVariants();
     await restoreSession();
-    if(currentUser){await loadPlayers();await loadAllCollections();}
-    updateAccountUI();
-    updateCollectionStats();
-    renderPlayers();
-    renderSprites();
+    updateAccountUI();updateCollectionStats();renderPlayers();renderDashboard();renderSprites();
   }catch(error){
-    console.error(error);
-    document.getElementById("stats").textContent="Tracker error: "+error.message;
+    console.error(error);document.getElementById("stats").textContent="Tracker error: "+error.message;
   }
 }
 startTracker();
