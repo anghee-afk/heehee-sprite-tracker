@@ -17,10 +17,10 @@
   --text:#f1f5f5;
   --text-soft:#b7c1c2;
   --text-muted:#7f8b8d;
-  --teal:#21c7b7;
-  --teal-bright:#5ee7d8;
-  --teal-dark:#0e8f84;
-  --gradient:linear-gradient(135deg,#21c7b7,#58dfd0);
+  --purple:#a78bfa;
+  --orange:#ffad58;
+  --purple-dark:#7c3aed;
+  --gradient:linear-gradient(135deg,#8b5cf6,#ff922b);
 }
 *{box-sizing:border-box}
 body{margin:0;padding:30px 20px;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
@@ -28,7 +28,7 @@ body{margin:0;padding:30px 20px;background:var(--bg);color:var(--text);font-fami
 header{margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.06)}
 .brand-row{display:flex;align-items:center;gap:18px;margin-bottom:10px;position:relative}.brand{flex:1;min-width:0}
 .heehee-logo{width:48px;height:48px;flex-shrink:0;display:block;object-fit:contain}
-.brand{font-size:20px;font-weight:800;letter-spacing:3px;color:var(--teal-bright);margin:0}
+.brand{font-size:20px;font-weight:800;letter-spacing:3px;color:var(--orange);margin:0}
 h1{margin:0;font-size:32px;letter-spacing:-.8px}
 .subtitle{margin-top:7px;color:var(--text-muted);font-size:14px}
 .account-bar{display:flex;justify-content:flex-end;align-items:center;gap:8px;flex-wrap:wrap;margin-left:auto}.profile-account-button{display:none}
@@ -40,14 +40,14 @@ button{font-family:inherit}
 .login-panel h2{margin:0 0 15px;font-size:18px}
 .login-fields{display:flex;gap:10px;flex-wrap:wrap}
 .login-fields input{flex:1;min-width:190px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none}
-.login-fields input:focus,.controls input:focus,.controls select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(33,199,183,.09)}
+.login-fields input:focus,.controls input:focus,.controls select:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(139,92,246,.09)}
 .login-submit{padding:10px 18px;border-radius:8px;border:none;background:var(--gradient);color:#071110;font-weight:800;cursor:pointer}
 .login-message{margin-top:10px;font-size:13px;color:var(--text-muted)}
 .controls{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
 .controls input,.controls select{padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none}
 .controls input{flex:1;min-width:220px}
 .view-switcher{display:flex;gap:8px;margin-bottom:12px}
-.view-button.active,.collection-filter.active{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.45);color:var(--teal-bright)}
+.view-button.active,.collection-filter.active{background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.45);color:var(--orange)}
 .collection-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .collection-dashboard{margin:25px 0;padding:18px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
 .collection-header{margin-bottom:16px}.collection-title{font-size:20px;font-weight:700}.collection-player{margin-top:4px;font-size:13px;color:var(--text-muted)}
@@ -60,43 +60,43 @@ button{font-family:inherit}
 .sprite-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;max-width:100%}
 .sprite-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer;transition:transform .15s,border-color .15s}
 .sprite-card:hover{transform:translateY(-3px);border-color:var(--border-hover)}
-.sprite-card.collection-partial{border-color:rgba(33,199,183,.35)}.sprite-card.collection-complete{border-color:rgba(94,231,216,.55)}
-.sprite-image-wrap{height:115px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.sprite-image-wrap:before{content:"";position:absolute;width:75%;height:75%;border-radius:50%;background:radial-gradient(circle,rgba(94,231,216,.20) 0%,rgba(33,199,183,.08) 38%,transparent 72%);filter:blur(10px)}.sprite-image{position:relative;width:82%;height:82%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
+.sprite-card.collection-partial{border-color:rgba(139,92,246,.35)}.sprite-card.collection-complete{border-color:rgba(255,146,43,.55)}
+.sprite-image-wrap{height:115px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.sprite-image-wrap:before{content:"";position:absolute;width:75%;height:75%;border-radius:50%;background:radial-gradient(circle,rgba(255,146,43,.20) 0%,rgba(139,92,246,.08) 38%,transparent 72%);filter:blur(10px)}.sprite-image{position:relative;width:82%;height:82%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
 .sprite-info{padding:10px 11px 11px}.sprite-name{font-size:14px;font-weight:600;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rarity,.season,.sprite-collection-status{font-size:11px;color:var(--text-muted)}.sprite-collection-status{margin-top:6px}.sprite-collection-status.partial{color:var(--teal)}.sprite-collection-status.complete{color:var(--teal-bright);font-weight:600}
+.rarity,.season,.sprite-collection-status{font-size:11px;color:var(--text-muted)}.sprite-collection-status{margin-top:6px}.sprite-collection-status.partial{color:var(--purple)}.sprite-collection-status.complete{color:var(--orange);font-weight:600}
 .message{grid-column:1/-1;padding:30px;text-align:center;color:var(--text-muted)}
 .players-header{margin:25px 0 15px}.players-header h2{margin:0 0 5px}.players-header p{margin:0;color:var(--text-muted);font-size:13px}
 .players-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-.player-card{background:linear-gradient(145deg,var(--surface),#141719);border:1px solid var(--border);border-radius:14px;padding:15px;position:relative;overflow:hidden;transition:.18s ease}.player-card:before{content:"";position:absolute;inset:-50px -30px auto auto;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(94,231,216,.10),transparent 70%);pointer-events:none}.player-card:hover{transform:translateY(-2px);border-color:var(--border-hover)}.player-card.current{border-color:rgba(33,199,183,.55);box-shadow:0 0 0 1px rgba(33,199,183,.08)}
-.player-card-top{display:flex;align-items:center;gap:11px;position:relative}.player-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:var(--teal-bright);flex-shrink:0}.player-identity{min-width:0}.player-name{font-size:16px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.player-badge{display:inline-block;margin-top:4px;padding:3px 6px;border-radius:999px;background:rgba(33,199,183,.09);color:var(--teal-bright);font-size:8px;font-weight:800;letter-spacing:.5px}.player-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:13px 0 10px}.player-mini-stat{padding:7px 5px;border-radius:8px;background:var(--surface-2);text-align:center}.player-mini-number{font-size:13px;font-weight:800}.player-mini-label{margin-top:2px;font-size:8px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px}.player-progress{margin:9px 0 10px}.player-progress-top{display:flex;justify-content:space-between;font-size:10px;color:var(--text-soft);margin-bottom:5px}.player-button{width:100%}.back-button{margin:0 0 15px}.viewing-player{margin:0 0 15px;padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}.viewing-player strong{font-size:18px}.viewing-player span{display:block;margin-top:4px;color:var(--text-muted);font-size:12px}
+.player-card{background:linear-gradient(145deg,var(--surface),#141719);border:1px solid var(--border);border-radius:14px;padding:15px;position:relative;overflow:hidden;transition:.18s ease}.player-card:before{content:"";position:absolute;inset:-50px -30px auto auto;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,146,43,.10),transparent 70%);pointer-events:none}.player-card:hover{transform:translateY(-2px);border-color:var(--border-hover)}.player-card.current{border-color:rgba(139,92,246,.55);box-shadow:0 0 0 1px rgba(139,92,246,.08)}
+.player-card-top{display:flex;align-items:center;gap:11px;position:relative}.player-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:var(--orange);flex-shrink:0}.player-identity{min-width:0}.player-name{font-size:16px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.player-badge{display:inline-block;margin-top:4px;padding:3px 6px;border-radius:999px;background:rgba(139,92,246,.09);color:var(--orange);font-size:8px;font-weight:800;letter-spacing:.5px}.player-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:13px 0 10px}.player-mini-stat{padding:7px 5px;border-radius:8px;background:var(--surface-2);text-align:center}.player-mini-number{font-size:13px;font-weight:800}.player-mini-label{margin-top:2px;font-size:8px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px}.player-progress{margin:9px 0 10px}.player-progress-top{display:flex;justify-content:space-between;font-size:10px;color:var(--text-soft);margin-bottom:5px}.player-button{width:100%}.back-button{margin:0 0 15px}.viewing-player{margin:0 0 15px;padding:14px;border:1px solid var(--border);border-radius:10px;background:var(--surface)}.viewing-player strong{font-size:18px}.viewing-player span{display:block;margin-top:4px;color:var(--text-muted);font-size:12px}
 
 
 .friends-tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.friends-tools .dashboard-note{margin-right:auto}
-.friend-list{display:flex;flex-direction:column;gap:7px;max-height:420px;overflow:auto}.friend-row{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2)}.friend-row-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--teal-bright);font-weight:900;flex-shrink:0}.friend-row-info{min-width:0;flex:1}.friend-row-name{font-size:12px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.friend-row-sub{margin-top:2px;font-size:9px;color:var(--text-muted)}.friend-row-action{padding:6px 9px;border:1px solid var(--border);border-radius:7px;background:var(--surface-3);color:var(--text-soft);font-size:9px;font-weight:800;cursor:pointer}.friend-row-action.add{color:var(--teal-bright);border-color:rgba(33,199,183,.35);background:rgba(33,199,183,.08)}
-.players-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.players-toolbar .players-header{margin:25px 0 15px}.players-toolbar-actions{display:flex;gap:7px;flex-wrap:wrap}.view-button.friends-active{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.45);color:var(--teal-bright)}
+.friend-list{display:flex;flex-direction:column;gap:7px;max-height:420px;overflow:auto}.friend-row{display:flex;align-items:center;gap:10px;padding:9px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2)}.friend-row-avatar{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--orange);font-weight:900;flex-shrink:0}.friend-row-info{min-width:0;flex:1}.friend-row-name{font-size:12px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.friend-row-sub{margin-top:2px;font-size:9px;color:var(--text-muted)}.friend-row-action{padding:6px 9px;border:1px solid var(--border);border-radius:7px;background:var(--surface-3);color:var(--text-soft);font-size:9px;font-weight:800;cursor:pointer}.friend-row-action.add{color:var(--orange);border-color:rgba(139,92,246,.35);background:rgba(139,92,246,.08)}
+.players-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.players-toolbar .players-header{margin:25px 0 15px}.players-toolbar-actions{display:flex;gap:7px;flex-wrap:wrap}.view-button.friends-active{background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.45);color:var(--orange)}
 .collection-view-select{display:flex;align-items:center;gap:8px;margin-bottom:18px}.collection-view-select label{font-size:10px;color:var(--text-muted);font-weight:700}.collection-view-select select{padding:9px 11px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none;min-width:150px}
-.share-brand-header{text-align:center;margin:2px 0 14px}.share-brand-logo{width:112px;height:112px;object-fit:contain;display:block;margin:0 auto 4px}.share-brand-title{font-size:20px;font-weight:900;letter-spacing:1.8px;color:var(--teal-bright)}
-.profile-layout{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}.profile-avatar-large{width:120px;height:120px;border-radius:50%;object-fit:cover;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;color:var(--teal-bright)}.profile-fields{display:flex;flex-direction:column;gap:8px}.profile-fields label{font-size:10px;color:var(--text-muted);font-weight:700}.profile-fields input{width:100%;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none}.profile-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.profile-note{font-size:10px;color:var(--text-muted);line-height:1.4}.share-preview{width:100%;max-height:52vh;object-fit:contain;border-radius:8px;background:#0d0f10;display:block}.share-status{margin-top:9px;font-size:12px;color:var(--text-muted)}
+.share-brand-header{text-align:center;margin:2px 0 14px}.share-brand-logo{width:112px;height:112px;object-fit:contain;display:block;margin:0 auto 4px}.share-brand-title{font-size:20px;font-weight:900;letter-spacing:1.8px;color:var(--orange)}
+.profile-layout{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start}.profile-avatar-large{width:120px;height:120px;border-radius:50%;object-fit:cover;background:var(--surface-3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:900;color:var(--orange)}.profile-fields{display:flex;flex-direction:column;gap:8px}.profile-fields label{font-size:10px;color:var(--text-muted);font-weight:700}.profile-fields input{width:100%;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--surface-2);color:var(--text);outline:none}.profile-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.profile-note{font-size:10px;color:var(--text-muted);line-height:1.4}.share-preview{width:100%;max-height:52vh;object-fit:contain;border-radius:8px;background:#0d0f10;display:block}.share-status{margin-top:9px;font-size:12px;color:var(--text-muted)}
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:30px;background:rgba(0,0,0,.78);backdrop-filter:blur(4px);z-index:1000}.modal.show{display:flex}
 .modal-content{width:min(560px,90vw);max-height:80vh;overflow-y:auto;padding:16px;position:relative;background:var(--surface);border:1px solid var(--border);border-radius:12px;box-shadow:0 25px 70px rgba(0,0,0,.55)}
 .modal-close{position:absolute;top:8px;right:8px;width:30px;height:30px;border:1px solid var(--border);border-radius:50%;background:var(--surface-3);color:var(--text);font-size:17px;cursor:pointer}
 .modal-main{display:grid;grid-template-columns:120px 1fr;gap:14px;margin-bottom:14px;padding-right:25px}.modal-image{width:120px;height:120px;object-fit:cover;border-radius:8px;background:#0d0f10}.modal-title{margin:0 0 6px;font-size:19px}.modal-rarity,.modal-season{margin-bottom:3px;font-size:11px;color:var(--text-muted)}
-.modal-description,.modal-ability{margin-top:8px;font-size:12px;line-height:1.4;color:var(--text-soft)}.variants-title{margin-bottom:8px;font-size:14px;font-weight:700;color:var(--teal-bright)}
+.modal-description,.modal-ability{margin-top:8px;font-size:12px;line-height:1.4;color:var(--text-soft)}.variants-title{margin-bottom:8px;font-size:14px;font-weight:700;color:var(--orange)}
 #modalVariants{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}.variant-card{background:#101315;border:1px solid var(--border);border-radius:8px;overflow:hidden}.variant-image{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--surface-2)}
 .variant-info{padding:7px}.variant-name{margin-bottom:2px;font-size:11px;font-weight:700}.variant-type{margin-bottom:6px;font-size:9px;color:var(--text-muted)}.variant-controls{display:flex;flex-direction:column;gap:5px}
-.owned-button,.mastered-button{width:100%;padding:6px;border:1px solid var(--border);border-radius:5px;background:var(--surface-2);color:var(--text-soft);font-size:10px;cursor:pointer}.owned-button.owned{background:rgba(33,199,183,.13);color:var(--teal-bright);border-color:rgba(33,199,183,.4)}.mastered-button.mastered{background:rgba(94,231,216,.1);color:var(--teal-bright);border-color:rgba(94,231,216,.35)}
+.owned-button,.mastered-button{width:100%;padding:6px;border:1px solid var(--border);border-radius:5px;background:var(--surface-2);color:var(--text-soft);font-size:10px;cursor:pointer}.owned-button.owned{background:rgba(139,92,246,.13);color:var(--orange);border-color:rgba(139,92,246,.4)}.mastered-button.mastered{background:rgba(255,146,43,.1);color:var(--orange);border-color:rgba(255,146,43,.35)}
 .no-variants{grid-column:1/-1;padding:15px;text-align:center;color:var(--text-muted)}
-.owner-list{margin-top:8px;padding-top:7px;border-top:1px solid var(--border);font-size:9px;color:var(--text-muted);line-height:1.35}.owner-list strong{color:var(--teal-bright);font-weight:600}
+.owner-list{margin-top:8px;padding-top:7px;border-top:1px solid var(--border);font-size:9px;color:var(--text-muted);line-height:1.35}.owner-list strong{color:var(--orange);font-weight:600}
 .missing-grid{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:12px;justify-content:center}
-.missing-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.15s ease;position:relative}.missing-card.selected{border-color:rgba(33,199,183,.65);box-shadow:0 0 0 2px rgba(33,199,183,.08)}
+.missing-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:.15s ease;position:relative}.missing-card.selected{border-color:rgba(139,92,246,.65);box-shadow:0 0 0 2px rgba(139,92,246,.08)}
 .missing-card:hover{transform:translateY(-2px);border-color:var(--border-hover)}
-.missing-image-wrap{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.missing-image-wrap:before{content:"";position:absolute;width:72%;height:72%;border-radius:50%;background:radial-gradient(circle,rgba(94,231,216,.20) 0%,rgba(33,199,183,.08) 38%,transparent 72%);filter:blur(10px)}.missing-image{position:relative;width:78%;height:78%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
-.missing-select{position:absolute;top:9px;left:9px;z-index:2;width:18px;height:18px;accent-color:var(--teal);cursor:pointer}.missing-info{padding:10px}.missing-name{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.missing-parent{margin-top:4px;font-size:11px;color:var(--text-muted)}
-.missing-share-bar{grid-column:1/-1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);margin-bottom:2px}.missing-share-count{font-size:11px;color:var(--text-soft);margin-right:auto}.missing-share-count strong{color:var(--teal-bright)}.missing-share-button{padding:8px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);font-size:10px;font-weight:800;cursor:pointer}.missing-share-button:hover{background:var(--surface-3);border-color:var(--border-hover)}.missing-share-button.primary{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.35);color:var(--teal-bright)}.missing-share-button:disabled{opacity:.4;cursor:not-allowed}.missing-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.missing-action{padding:9px 6px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);font-size:10px;font-weight:700;cursor:pointer}.missing-action:hover{background:var(--surface-3);border-color:var(--border-hover);color:var(--text)}
+.missing-image-wrap{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:#0d0f10}.missing-image-wrap:before{content:"";position:absolute;width:72%;height:72%;border-radius:50%;background:radial-gradient(circle,rgba(255,146,43,.20) 0%,rgba(139,92,246,.08) 38%,transparent 72%);filter:blur(10px)}.missing-image{position:relative;width:78%;height:78%;object-fit:contain;display:block;filter:drop-shadow(0 8px 12px rgba(0,0,0,.35))}
+.missing-select{position:absolute;top:9px;left:9px;z-index:2;width:18px;height:18px;accent-color:var(--purple);cursor:pointer}.missing-info{padding:10px}.missing-name{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.missing-parent{margin-top:4px;font-size:11px;color:var(--text-muted)}
+.missing-share-bar{grid-column:1/-1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:11px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface);margin-bottom:2px}.missing-share-count{font-size:11px;color:var(--text-soft);margin-right:auto}.missing-share-count strong{color:var(--orange)}.missing-share-button{padding:8px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);font-size:10px;font-weight:800;cursor:pointer}.missing-share-button:hover{background:var(--surface-3);border-color:var(--border-hover)}.missing-share-button.primary{background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.35);color:var(--orange)}.missing-share-button:disabled{opacity:.4;cursor:not-allowed}.missing-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.missing-action{padding:9px 6px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text-soft);font-size:10px;font-weight:700;cursor:pointer}.missing-action:hover{background:var(--surface-3);border-color:var(--border-hover);color:var(--text)}
 .collection-stat{transition:.15s ease}.collection-stat:hover{transform:translateY(-1px);border-color:var(--border-hover)}
 .account-name{font-weight:600}
 
-.tracker-dashboard{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin-bottom:18px}.dashboard-panel{min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px}.dashboard-panel-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}.dashboard-panel-header h2{margin:3px 0 0;font-size:16px}.dashboard-kicker{font-size:9px;letter-spacing:1.4px;color:var(--teal-bright);font-weight:800}.dashboard-note{font-size:10px;color:var(--text-muted);line-height:1.4}.dashboard-empty{padding:14px 4px;color:var(--text-muted);font-size:11px;text-align:center}.small-action{padding:7px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-size:10px;font-weight:700;cursor:pointer}.small-action:hover{background:var(--surface-3);border-color:var(--border-hover)}.small-action.primary{background:rgba(33,199,183,.12);border-color:rgba(33,199,183,.35);color:var(--teal-bright)}.notice-list{display:flex;flex-direction:column;gap:8px;max-height:190px;overflow:auto}.notice-item{padding:10px 11px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2)}.notice-title{font-size:12px;font-weight:800}.notice-body{margin-top:4px;font-size:11px;line-height:1.4;color:var(--text-soft);white-space:pre-wrap}.notice-date{margin-top:6px;font-size:9px;color:var(--text-muted)}.notice-editor{margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}.notice-editor input,.notice-editor textarea{width:100%;padding:9px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-family:inherit;outline:none;margin-bottom:7px}.notice-editor textarea{resize:vertical}.notice-editor-actions{display:flex;gap:7px}.leaderboard-list,.recent-list{display:flex;flex-direction:column;gap:7px}.leaderboard-item{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:8px;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.leaderboard-rank{font-size:14px;font-weight:900;text-align:center;color:var(--teal-bright)}.leaderboard-name{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.leaderboard-sub{margin-top:2px;font-size:9px;color:var(--text-muted)}.leaderboard-score{font-size:11px;font-weight:800}.recent-item{display:grid;grid-template-columns:38px 1fr;gap:8px;align-items:center;padding:7px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.recent-thumb{width:38px;height:38px;object-fit:contain;border-radius:6px;background:#0d0f10}.recent-name{font-size:10px;font-weight:700}.recent-owner{margin-top:2px;font-size:9px;color:var(--text-muted)}
+.tracker-dashboard{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin-bottom:18px}.dashboard-panel{min-width:0;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px}.dashboard-panel-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}.dashboard-panel-header h2{margin:3px 0 0;font-size:16px}.dashboard-kicker{font-size:9px;letter-spacing:1.4px;color:var(--orange);font-weight:800}.dashboard-note{font-size:10px;color:var(--text-muted);line-height:1.4}.dashboard-empty{padding:14px 4px;color:var(--text-muted);font-size:11px;text-align:center}.small-action{padding:7px 10px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-size:10px;font-weight:700;cursor:pointer}.small-action:hover{background:var(--surface-3);border-color:var(--border-hover)}.small-action.primary{background:rgba(139,92,246,.12);border-color:rgba(139,92,246,.35);color:var(--orange)}.notice-list{display:flex;flex-direction:column;gap:8px;max-height:190px;overflow:auto}.notice-item{padding:10px 11px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2)}.notice-title{font-size:12px;font-weight:800}.notice-body{margin-top:4px;font-size:11px;line-height:1.4;color:var(--text-soft);white-space:pre-wrap}.notice-date{margin-top:6px;font-size:9px;color:var(--text-muted)}.notice-editor{margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}.notice-editor input,.notice-editor textarea{width:100%;padding:9px;border:1px solid var(--border);border-radius:7px;background:var(--surface-2);color:var(--text);font-family:inherit;outline:none;margin-bottom:7px}.notice-editor textarea{resize:vertical}.notice-editor-actions{display:flex;gap:7px}.leaderboard-list,.recent-list{display:flex;flex-direction:column;gap:7px}.leaderboard-item{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:8px;padding:8px 9px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.leaderboard-rank{font-size:14px;font-weight:900;text-align:center;color:var(--orange)}.leaderboard-name{font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.leaderboard-sub{margin-top:2px;font-size:9px;color:var(--text-muted)}.leaderboard-score{font-size:11px;font-weight:800}.recent-item{display:grid;grid-template-columns:38px 1fr;gap:8px;align-items:center;padding:7px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2)}.recent-thumb{width:38px;height:38px;object-fit:contain;border-radius:6px;background:#0d0f10}.recent-name{font-size:10px;font-weight:700}.recent-owner{margin-top:2px;font-size:9px;color:var(--text-muted)}
 @media(max-width:900px){.tracker-dashboard{grid-template-columns:1fr 1fr}.notice-panel{grid-column:1/-1}}
 @media(max-width:700px){body{padding:18px 10px}.brand-row{align-items:flex-start;flex-wrap:wrap;gap:12px}.heehee-logo{width:54px;height:54px}.brand{font-size:21px;letter-spacing:1.8px;line-height:1.15}.account-bar{width:100%;justify-content:flex-start;margin-top:2px}.account-name{font-size:15px}.account-button,.view-button,.collection-filter,.back-button,.player-button{padding:10px 13px;font-size:14px}.profile-layout{grid-template-columns:1fr}.profile-avatar-large{margin:0 auto}.missing-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.missing-image-wrap{height:135px}.missing-info{padding:10px}.missing-action{font-size:12px;padding:9px 5px}.controls input,.controls select{font-size:14px;padding:11px}.collection-view-select label{font-size:12px}.collection-view-select select{font-size:14px;padding:10px}.collection-title{font-size:23px}.collection-player{font-size:15px}.collection-stat-number{font-size:23px}.collection-stat-label{font-size:12px}.dashboard-panel-header h2{font-size:19px}.dashboard-kicker{font-size:10px}.dashboard-note,.notice-body{font-size:13px}.notice-title{font-size:14px}.players-header h2{font-size:22px}.players-header p{font-size:14px}.player-name{font-size:18px}.player-badge{font-size:9px}.player-mini-number{font-size:15px}.player-mini-label{font-size:9px}.player-progress-top{font-size:12px}.player-button{font-size:14px}.modal{padding:10px}.modal-content{width:100%;max-height:94vh;padding:14px}.modal-main{grid-template-columns:1fr}.modal-image{width:160px;height:160px;margin:0 auto}.modal-title{font-size:23px}.modal-rarity,.modal-season{font-size:13px}#modalVariants{grid-template-columns:repeat(2,minmax(0,1fr))}.variant-name{font-size:13px}.variant-type{font-size:11px}.owned-button,.mastered-button{font-size:12px;padding:8px}.share-brand-title{font-size:22px}.share-status{font-size:13px}.small-action{font-size:12px;padding:9px 11px}}h1{font-size:26px}.modal{position:fixed}
 @media(max-width:600px){.collection-stats{grid-template-columns:repeat(2,1fr)}.sprite-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sprite-image-wrap{height:110px}.missing-image-wrap{height:130px}.tracker-dashboard{grid-template-columns:1fr}.notice-panel{grid-column:auto}.controls select{flex:1}}
@@ -135,6 +135,40 @@ header{position:relative;border:1px solid rgba(255,146,43,.2);background:linear-
 @media(max-width:900px){.brand-row{align-items:stretch;flex-wrap:nowrap;gap:9px}.header-top{min-height:78px}.header-top .heehee-logo{width:74px!important;height:74px!important}.header-top .menu-toggle{display:block}.brand{font-size:24px!important}.account-bar{justify-content:center;margin-top:0}.account-name{display:none!important}}
 @media(max-width:620px){body{padding:12px 8px}.container{padding:0 4px!important}header{padding:10px 12px 13px;margin-bottom:14px}.header-top{min-height:76px}.header-top .heehee-logo{width:72px!important;height:72px!important}.header-top .menu-toggle{width:42px;height:42px;font-size:21px}.brand{font-size:23px!important}.account-bar{gap:8px}.account-bar .account-button{padding:9px 13px;font-size:13px}.welcome-panel{padding:16px;margin-bottom:12px}.welcome-panel h1{font-size:21px}.welcome-panel p{font-size:12px}.tracker-dashboard{margin-bottom:14px}}
 
+
+/* Layout and image fallback refinements */
+.modal-image-wrap,.variant-image-wrap{position:relative;overflow:hidden;border-radius:10px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;min-width:0}
+.modal-image-wrap{width:120px;height:120px;flex-shrink:0}
+.modal-image-wrap .modal-image{width:100%;height:100%;margin:0;border-radius:10px}
+.variant-image-wrap{width:100%;aspect-ratio:1}
+.variant-image-wrap .variant-image{width:100%;height:100%;object-fit:cover}
+.coming-soon-art{z-index:1;pointer-events:none}
+.modal-close{z-index:5;pointer-events:auto}
+.sprite-index-card .sprite-info{padding:10px 12px 12px}
+.sprite-index-card .sprite-name{margin-bottom:0}
+.admin-code-image-wrap{position:relative;flex:0 0 86px;width:86px;height:86px;overflow:hidden;border:1px solid var(--border);border-radius:10px;background:var(--surface-2)}
+.admin-code-image{display:block;width:100%;height:100%;object-fit:cover}
+.admin-code-image-placeholder{width:100%;height:100%;align-items:center;justify-content:center;text-align:center;padding:7px;color:var(--text-muted);font-size:10px;font-weight:800;line-height:1.35}
+.admin-code-card.used{filter:grayscale(1);opacity:.58;border-color:var(--border);background:var(--surface-2)}
+.admin-code-card.used .admin-code-value,.admin-code-card.used .admin-code-description,.admin-code-card.used .admin-code-status{color:var(--text-muted)}
+.app-footer{text-align:center;padding:24px 10px 12px;margin-top:18px;color:var(--text-muted);font-size:12px;border-top:1px solid var(--border)}
+.app-footer strong{color:var(--orange)}
+@media(max-width:620px){.modal-image-wrap{width:160px;height:160px;margin:0 auto}.admin-code-card{flex-wrap:wrap}.admin-code-image-wrap{flex-basis:72px;width:72px;height:72px}.admin-code-check{margin-left:auto}}
+
+
+/* Final Halloween polish: remove legacy teal from every collection state and control. */
+.view-button.active,.collection-filter.active,.view-button.friends-active{background:rgba(139,92,246,.16)!important;border-color:rgba(139,92,246,.55)!important;color:#ffad58!important}
+.sprite-card.collection-partial{border-color:rgba(139,92,246,.55)!important}
+.sprite-card.collection-complete{border-color:rgba(255,146,43,.65)!important}
+.sprite-card.collection-partial .sprite-image-wrap:before,.sprite-card.collection-complete .sprite-image-wrap:before{background:radial-gradient(circle,rgba(139,92,246,.20) 0%,rgba(255,146,43,.10) 38%,transparent 72%)!important}
+.player-card:before{background:radial-gradient(circle,rgba(139,92,246,.16),transparent 70%)!important}
+.player-card.current{border-color:rgba(139,92,246,.6)!important;box-shadow:0 0 0 1px rgba(139,92,246,.12)!important}
+.player-badge{background:rgba(139,92,246,.12)!important;color:#ffad58!important}
+.friend-row-action.add,.small-action.primary{color:#ffad58!important;border-color:rgba(139,92,246,.45)!important;background:rgba(139,92,246,.14)!important}
+.login-fields input:focus,.controls input:focus,.controls select:focus{border-color:#a78bfa!important;box-shadow:0 0 0 3px rgba(139,92,246,.16)!important}
+.brand{font-family:Arial,Helvetica,sans-serif!important;font-weight:900!important;text-transform:uppercase!important;letter-spacing:1.8px!important;color:#ffad58!important}
+#modalClose{z-index:20!important;pointer-events:auto!important;touch-action:manipulation;cursor:pointer}
+#backToPlayers{position:relative;z-index:2;pointer-events:auto;touch-action:manipulation;cursor:pointer}
 </style>
 </head>
 <body>
@@ -150,7 +184,7 @@ header{position:relative;border:1px solid rgba(255,146,43,.2);background:linear-
     <button class="sidebar-link" data-page="players" type="button"><span>♧</span> Players & Friends</button>
     <button class="sidebar-link" data-page="admin-codes" type="button"><span>♧</span> Admin Codes</button>
   </nav>
-  <div class="sidebar-bottom"><div class="sidebar-label">COMING SOON</div><button class="sidebar-link coming-soon" type="button" disabled><span>✧</span><span>MW4 Community<small>Coming Soon</small></span><b>↗</b></button><div class="sidebar-foot">Made for the HeeHee community<br><span>Stay spooky 👻</span></div></div>
+  <div class="sidebar-bottom"><div class="sidebar-label">COMING SOON</div><button class="sidebar-link coming-soon" type="button" disabled><span>✧</span><span>MW4 Community<small>Coming Soon</small></span><b>↗</b></button><div class="sidebar-foot">Made for the HeeHee community<br><span></span></div></div>
 </aside>
 
 <header>
@@ -210,7 +244,7 @@ header{position:relative;border:1px solid rgba(255,146,43,.2);background:linear-
   </section>
 
   <section class="dashboard-panel leaderboard-panel">
-    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">TOP 5 LEADERBOARD</div><h2></h2></div></div>
+    <div class="dashboard-panel-header"><div><div class="dashboard-kicker">FORTNITEMARES TOP 5</div><h2></h2></div></div>
     <div id="leaderboard" class="leaderboard-list"><div class="dashboard-empty">Loading leaderboard...</div></div>
   </section>
 
@@ -282,7 +316,7 @@ header{position:relative;border:1px solid rgba(255,146,43,.2);background:linear-
     <div id="playersGrid" class="players-grid"></div>
   </div>
   <div id="playerCollectionView" style="display:none">
-    <button id="backToPlayers" class="back-button">← Back to Players</button>
+    <button id="backToPlayers" class="back-button" type="button" onclick="showPlayers(playersMode)">← Back to Players</button>
     <div id="viewingPlayerInfo" class="viewing-player"></div>
   </div>
 </div>
@@ -298,7 +332,7 @@ header{position:relative;border:1px solid rgba(255,146,43,.2);background:linear-
   <div id="adminCodesList" class="admin-codes-list"><div class="dashboard-empty">Loading admin codes…</div></div>
   <div id="adminCodesMessage" class="dashboard-note"></div>
 </section>
-<div id="dataRefreshStatus" class="data-refresh-status" aria-live="polite">Data refreshes automatically every 60 seconds.</div>
+<footer class="app-footer">Made by <strong>anghee</strong> for the HeeHee community <span aria-hidden="true">🕺🏽</span></footer>
 
 <div id="friendsModal" class="modal">
   <div class="modal-content">
@@ -349,9 +383,9 @@ header{position:relative;border:1px solid rgba(255,146,43,.2);background:linear-
 
 <div id="spriteModal" class="modal">
   <div class="modal-content">
-    <button id="modalClose" class="modal-close" type="button">×</button>
+    <button id="modalClose" class="modal-close" type="button" aria-label="Close sprite details" onclick="closeModal()">×</button>
     <div class="modal-main">
-      <img id="modalImage" class="modal-image" src="" alt="">
+      <div class="modal-image-wrap"><img id="modalImage" class="modal-image" src="" alt=""></div>
       <div>
         <h2 id="modalTitle" class="modal-title"></h2>
         <div id="modalRarity" class="modal-rarity"></div>
@@ -390,6 +424,7 @@ let selectedMissingIds=new Set();
 let shareCount=0;
 let shareImageDataUrl="";
 let profileImageData=null;
+let activePage="dashboard";
 
 function setSession(session){
   if(!session)return;
@@ -469,7 +504,7 @@ async function loadFriends(){
   const response=await supabaseRequest("/rest/v1/friends?select=*&or=(requester_id.eq."+id+",addressee_id.eq."+id+")&status=eq.accepted");
   if(!response.ok){
     const text=await response.text();
-    if(response.status===404||text.includes("relation \"public.friends\" does not exist")){friendRows=[];friendIds=new Set();return;}
+    if(response.status===404||text.includes("relation \"public.friends\" does not exist")||text.includes("Could not find the table \"public.friends\"")||text.includes("schema cache")||text.includes("PGRST205")){friendRows=[];friendIds=new Set();return;}
     throw new Error("Could not load friends: "+text);
   }
   friendRows=await response.json();
@@ -721,22 +756,22 @@ async function restoreSession(){
   accessToken=savedAccess;refreshToken=savedRefresh;
   try{
     let loaded=false;
-    if(accessToken){
-      try{await loadCurrentUser();loaded=true;}catch(e){}
-    }
+    if(accessToken){try{await loadCurrentUser();loaded=true;}catch(e){}}
     if(!loaded){
       if(!(await refreshSession()))throw new Error("Session expired");
       await loadCurrentUser();
     }
     await loadPlayer();
     if(!currentPlayer||currentPlayer.active===false){await logout();return;}
-    await loadMyCollection();
-    await loadPlayers();
-    await loadAllCollections();
-    await loadNotices();
+    // Optional community views must never invalidate an otherwise valid login.
+    try{await loadMyCollection();}catch(e){console.warn('Could not load personal collection:',e);}
+    try{await loadPlayers();}catch(e){console.warn('Could not load players:',e);allPlayers=[];}
+    try{await loadAllCollections();}catch(e){console.warn('Could not load collection stats:',e);allCollections=[];}
+    try{await loadFriends();}catch(e){console.warn('Could not load friends:',e);friendRows=[];friendIds=new Set();}
+    try{await loadNotices();}catch(e){console.warn('Could not load notices:',e);notices=[];renderNotices();}
     updateAccountUI();
   }catch(error){
-    console.error(error);
+    console.error('Could not restore the signed-in session:',error);
     await logout();
   }
 }
@@ -795,15 +830,17 @@ function renderDashboard(){
   const title=document.getElementById("welcomeTitle");
   const subtitle=document.getElementById("welcomeSubtitle");
   if(title) title.textContent=currentPlayer?`Welcome back, ${currentPlayer.display_name||"Sprite Collector"}!`:"Welcome, Sprite Collector!";
-  if(subtitle) subtitle.textContent=currentPlayer?"Ready to grow your collection? Check the notice board, see the current leaderboard, and catch up on the community’s latest finds.":"Track your Fortnite Sprite collection, discover what you’re missing, and see what the HeeHee community has collected. Log in or create an account to save your progress.";
+  if(subtitle) subtitle.textContent=currentPlayer?"":"Track your Fortnite Sprite collection, discover what you’re missing, and see what the HeeHee community has collected. Log in or create an account to save your progress.";
   renderNotices();renderLeaderboard();renderRecentCollected();
 }
 
-function openFriends(){
+async function openFriends(){
   if(!currentUser){alert("Please log in first.");return;}
   document.getElementById("friendsModal").classList.add("show");
   document.getElementById("friendSearch").value="";
-  renderFriendList();
+  document.getElementById("friendList").innerHTML='<div class="dashboard-empty">Loading players…</div>';
+  try { await loadPlayers(); await loadFriends(); renderFriendList(); }
+  catch(error) { console.error('Could not load friend options:',error); document.getElementById("friendList").innerHTML='<div class="dashboard-empty">Could not load players. '+escapeHtml(error.message||'Please try again.')+'</div>'; }
 }
 function closeFriends(){document.getElementById("friendsModal").classList.remove("show");}
 function renderFriendList(){
@@ -882,7 +919,12 @@ function openPlayerCollection(player){
   viewingPlayer=player;
   document.getElementById("playersListView").style.display="none";
   document.getElementById("playerCollectionView").style.display="block";
-  document.getElementById("myCollectionView").style.display="none";
+  document.getElementById("myCollectionView").style.display="block";
+  document.getElementById("collectionDashboard").style.display="none";
+  document.querySelector("#myCollectionView .controls").style.display="none";
+  document.querySelector("#myCollectionView .view-switcher").style.display="flex";
+  document.getElementById("myCollectionButton").style.display="none";
+  document.getElementById("collectionFilterControl").style.display="none";
   document.getElementById("stats").style.display="block";
   document.getElementById("sprites").style.display="grid";
   document.getElementById("stats").textContent="Viewing "+(player.display_name||"player")+"'s collection";
@@ -892,11 +934,16 @@ function openPlayerCollection(player){
 }
 
 function showMyCollection(){
+  activePage="collection";
   viewingPlayer=null;playersMode="all";
+  document.getElementById("myCollectionView").style.display="block";
+  document.getElementById("collectionDashboard").style.display="block";
+  document.querySelector("#myCollectionView .controls").style.display="flex";
+  document.querySelector("#myCollectionView .view-switcher").style.display="flex";
+  document.getElementById("myCollectionButton").style.display="inline-flex";
   document.getElementById("playersPanel").style.display="none";
   document.getElementById("stats").style.display="block";
   document.getElementById("sprites").style.display="grid";
-  document.getElementById("myCollectionView").style.display="block";
   document.getElementById("collectionFilterControl").style.display="flex";
   document.getElementById("collectionTitle").textContent="My Collection";
   document.getElementById("collectionPlayer").textContent=currentPlayer?.display_name||"Not logged in";
@@ -904,8 +951,14 @@ function showMyCollection(){
 }
 
 function showPlayers(mode="all"){
+  activePage="players";
   viewingPlayer=null;playersMode=mode;
-  document.getElementById("myCollectionView").style.display="none";
+  // The player panel is nested inside myCollectionView, so keep its parent visible.
+  document.getElementById("myCollectionView").style.display="block";
+  document.getElementById("collectionDashboard").style.display="none";
+  document.querySelector("#myCollectionView .controls").style.display="none";
+  document.querySelector("#myCollectionView .view-switcher").style.display="flex";
+  document.getElementById("myCollectionButton").style.display="none";
   document.getElementById("playersPanel").style.display="block";
   document.getElementById("stats").style.display="none";
   document.getElementById("sprites").style.display="none";
@@ -1012,11 +1065,12 @@ function renderMissing(){
 
 function renderSprites(){
   const container=document.getElementById("sprites");if(!container)return;
-  const filter=document.getElementById("collectionFilterSelect")?.value||"all";
+  const isIndex=activePage==="sprites";
+  const filter=isIndex?"all":(document.getElementById("collectionFilterSelect")?.value||"all");
   if(!viewingPlayer&&filter==="missing"){renderMissing();return;}
   container.className="sprite-grid";
-  const search=document.getElementById("search").value.toLowerCase();
-  const rarity=document.getElementById("rarity").value;
+  const search=isIndex?"":document.getElementById("search").value.toLowerCase();
+  const rarity=isIndex?"All":document.getElementById("rarity").value;
   const collection=viewingPlayer?getCollectionForPlayer(viewingPlayer.player_id):myCollection;
   const filtered=allSprites.filter(sprite=>{
     if(!(sprite.sprite_name||"").toLowerCase().includes(search))return false;
@@ -1042,7 +1096,8 @@ function renderSprites(){
     const card=document.createElement("div");card.className="sprite-card";
     if(total&&owned===total){status="✓ Complete";statusClass="complete";card.classList.add("collection-complete");}
     else if(owned){statusClass="partial";card.classList.add("collection-partial");}
-    card.innerHTML=`<div class="sprite-image-wrap"><img class="sprite-image" src="${escapeHtml(sprite.image_url||"")}" alt="${escapeHtml(sprite.sprite_name||"")}"></div><div class="sprite-info"><div class="sprite-name">${escapeHtml(sprite.sprite_name||"Unknown")}</div><div class="rarity">${escapeHtml(sprite.rarity||"Unknown")}</div><div class="season">${escapeHtml(sprite.season||"")}</div><div class="sprite-collection-status ${statusClass}">${status}</div></div>`;
+    card.classList.toggle("sprite-index-card",isIndex);
+    card.innerHTML=`<div class="sprite-image-wrap"><img class="sprite-image" src="${escapeHtml(sprite.image_url||"")}" alt="${escapeHtml(sprite.sprite_name||"")}"></div><div class="sprite-info"><div class="sprite-name">${escapeHtml(sprite.sprite_name||"Unknown")}</div>${isIndex?"":`<div class="rarity">${escapeHtml(sprite.rarity||"Unknown")}</div><div class="season">${escapeHtml(sprite.season||"")}</div><div class="sprite-collection-status ${statusClass}">${status}</div>`}</div>`;
     card.addEventListener("click",()=>openModal(sprite));container.appendChild(card);
   });
   updateStats(filtered.length);
@@ -1068,17 +1123,29 @@ function closeModal(){document.getElementById("spriteModal").classList.remove("s
 
 function renderVariants(spriteId){
   const container=document.getElementById("modalVariants");
-  const variants=allVariants.filter(v=>v.sprite_id===spriteId&&v.active!==false);
+  const sprite=allSprites.find(s=>String(s.sprite_id)===String(spriteId));
+  const normaliseVariantName=value=>(value||"").toString().toLowerCase().replace(/[^a-z0-9]/g,"");
+  const variantOrder=["gold","cheatmaster","loothacker","bountyhunter","trickortreat"];
+  const variants=allVariants.filter(v=>String(v.sprite_id)===String(spriteId)&&v.active!==false).map((v,index)=>({...v,_originalIndex:index})).sort((a,b)=>{
+    const nameA=normaliseVariantName(a.variant_name),typeA=normaliseVariantName(a.variant_type);
+    const nameB=normaliseVariantName(b.variant_name),typeB=normaliseVariantName(b.variant_type);
+    const spriteName=normaliseVariantName(sprite?.sprite_name);
+    const rank=v=>{const name=normaliseVariantName(v.variant_name),type=normaliseVariantName(v.variant_type);if(name==="normal"||type==="normal"||(spriteName&&name===spriteName))return 0;const idx=variantOrder.findIndex(key=>name===key||type===key||name.includes(key));return idx<0?99:idx+1;};
+    return rank(a)-rank(b)||a._originalIndex-b._originalIndex;
+  });
   const collection=viewingPlayer?getCollectionForPlayer(viewingPlayer.player_id):myCollection;
   container.innerHTML="";
   if(!variants.length){container.innerHTML='<div class="no-variants">No variants available.</div>';return;}
   variants.forEach(variant=>{
+    const variantNameKey=normaliseVariantName(variant.variant_name),variantTypeKey=normaliseVariantName(variant.variant_type),spriteNameKey=normaliseVariantName(sprite?.sprite_name);
+    const isNormalVariant=variantNameKey==="normal"||variantTypeKey==="normal"||(spriteNameKey&&variantNameKey===spriteNameKey);
+    const displayVariantName=isNormalVariant?(sprite?.sprite_name||variant.variant_name||"Normal"):(variant.variant_name||"Variant");
     const record=getVariantRecord(collection,variant.variant_id);
     const owned=record?.owned===true;const mastered=record?.mastered===true;
     const owners=getVariantOwners(variant.variant_id);
     const card=document.createElement("div");card.className="variant-card";
     const ownerText=owners.length?`<div class="owner-list"><strong>Owned by:</strong> ${owners.map(p=>escapeHtml(p.display_name||"Unknown")).join(", ")}</div>`:`<div class="owner-list">No one owns this yet.</div>`;
-    card.innerHTML=`<img class="variant-image" src="${escapeHtml(variant.image_url||"")}" alt="${escapeHtml(variant.variant_name||"")}"><div class="variant-info"><div class="variant-name">${escapeHtml(variant.variant_name||"Variant")}</div>${variant.variant_type?`<div class="variant-type">${escapeHtml(variant.variant_type)}</div>`:""}<div class="variant-controls"><button class="owned-button ${owned?"owned":""}" type="button">${owned?"★ Owned":"☆ Owned"}</button>${owned&&!viewingPlayer?`<button class="mastered-button ${mastered?"mastered":""}" type="button">${mastered?"🏆 Mastered":"☆ Mastered"}</button>`:""}</div>${ownerText}</div>`;
+    card.innerHTML=`<div class="variant-image-wrap"><img class="variant-image" src="${escapeHtml(variant.image_url||"")}" alt="${escapeHtml(displayVariantName)}"></div><div class="variant-info"><div class="variant-name">${escapeHtml(displayVariantName)}</div>${variant.variant_type?`<div class="variant-type">${escapeHtml(variant.variant_type)}</div>`:""}<div class="variant-controls"><button class="owned-button ${owned?"owned":""}" type="button">${owned?"★ Owned":"☆ Owned"}</button>${owned&&!viewingPlayer?`<button class="mastered-button ${mastered?"mastered":""}" type="button">${mastered?"🏆 Mastered":"☆ Mastered"}</button>`:""}</div>${ownerText}</div>`;
     if(!viewingPlayer){
       card.querySelector(".owned-button").addEventListener("click",async event=>{event.stopPropagation();try{await toggleOwned(variant.variant_id);renderVariants(spriteId);}catch(error){console.error(error);alert("Could not update collection: "+friendlyCollectionError(error));}});
       const masteredButton=card.querySelector(".mastered-button");
@@ -1142,26 +1209,26 @@ async function generateShareImage(){
   const rows=Math.ceil(shareCount/cols);const width=1200;const header=250;const cellW=width/cols;const cellH=260;canvas.width=width;canvas.height=header+rows*cellH+110;
   const ctx=canvas.getContext("2d");
   ctx.fillStyle="#101214";ctx.fillRect(0,0,canvas.width,canvas.height);
-  const glow=ctx.createRadialGradient(width/2,130,20,width/2,130,520);glow.addColorStop(0,"rgba(94,231,216,.20)");glow.addColorStop(1,"rgba(16,18,20,0)");ctx.fillStyle=glow;ctx.fillRect(0,0,width,300);
+  const glow=ctx.createRadialGradient(width/2,130,20,width/2,130,520);glow.addColorStop(0,"rgba(255,146,43,.20)");glow.addColorStop(1,"rgba(16,18,20,0)");ctx.fillStyle=glow;ctx.fillRect(0,0,width,300);
   const logoImg=await loadCanvasImage(document.querySelector(".heehee-logo")?.src||"");
   if(logoImg){const logoSize=104;ctx.drawImage(logoImg,width/2-logoSize/2,22,logoSize,logoSize);}
-  ctx.fillStyle="#5ee7d8";ctx.font="900 34px Arial";ctx.textAlign="center";ctx.fillText("HEEHEE SPRITE TRACKER",width/2,150);
+  ctx.fillStyle="#ffad58";ctx.font="900 34px Arial";ctx.textAlign="center";ctx.fillText("HEEHEE SPRITE TRACKER",width/2,150);
   ctx.fillStyle="#f1f5f5";ctx.font="800 28px Arial";ctx.fillText(`${currentPlayer?.display_name||"Sprite Collector"}'s Missing Sprites`,width/2,190);
   ctx.fillStyle="#7f8b8d";ctx.font="16px Arial";ctx.fillText(`${shareCount} missing variants`,width/2,215);
   for(let i=0;i<variants.length;i++){
     const v=variants[i],sprite=allSprites.find(s=>s.sprite_id===v.sprite_id);const x=(i%cols)*cellW,y=header+Math.floor(i/cols)*cellH;
     const cardX=x+14,cardY=y+12,cardW=cellW-28,cardH=cellH-24;
     const cardGlow=ctx.createRadialGradient(x+cellW/2,y+cellH/2,10,x+cellW/2,y+cellH/2,Math.min(cellW,cellH)*0.48);
-    cardGlow.addColorStop(0,"rgba(94,231,216,.16)");cardGlow.addColorStop(.45,"rgba(33,199,183,.07)");cardGlow.addColorStop(1,"rgba(23,26,28,0)");
+    cardGlow.addColorStop(0,"rgba(255,146,43,.16)");cardGlow.addColorStop(.45,"rgba(139,92,246,.07)");cardGlow.addColorStop(1,"rgba(23,26,28,0)");
     ctx.fillStyle="#171a1c";ctx.fillRect(cardX,cardY,cardW,cardH);
     ctx.fillStyle=cardGlow;ctx.fillRect(cardX,cardY,cardW,cardH);
     ctx.strokeStyle="#303638";ctx.strokeRect(cardX,cardY,cardW,cardH);
     const img=await loadCanvasImage(v.image_url||sprite?.image_url||"");
-    if(img){const max=cellH-85;const scale=Math.min(max/img.width,max/img.height);const w=img.width*scale,h=img.height*scale;const ix=x+cellW/2-w/2,iy=y+18+(max-h)/2;const rg=ctx.createRadialGradient(x+cellW/2,y+cellH/2,5,x+cellW/2,y+cellH/2,100);rg.addColorStop(0,"rgba(94,231,216,.18)");rg.addColorStop(1,"rgba(94,231,216,0)");ctx.fillStyle=rg;ctx.fillRect(x+20,y+18,cellW-40,max);ctx.drawImage(img,ix,iy,w,h);}
+    if(img){const max=cellH-85;const scale=Math.min(max/img.width,max/img.height);const w=img.width*scale,h=img.height*scale;const ix=x+cellW/2-w/2,iy=y+18+(max-h)/2;const rg=ctx.createRadialGradient(x+cellW/2,y+cellH/2,5,x+cellW/2,y+cellH/2,100);rg.addColorStop(0,"rgba(255,146,43,.18)");rg.addColorStop(1,"rgba(255,146,43,0)");ctx.fillStyle=rg;ctx.fillRect(x+20,y+18,cellW-40,max);ctx.drawImage(img,ix,iy,w,h);}
     ctx.fillStyle="#f1f5f5";ctx.font="700 18px Arial";ctx.textAlign="center";ctx.fillText((v.variant_name||"Variant").slice(0,32),x+cellW/2,y+cellH-43);
     ctx.fillStyle="#7f8b8d";ctx.font="13px Arial";ctx.fillText((sprite?.sprite_name||"Sprite").slice(0,38),x+cellW/2,y+cellH-22);
   }
-  ctx.fillStyle="#21c7b7";ctx.fillRect(0,canvas.height-72,width,1);
+  ctx.fillStyle="#8b5cf6";ctx.fillRect(0,canvas.height-72,width,1);
   ctx.fillStyle="#b7c1c2";ctx.font="14px Arial";ctx.textAlign="center";ctx.fillText("HeeHee Fortnite Sprite Tracker · https://heehee-sprite-tracker.pages.dev/",width/2,canvas.height-39);
   try{shareImageDataUrl=canvas.toDataURL("image/png");document.getElementById("sharePreview").src=shareImageDataUrl;document.getElementById("downloadShareImage").disabled=false;document.getElementById("shareStatus").textContent="PNG created! 🕺🏽";}catch(error){document.getElementById("shareStatus").textContent="One or more sprite images blocked the PNG canvas. Try again after the images have loaded.";console.error(error);}
 }
@@ -1238,13 +1305,19 @@ document.getElementById("logoutButton").addEventListener("click",logout);
 document.getElementById("addNoticeButton").addEventListener("click",()=>{document.getElementById("noticeEditor").style.display="block";document.getElementById("noticeTitle").focus();});
 document.getElementById("cancelNoticeButton").addEventListener("click",()=>{document.getElementById("noticeEditor").style.display="none";document.getElementById("noticeEditorMessage").textContent="";});
 document.getElementById("saveNoticeButton").addEventListener("click",saveNotice);
-document.getElementById("myCollectionButton").addEventListener("click",showMyCollection);
-document.getElementById("playersButton").addEventListener("click",()=>showPlayers("all"));
-document.getElementById("friendsButton").addEventListener("click",showFriends);
+document.getElementById("myCollectionButton").addEventListener("click",()=>{showMyCollection();document.querySelectorAll(".sidebar-link[data-page]").forEach(b=>b.classList.toggle("active",b.dataset.page==="collection"));});
+document.getElementById("playersButton").addEventListener("click",async()=>{
+  showPlayers("all");
+  if(currentUser){try{await loadPlayers();await loadAllCollections();}catch(error){console.error(error);document.getElementById("playersGrid").innerHTML='<div class="message">Could not load players. '+escapeHtml(error.message||'Please try again.')+'</div>';}}
+});
+document.getElementById("friendsButton").addEventListener("click",async()=>{
+  showFriends();
+  if(currentPlayer){try{await loadPlayers();await loadFriends();renderPlayers();}catch(error){console.error(error);document.getElementById("playersGrid").innerHTML='<div class="message">Could not load friends. '+escapeHtml(error.message||'Please try again.')+'</div>';}}
+});
 document.getElementById("manageFriendsButton").addEventListener("click",openFriends);
 document.getElementById("playersManageFriendsButton").addEventListener("click",openFriends);
 document.getElementById("backToPlayers").addEventListener("click",()=>showPlayers(playersMode));
-document.getElementById("modalClose").addEventListener("click",closeModal);
+document.getElementById("modalClose").addEventListener("click",event=>{event.preventDefault();event.stopPropagation();closeModal();});
 document.getElementById("spriteModal").addEventListener("click",event=>{if(event.target.id==="spriteModal")closeModal();});
 document.addEventListener("keydown",event=>{if(event.key==="Escape")closeModal();});
 
@@ -1274,7 +1347,7 @@ async function startTracker(){
     console.error(error);document.getElementById("stats").textContent="Tracker error: "+error.message;
   }
 }
-startTracker();
+window.heeheeTrackerReady = startTracker();
 </script>
 
 <script>
@@ -1284,27 +1357,85 @@ startTracker();
  function closeMenu(){sidebar.classList.remove('open');scrim.classList.remove('show');$('menuToggle').setAttribute('aria-expanded','false')}
  $('menuToggle').addEventListener('click',()=>{sidebar.classList.add('open');scrim.classList.add('show');$('menuToggle').setAttribute('aria-expanded','true')});
  $('sidebarClose').addEventListener('click',closeMenu);scrim.addEventListener('click',closeMenu);
- function setPage(page){
-   const dash=document.querySelector('.tracker-dashboard'),collection=$('myCollectionView'),stats=$('stats'),sprites=$('sprites'),codes=$('adminCodesView');
-   dash.style.display=page==='dashboard'?'grid':'none';codes.style.display=page==='admin-codes'?'block':'none';
-   const showCollection=['collection','sprites','players'].includes(page);
-   collection.style.display=showCollection?'block':'none';
-   if(page==='collection'){showMyCollection();$('collectionFilterSelect').value='all';renderSprites()}
-   if(page==='sprites'){showMyCollection();$('collectionFilterSelect').value='all';renderSprites();$('search').focus({preventScroll:true})}
-   if(page==='players'){showPlayers('all')}
+ async function setPage(page){
+   // Wait for session restoration before rendering account-dependent views.
+   if(window.heeheeTrackerReady){try{await window.heeheeTrackerReady;}catch(e){console.warn('Tracker startup did not finish cleanly:',e)}}
+   activePage=page;
+   const dash=document.querySelector('.tracker-dashboard'),welcome=document.querySelector('.welcome-panel'),collection=$('myCollectionView'),codes=$('adminCodesView');
+   dash.style.display=page==='dashboard'?'grid':'none';
+   if(welcome)welcome.style.display=page==='dashboard'?'block':'none';
+   codes.style.display=page==='admin-codes'?'block':'none';
+   collection.style.display=['collection','sprites','players'].includes(page)?'block':'none';
+   if(page==='collection'){
+     showMyCollection();
+     $('collectionFilterSelect').value='all';
+     renderSprites();
+   } else if(page==='sprites'){
+     viewingPlayer=null;
+     $('collectionDashboard').style.display='none';
+     $('myCollectionView').style.display='block';
+     $('myCollectionView').querySelector('.controls').style.display='none';
+     $('myCollectionView').querySelector('.view-switcher').style.display='none';
+     $('collectionFilterControl').style.display='none';
+     $('playersPanel').style.display='none';
+     $('stats').style.display='none';
+     $('sprites').style.display='grid';
+     $('search').value='';$('rarity').value='All';$('sort').value='default';
+     renderSprites();
+   } else if(page==='players'){
+     showPlayers('all');
+     const grid=$('playersGrid');
+     if(!currentUser){renderPlayers();}
+     else {
+       grid.innerHTML='<div class="message">Loading players…</div>';
+       try {
+         await loadPlayers();
+         try { await loadAllCollections(); } catch(collectionError) { console.warn('Could not load collection statistics:',collectionError); }
+         if(currentPlayer){try { await loadFriends(); } catch(friendError) { console.warn('Could not load friends:',friendError); }}
+         renderPlayers();
+       } catch(error) {
+         console.error('Players & Friends failed to load:',error);
+         grid.innerHTML='<div class="message">Could not load players right now. '+escapeHtml(error.message||'Please try again.')+' <button class="small-action" id="retryPlayersButton" type="button">Try again</button></div>';
+         $('retryPlayersButton')?.addEventListener('click',()=>setPage('players'));
+       }
+     }
+   } else {
+     $('myCollectionView').style.display='none';
+   }
    if(page==='admin-codes')loadAdminCodes();
-   $('stats').style.display=page==='sprites'?'block':(page==='collection'?'block':'none');
-   $('sprites').style.display=page==='sprites'||page==='collection'?'grid':'none';
    document.querySelectorAll('.sidebar-link[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
    closeMenu();window.scrollTo({top:0,behavior:'smooth'});
  }
- document.querySelectorAll('.sidebar-link[data-page]').forEach(b=>b.addEventListener('click',()=>setPage(b.dataset.page)));
+ 
+ document.querySelectorAll('.sidebar-link[data-page]').forEach(b=>b.addEventListener('click',()=>{void setPage(b.dataset.page)}));
+ // Reliable fallback handlers for the sprite modal close and player-list back buttons.
+ document.addEventListener('click',function(event){
+   const closeButton=event.target.closest&&event.target.closest('#modalClose');
+   if(closeButton){event.preventDefault();event.stopPropagation();closeModal();return;}
+   const backButton=event.target.closest&&event.target.closest('#backToPlayers');
+   if(backButton){event.preventDefault();showPlayers(playersMode);}
+ },true);
  // Missing art is presented deliberately rather than leaving empty image boxes.
  function addComingSoonFallback(){
    document.querySelectorAll('#sprites img, #modalVariants img, #modalImage').forEach(img=>{
-     if(img.dataset.fallbackBound)return;img.dataset.fallbackBound='1';
-     const apply=()=>{if(img.dataset.fallbackShown)return;img.dataset.fallbackShown='1';const wrap=img.closest('.sprite-image-wrap,.variant-image-wrap,.modal-image-wrap')||img.parentElement;if(wrap&&!wrap.querySelector('.coming-soon-art')){const badge=document.createElement('div');badge.className='coming-soon-art';badge.textContent='Coming Soon';badge.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(139,92,246,.13),rgba(255,146,43,.12));color:#ffb36b;font-size:12px;font-weight:800;letter-spacing:.7px';if(getComputedStyle(wrap).position==='static')wrap.style.position='relative';wrap.appendChild(badge)}img.style.display='none'};
-     img.addEventListener('error',apply);if(!img.getAttribute('src'))apply();
+     const modal=img.id==='modalImage';
+     if(modal&&!$('spriteModal').classList.contains('show'))return;
+     const wrap=img.closest('.sprite-image-wrap,.variant-image-wrap,.modal-image-wrap')||img.parentElement;
+     if(!wrap)return;
+     const removeBadge=()=>{const old=wrap.querySelector('.coming-soon-art');if(old)old.remove();img.style.display='';};
+     const apply=()=>{
+       if(!wrap.querySelector('.coming-soon-art')){
+         const badge=document.createElement('div');badge.className='coming-soon-art';badge.textContent='Coming Soon';
+         badge.style.cssText='position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;pointer-events:none;background:linear-gradient(135deg,rgba(139,92,246,.13),rgba(255,146,43,.12));color:#ffb36b;font-size:12px;font-weight:800;letter-spacing:.7px';
+         if(getComputedStyle(wrap).position==='static')wrap.style.position='relative';wrap.appendChild(badge);
+       }
+       img.style.display='none';
+     };
+     if(!img.dataset.fallbackBound){img.dataset.fallbackBound='1';img.addEventListener('error',apply);}
+     if(img.getAttribute('src')){
+       if(img.complete&&img.naturalWidth>0)removeBadge();
+       else if(img.complete&&img.naturalWidth===0)apply();
+     }else apply();
    });
  }
  const imageObserver=new MutationObserver(addComingSoonFallback);imageObserver.observe($('sprites'),{childList:true,subtree:true});imageObserver.observe($('modalVariants'),{childList:true,subtree:true});
@@ -1328,7 +1459,9 @@ startTracker();
  function renderAdminCodes(){
    const list=$('adminCodesList');updateCodeSummary();
    if(!adminCodes.length){list.innerHTML='<div class="dashboard-empty">No active admin codes have been added yet.</div>';return}
-   list.innerHTML=adminCodes.map(c=>{const state=playerCodeStates.find(s=>String(s.admin_code_id)===String(c.id));const used=state?.used===true;return `<article class="admin-code-card ${used?'used':''}"><div class="admin-code-copy"><div class="admin-code-value">${escapeHtml(c.code||'Code unavailable')}</div><div class="admin-code-description">${escapeHtml(c.description||c.reward||'No description added yet.')}</div><div class="admin-code-status">${used?'✓ Marked as used':'Not marked as used'}</div></div><label class="admin-code-check"><input type="checkbox" data-code-id="${escapeHtml(String(c.id))}" ${used?'checked':''}> Used</label></article>`}).join('');
+   const isUsed=c=>playerCodeStates.some(s=>String(s.admin_code_id)===String(c.id)&&s.used===true);
+   const ordered=[...adminCodes].sort((a,b)=>Number(isUsed(a))-Number(isUsed(b)));
+   list.innerHTML=ordered.map(c=>{const state=playerCodeStates.find(s=>String(s.admin_code_id)===String(c.id));const used=state?.used===true;const imageUrl=c.image_url||c.image||'';return `<article class="admin-code-card ${used?'used':''}"><div class="admin-code-image-wrap">${imageUrl?`<img class="admin-code-image" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(c.code||'Admin code image')}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:''}<div class="admin-code-image-placeholder" style="display:${imageUrl?'none':'flex'}">Image coming soon</div></div><div class="admin-code-copy"><div class="admin-code-value">${escapeHtml(c.code||'Code unavailable')}</div><div class="admin-code-description">${escapeHtml(c.description||c.reward||'No description added yet.')}</div><div class="admin-code-status">${used?'✓ Marked as used':'Not marked as used'}</div></div><label class="admin-code-check"><input type="checkbox" data-code-id="${escapeHtml(String(c.id))}" ${used?'checked':''}> Used</label></article>`}).join('');
    list.querySelectorAll('input[data-code-id]').forEach(input=>input.addEventListener('change',()=>saveCodeState(input.dataset.codeId,input.checked,input)));
  }
  async function saveCodeState(codeId,used,input){
@@ -1348,7 +1481,6 @@ startTracker();
    if(currentUser){await loadPlayers();await loadAllCollections();await loadNotices();if(currentPlayer)await loadMyCollection()}
    renderDashboard();if($('adminCodesView').style.display!=='none')await loadAdminCodes();
    if($('sprites').style.display!=='none')renderSprites();addComingSoonFallback();
-   $('dataRefreshStatus').textContent='Last updated '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})+' · refreshes every 60 seconds';
  }catch(e){console.warn('Background refresh failed:',e)}finally{refreshing=false}}
  setInterval(refreshData,60000);
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshData()});
